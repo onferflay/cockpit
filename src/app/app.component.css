@@ -1,0 +1,262 @@
+button,span,input,textarea,table{
+	font-family:  "open sans";
+}
+.wrapall{
+	background-color: #f4f7f9;
+	height: 100%;
+	width: 100%;
+    color:#37475a;
+}
+.button{
+    padding: 8px 24px;
+    border-radius: 3px;
+    cursor: pointer;
+    float:right;
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-block;
+    border: 1px solid #00b0f0;
+}
+.button-blue{
+    color: white;
+    background-color: #00b0f0;
+}
+.button-white{
+	color:#00b0f0;
+	background-color: white;
+	margin-right:20px;
+}
+.cockpit-name{
+	font-size: 30px;
+	color:#333;
+	font-weight: bold;
+}
+.cp-name-div{
+	padding: 15px 0;
+	border-bottom: 2px solid #cbd6e2;
+}
+.menu-ul{
+	margin:40px auto;
+	padding: 0;
+}
+.menu-li{
+	display: inline-block;
+    padding: 10px 8px;
+    margin:0 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.menu-ul i{
+	margin-right: 10px;
+}
+
+.menu-li.active{
+	color:#00b0f0;
+	border-bottom: 2px solid #00b0f0;
+}
+
+/* cp-news-div here  */
+
+.cp-news-div{
+    position: relative;
+    border: 1px solid #cbd6e2;
+    border-radius: 3px;
+    padding: 30px 15px;
+    margin-left: 15px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.subtitle{
+	font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    display: inline-block;
+}
+.ncategory,.ncontent,.ntitle,.nlink,.ndate{
+	display: block;
+}
+
+.nlink{
+	text-align: right;
+	color:#ccc;
+}
+.nlink i {
+	font-size: 20px;
+	color:#ccc;
+	padding: 3px;
+	cursor: pointer;
+}
+.ndate{
+	margin:5px 0 0 0;
+	color:#88aa00;
+}
+.news-block>div{
+		padding: 10px;
+		border-radius: 3px;
+    	border: 1px solid #cbd6e2;
+}
+.ncontent{
+    max-height: 82px;
+    overflow: hidden;
+    line-height: 21px;
+}
+.ntitle{
+	font-weight: bold;
+	font-size: 20px;
+}
+.cp-news-div hr{
+	width: 50px;
+	height: 1px;
+	margin:5px 0 10px;
+	background-color: #00d0e4;
+}
+.ncategory{
+	line-height: 40px;
+	text-transform: uppercase;
+	color:#00d0e4;
+}
+.ncategory img{
+	width: 32px;
+	position: relative;
+	top: -4px;
+	margin-right: 5px;
+}
+
+.cp-name-div,.cp-news-div{
+	background-color: white;
+}
+
+/* statistics div here*/
+
+.cp-statistics-table thead tr{
+	background-color: #37475a;
+}
+.cp-statistics-table{
+	width: 100%;
+    border-right: 1px solid #e1e9ec;
+    color:#37475a;
+}
+.cp-statistics-table th,.cp-statistics-table td{
+		padding: 10px;
+}
+.cp-statistics-table th{
+	vertical-align: middle;
+	text-transform: uppercase;
+	color:#e0cbb8;
+	font-size: 12px;
+	border-right:1px solid white;
+	font-weight: bold;
+}
+
+.cp-statistics-table th:nth-child(1){
+	color:white !important;
+	white-space: nowrap;
+}
+.cp-statistics-table th span{
+	color:white !important;
+	font-size: 12px;
+}
+.cp-statistics-table tr td:nth-child(1){
+	font-weight: bold;
+}
+.cp-statistics-table tr th:nth-child(1){
+    border-left: 1px solid #e1e9ec;
+}
+.cp-statistics-table tbody tr td{
+    border-left: 1px solid #e1e9ec;
+    border-bottom: 1px solid #e1e9ec;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.newenergy{
+	background-color: #00b0f0;
+	color:white;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.bgpink{
+	background-color: #f9d5d5;
+}
+.bggoluboi{
+	background-color: #e5f7fa;
+}
+/* end statistics div*/
+
+/*	start	market & prices*/
+.sett-table tr td:nth-child(2){
+	text-align: center;
+	width:150px;
+}
+.seemore-btn{
+    background-color: #f4f7f9;
+    color: #00b0f0;
+    border-radius: 3px;
+    border: 1px solid #00b0f0;
+    padding: 5px 15px;
+    display: block;
+    margin:20px auto 10px;
+    cursor: pointer;
+}
+.chart-div p{
+	font-size: 18px;
+	font-weight: 500;
+}
+.chart-div{
+	text-align: center;
+    margin: 25px 0;
+}
+.cell{
+	float: left;
+    width: 31%;
+    margin-right: 3.5%;
+    margin-bottom: 40px;
+}
+.title-block{
+    background-color: #37475a;
+    color: white;
+    line-height: 36px;
+    font-size: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.text-title-block{
+    background-color: #ffa82c;
+    color: white;
+    font-size: 16px;
+    line-height: initial;
+}
+.avg-number{
+    font-size: 40px;
+    font-weight: bold;
+    display: inline-block;
+    padding: 12px 15px 11px 0;
+    float: right;
+}
+.text-span{
+    display: inline-block;
+    width: 35%;
+    padding: 20px 0 20px 20px;
+    box-sizing: border-box;
+}
+.text-title-block p{
+	margin:0;
+}
+.topcons-data-table{
+	width: 100%;
+    color: #3f5e66;
+    background-color: #F3F6F8;
+}
+.topcons-data-table td{
+	height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #cbd6e2;
+}
+.hedge-btn{
+	color:#ffa82c !important;
+	border-color: #ffa82c !important;
+}
+/*end market & prices*/
