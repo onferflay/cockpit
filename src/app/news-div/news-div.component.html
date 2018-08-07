@@ -7,13 +7,14 @@
             <div class="row">
                 <div *ngFor="let news of results" class='col-sm-3 news-block {{ SwitchMe(news.query) }}' >
                     <div class="col-sm-12">
-                        <span class='ncategory'><img src='{{ img}}'>Oil</span>
-                        <span class="ntitle">{{ news.title | slice:0:60 }}...</span>
+                        <span class='ncategory'><img src='{{ img }}'>{{ title }}</span>
+                        <span class="ntitle">{{ news.title | slice:0:80 }}...</span>
                         <hr>
                         <span class="ncontent">{{ news.validated_text | slice:0:140 }}</span>
                         <span class='ndate'>{{ news.created | slice:0:10 }}</span>
-                        <span class="nlink"><i id="{{ news.id }}" class="far fa-arrow-alt-circle-right"></i></span>
+                        <span class="nlink"><i (click)="ShowMe(news)" class="far fa-arrow-alt-circle-right"></i></span>
                     </div>
                 </div>
             </div>
         </div>
+        <app-news-details [nid]="aaa"></app-news-details>   
