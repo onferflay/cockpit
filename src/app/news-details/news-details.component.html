@@ -1,5 +1,12 @@
-<div id='fancybox-overlay' [ngStyle]="{ 'display' : nid ? 'block' : 'none' }">
+<div *ngIf="nid">
+	<div id='fancybox-overlay' [ngStyle]="{ 'display' : nid ? 'block' : 'none' }"></div>
+		<div id='fancybox-wrap' [ngStyle]="{ 'display' : nid ? 'block' : 'none' }">
+				<div>	
+					<a id="fancybox-close" [ngStyle]="{ 'display' : nid ? 'block' : 'none' }" (click)="eventHide()"></a>
+					<h3>{{ nid.title }}</h3>
+					<p>{{ nid.validated_text }}</p>
+					<span id='nsource'>Source: {{ nid.source }}</span>
+					<span id='ncreated'>{{ nid.created | slice:0:10 }} {{ nid.created | slice:11:16 }}</span>
+				</div>	
+		</div>
 </div>
-<div id='fancybox-wrap' [ngStyle]="{ 'display' : nid ? 'block' : 'none' }">privet
-	<a id="fancybox-close" [ngStyle]="{ 'display' : nid ? 'block' : 'none' }" (click)="eventHide()"></a>
-</div>	

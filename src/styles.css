@@ -355,6 +355,7 @@ button,span,input,textarea,table{
 
 #fancybox-wrap {
     position: absolute;
+    padding: 20px;
     z-index: 1101;
     opacity: 1;
     width: 760px;
@@ -364,6 +365,27 @@ button,span,input,textarea,table{
     left: calc( (100% - 760px)/2);
     background-color: white;
     box-shadow: 0px 0px 10px 5px #9e9d9d;
+    border-radius: 4px;
+}
+
+#fancybox-wrap span{
+    display: inline-block;
+    font-style: italic;
+}
+#nsource{
+    color:#a9a9a9;
+}
+#ncreated{
+    color:#81a631;
+    float:right;
+}
+#fancybox-wrap h3{
+    color:#0088AA;
+}
+#fancybox-wrap>div{
+    overflow: auto;
+    height: 390px;
+    padding: 20px;
 }
 #fancybox-close {
     position: absolute;

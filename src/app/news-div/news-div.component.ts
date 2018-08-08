@@ -19,6 +19,7 @@ export class NewsDivComponent implements OnInit {
 	img : string;
 	title : string;
 	stiri : News;
+	testme : string[];
 
 
   constructor(private http: HttpClient) { }
@@ -29,11 +30,16 @@ export class NewsDivComponent implements OnInit {
  	this.http.get('http://149.56.102.173:8080/api/v1/latest/validated/').subscribe(data => {
 	this.results = data.slice(0,4);
 	console.log(this.results);
- })	
+ });
+
+	this.http.get('http://www.marketpricesolutions.com/apitest.asp').subscribe(data => {
+	this.testme = data;
+	console.log(this.testme);
+ });
+
 }
 
 ShowMe(id: object): void{
-	// console.log(id.id)
 	this.stiri = {
 			title :id.title,
 			id : id.id,
@@ -41,7 +47,6 @@ ShowMe(id: object): void{
 			source : id.source.title,
 			validated_text : id.validated_text
 		}
-	console.log(this.stiri);
 }
 
 SwitchMe(query: string): string {
