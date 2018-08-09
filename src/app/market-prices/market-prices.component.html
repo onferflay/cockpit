@@ -6,51 +6,21 @@
             </div>
             <div class="row">
 
-                <div class="col-sm-6 news-block">
+                <div *ngFor="let chart of charts; let i=index" class="col-sm-6 news-block">
 
                   <table class="cp-statistics-table sett-table">
                   <tr>
-                    <td class="newenergy"  colspan="2">SETTLEMENTS</td>
+                    <td class="newenergy" colspan="2"> SETTLEMENTS </td>
                   </tr>
-                  <tr>
-                      <td>Brent USD/bbl USD/bbl</td>
-                      <td>73.78</td>
-                  </tr>
-                  <tr>
-                      <td>Brent Q+3 USD/bbl</td>
-                      <td>71.58</td>
+                  <tr *ngFor='let data of chart'>
+                      <td>{{ data.name }}</td>
+                      <td>{{ data.mv }}</td>
                   </tr>
                   </table>
 
                   <div class="chart-div">
                     <p>Gas Market</p>
                     <div id="chart1" style="background-color: red; width:100%; height: 200px;">
-                      
-                    </div>
-                    <button class="seemore-btn">See more »</button>
-                  </div>
-
-                </div>
-
-                <div class="col-sm-6 news-block">
-
-                  <table class="cp-statistics-table sett-table">
-                  <tr>
-                    <td class="newenergy"  colspan="2">SETTLEMENTS</td>
-                  </tr>
-                  <tr>
-                      <td>PEG Nord spot EUR/MWh</td>
-                      <td>19.79</td>
-                  </tr>
-                  <tr>
-                      <td>IT PSV Gas spot EUR/MWh</td>
-                      <td>21.83</td>
-                  </tr>
-                  </table>
-
-                  <div class="chart-div">
-                    <p>Gas Market Spot</p>
-                    <div id="chart2" style="background-color: red; width:100%; height: 200px;">
                       
                     </div>
                     <button class="seemore-btn">See more »</button>

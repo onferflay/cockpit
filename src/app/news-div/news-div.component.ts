@@ -14,12 +14,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 export class NewsDivComponent implements OnInit {
 
-	results : string[];
-	text : string[];
-	img : string;
-	title : string;
+	results,text: string[];
 	stiri : News;
-	testme : string[];
+	img,title: string;
 
 
   constructor(private http: HttpClient) { }
@@ -29,14 +26,7 @@ export class NewsDivComponent implements OnInit {
  ngOnInit(): void {
  	this.http.get('http://149.56.102.173:8080/api/v1/latest/validated/').subscribe(data => {
 	this.results = data.slice(0,4);
-	console.log(this.results);
  });
-
-	this.http.get('http://www.marketpricesolutions.com/apitest.asp').subscribe(data => {
-	this.testme = data;
-	console.log(this.testme);
- });
-
 }
 
 ShowMe(id: object): void{

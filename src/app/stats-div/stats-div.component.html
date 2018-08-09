@@ -10,12 +10,7 @@
                       <thead>
                         <tr>
                             <th>FROM THE BEGINNING OF THIS YEAR</th>
-                            <th>WEDNESDAY<br><span>11/4</span></th>
-                            <th>THURSDAY<br><span>12/4</span></th>
-                            <th>FRIDAY<br><span>13/4</span></th>
-                            <th>MONDAY<br><span>16/4</span></th>
-                            <th>TUESDAY<br><span>17/4</span></th>
-                            <th>WEDNESDAY<br><span>18/4</span></th>
+                            <th *ngFor = "let days of wday; let i = index">{{ days }}<br><span>{{ wdate[i] }}</span></th>
                             <th>VAR D-1</th>
                             <th>VAR W-1</th>
                             <th>AVG.</th>
@@ -26,79 +21,20 @@
                       <tbody>
                         <tr>
                           <td class="newenergy" colspan="12">gas</td>
-                        </tr>
-                        <tr>
-                          <td>TTF spot EUR/MWh</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td class="bgpink">53.12%</td>
-                          <td class="bggoluboi">53.12%</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                        </tr>
-                        <tr>
-                          <td>NBP spot GBpence/therm</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td class="bgpink">53.12%</td>
-                          <td class="bggoluboi">53.12%</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                        </tr>
-                        <tr>
-                          <td>NBP spot GBpence/therm</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td class="bgpink">53.12%</td>
-                          <td class="bggoluboi">53.12%</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                        </tr>
-                        <tr>
-                          <td colspan="12" class="newenergy">oil</td>
-                        </tr>
-                        <tr>
-                          <td>Brent USD/bbl USD/bbl</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td class="bgpink">53.12%</td>
-                          <td class="bggoluboi">53.12%</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                        </tr>
-                        <tr>
-                          <td>Brent USD/bbl USD/bbl</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td class="bggoluboi">53.12%</td>
-                          <td class="bgpink">53.12%</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
-                          <td>53.12</td>
+                        </tr> 
+                        <tr *ngFor = "let data of testme">
+                          <td> {{ data.name }} {{ data.unit }}/{{ data.curr }}</td>
+                          <td> {{ data.v1 }} </td>
+                          <td> {{ data.v2 }} </td>
+                          <td> {{ data.v3 }} </td>
+                          <td> {{ data.v4 }} </td>
+                          <td> {{ data.byv }} </td>
+                          <td> {{ data.yv }} </td>
+                          <td [ngClass]="GiveClass(data.yp)"> {{ data.yp ? data.yp : '-' }} </td>
+                          <td [ngClass]="GiveClass(data.wp)"> {{ data.wp ? data.wp : '-' }} </td>
+                          <td> {{ data.mavg }} </td>
+                          <td> {{ data.ymax }} </td>
+                          <td> {{ data.ymin }} </td>
                         </tr>
                       </tbody>
                   </table>
