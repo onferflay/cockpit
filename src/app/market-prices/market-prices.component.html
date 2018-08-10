@@ -6,26 +6,29 @@
             </div>
             <div class="row">
 
-                <div *ngFor="let chart of charts; let i=index" class="col-sm-6 news-block">
+                <div *ngFor="let chart of objKeys" class="col-sm-6 news-block">
 
+                    
                   <table class="cp-statistics-table sett-table">
                   <tr>
                     <td class="newenergy" colspan="2"> SETTLEMENTS </td>
                   </tr>
-                  <tr *ngFor='let data of chart'>
-                      <td>{{ data.name }}</td>
-                      <td>{{ data.mv }}</td>
+                  <tr *ngFor='let datas of charts[chart]'>
+                      <td>{{ datas.name }}</td>
+                      <td>{{ datas.mv }}</td>
                   </tr>
                   </table>
 
+            
                   <div class="chart-div">
-                    <p>Gas Market</p>
+                    <p>{{ chart }}</p>
                     <div id="chart1" style="background-color: red; width:100%; height: 200px;">
                       
                     </div>
-                    <button class="seemore-btn">See more »</button>
+                    <button class="seemore-btn">See more »{{ ids }}</button>
                   </div>
 
                 </div>
+
             </div>
         </div>
