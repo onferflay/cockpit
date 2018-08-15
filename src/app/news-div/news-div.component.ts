@@ -24,7 +24,7 @@ export class NewsDivComponent implements OnInit {
 
 
  ngOnInit(): void {
- 	this.http.get('http://149.56.102.173:8080/api/v1/latest/validated/').subscribe(data => {
+ 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
 	this.results = data.slice(0,4);
  });
 }

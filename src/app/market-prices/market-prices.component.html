@@ -6,14 +6,14 @@
             </div>
             <div class="row">
 
-                <div *ngFor="let chart of objKeys" class="col-sm-6 news-block">
+                <div *ngFor="let chartname of objKeys" class="col-sm-6 news-block">
 
                     
                   <table class="cp-statistics-table sett-table">
                   <tr>
                     <td class="newenergy" colspan="2"> SETTLEMENTS </td>
                   </tr>
-                  <tr *ngFor='let datas of charts[chart]'>
+                  <tr *ngFor='let datas of charts[chartname]'>
                       <td>{{ datas.name }}</td>
                       <td>{{ datas.mv }}</td>
                   </tr>
@@ -21,11 +21,11 @@
 
             
                   <div class="chart-div">
-                    <p>{{ chart }}</p>
-                    <div id="chart1" style="background-color: red; width:100%; height: 200px;">
+                    <p>{{ chartname }}</p>
+                    <div [chart]="chart" style="width:100%; height: 370px;">
                       
                     </div>
-                    <button class="seemore-btn">See more »{{ ids }}</button>
+                    <button class="seemore-btn">See more »</button>
                   </div>
 
                 </div>

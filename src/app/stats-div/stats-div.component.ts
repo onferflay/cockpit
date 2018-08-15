@@ -20,7 +20,6 @@ export class StatsDivComponent implements OnInit {
   ngOnInit() {
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=1533').subscribe(data => {
 	this.testme = data.data;
-  console.log(this.testme)
 	this.order = data.orderby
 	this.wday = data.days["wday"].split(",");
 	this.wdate = data.days["wdate"].split(",");

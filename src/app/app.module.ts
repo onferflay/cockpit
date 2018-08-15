@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }    from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
+import { ChartModule } from 'angular-highcharts';
 
 import { AppComponent } from './app.component';
 import { NewsDivComponent } from './news-div/news-div.component';
@@ -25,7 +26,8 @@ import * as $ from 'jquery';
   imports: [
     HttpClientModule,
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
