@@ -5,3 +5,8 @@ export class News {
   source : string;
   validated_text : string;
 }
+
+export class ChartSeries {
+    name : string;
+    data : string[] = [];
+}

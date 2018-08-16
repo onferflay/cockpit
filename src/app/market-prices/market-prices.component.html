@@ -6,7 +6,7 @@
             </div>
             <div class="row">
 
-                <div *ngFor="let chartname of objKeys" class="col-sm-6 news-block">
+                <div *ngFor="let chartname of objKeys; let i = index;" class="col-sm-6 news-block">
 
                     
                   <table class="cp-statistics-table sett-table">
@@ -22,9 +22,7 @@
             
                   <div class="chart-div">
                     <p>{{ chartname }}</p>
-                    <div [chart]="chart" style="width:100%; height: 370px;">
-                      
-                    </div>
+                    <div style="width:100%; height: 370px;"><app-chartdata [takeMe]="ids[i]"></app-chartdata></div>
                     <button class="seemore-btn">See more »</button>
                   </div>
 

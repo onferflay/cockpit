@@ -12,6 +12,7 @@ import { MarketPricesComponent } from './market-prices/market-prices.component';
 import { HedgeDivComponent } from './hedge-div/hedge-div.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import * as $ from 'jquery';
+import { ChartdataComponent } from './chartdata/chartdata.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import * as $ from 'jquery';
     HeaderDivComponent,
     MarketPricesComponent,
     HedgeDivComponent,
-    NewsDetailsComponent
+    NewsDetailsComponent,
+    ChartdataComponent
   ],
   imports: [
     HttpClientModule,
