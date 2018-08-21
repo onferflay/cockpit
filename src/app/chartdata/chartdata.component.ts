@@ -27,17 +27,18 @@ export class ChartdataComponent implements OnInit {
 		// console.log(this.takeMe);
 
 	for ( let vano of data){
+      // console.log(vano);
 	  		this.linedata.name = vano.ln;
-	  		for (let hehe of vano.data){
-	  			this.ttt.push(Date.UTC(2018,3,15,0));
-	  			this.ttt.push(Date.UTC(2018,3,16,0));
-	  			this.ttt.push(Date.UTC(2018,3,17,0));
-	  		}
-      		// this.linedata.data = vano.data;
-	      	console.log(this.ttt);
+    		this.linedata.data = vano.data;
+
+        for (let hehe of vano.data){
+          // console.log(hehe.date);
+          // console.log(hehe.value);
+        }
+
 	      	this.curba.push(this.linedata);
 	        }
-	        // console.log(this.curba[0].name);
+	        console.log(this.curba[0].name);
 
  	this.chart = new Chart({
     title: { text: '' },
