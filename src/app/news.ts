@@ -8,10 +8,10 @@ export class News {
 
 export class ChartSeries {
     name : string;
-    data : chart[] = [];
+    data : chartData[] = [];
 }
 
-class chartData{
-	date : number;
-	value : number;
+export class chartData{
+	x : number;
+	y : number;
 }
