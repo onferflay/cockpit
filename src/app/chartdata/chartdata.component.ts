@@ -30,7 +30,7 @@ export class ChartdataComponent implements OnInit {
      this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=getdataforchart&cid=' + this.takeMe).subscribe(data =>{
 		// console.log(this.takeMe);
 
-    let i = 0;
+    var i = 0;
     this.saxis = false;
     
 	for ( let vano of data){
@@ -39,6 +39,7 @@ export class ChartdataComponent implements OnInit {
       {
           this.unit[i] = vano.unit;
           this.cur[i] = vano.cur;
+          i++;
       }
       else
       {
@@ -50,9 +51,8 @@ export class ChartdataComponent implements OnInit {
           }
       }
 
-        if ( i > 1 ) this.saxis = true;
-      
-        console.log(vano);
+        if ( i > 1 ) { this.saxis = true; }
+
 
 	  		this.linedata.name = vano.ln;
 
@@ -65,6 +65,13 @@ export class ChartdataComponent implements OnInit {
 	      	this.curba.push(this.linedata);
           this.linedata = new ChartSeries;
 	        }
+
+
+        console.log(this.unit);
+        console.log(this.cur);
+
+
+
  	this.chart = new Chart({
               chart: {
                     height: 370,
