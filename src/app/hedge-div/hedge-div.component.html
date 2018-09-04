@@ -6,26 +6,26 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                  <div class ='cell col-sm-4'>
-                      <div class='title-block'>SPAIN_ONO_FY19/20</div>
+                  <div *ngFor = "let hedge of results" class ='cell col-sm-4'>
+                      <div class='title-block'>{{ hedge.name }}</div>
                          <div class='text-title-block'>
                            <span class='text-span'>
                               <p>AVG price</p>
-                              <p><b>EUR/MWh</b></p>
+                              <p><b>{{ hedge.curr }}/{{ hedge.unit }}</b></p>
                            </span>
-                           <span class='avg-number'>50.76</span>
+                           <span class='avg-number'>{{ hedge.avg }}</span>
                         </div>
                        <table class='topcons-data-table'>
                             <tr>
                                  <td><b>VaR</b></td>
-                                 <td>0</td>
-                                 <td>EUR</td>
+                                 <td>{{ hedge.var }}</td>
+                                 <td>{{ hedge.curr }}</td>
                             </tr>
                   
                             <tr>
                                  <td><b>Spent</b></td>
-                                 <td>28,818,990</td>
-                                 <td>EUR</td>
+                                 <td>{{ hedge.spent }}</td>
+                                 <td>{{ hedge.curr }}</td>
                             </tr>
                        </table>
                         <div class="topcons-fixed-chart">
@@ -35,98 +35,6 @@
                           <button class="seemore-btn hedge-btn">See more »</button>
                         </div>
                   </div>
-                  <div class ='cell col-sm-4'>
-                      <div class='title-block'>SPAIN_ONO_FY19/20</div>
-                         <div class='text-title-block'>
-                           <span class='text-span'>
-                              <p>AVG price</p>
-                              <p><b>EUR/MWh</b></p>
-                           </span>
-                           <span class='avg-number'>50.76</span>
-                        </div>
-                       <table class='topcons-data-table'>
-                            <tr>
-                                 <td><b>VaR</b></td>
-                                 <td>0</td>
-                                 <td>EUR</td>
-                            </tr>
-                  
-                            <tr>
-                                 <td><b>Spent</b></td>
-                                 <td>28,818,990</td>
-                                 <td>EUR</td>
-                            </tr>
-                       </table>
-
-                        <div class="topcons-fixed-chart">
-                          <div></div>
-                        </div>
-
-                       <div class="topcons-link">
-                         <button class="seemore-btn hedge-btn">See more »</button>
-                       </div>
-
-                  </div>
-                  <div class ='cell col-sm-4'>
-                      <div class='title-block'>SPAIN_ONO_FY19/20</div>
-                         <div class='text-title-block'>
-                           <span class='text-span'>
-                              <p>AVG price</p>
-                              <p><b>EUR/MWh</b></p>
-                           </span>
-                           <span class='avg-number'>50.76</span>
-                        </div>
-                       <table class='topcons-data-table'>
-                            <tr>
-                                 <td><b>VaR</b></td>
-                                 <td>0</td>
-                                 <td>EUR</td>
-                            </tr>
-                  
-                            <tr>
-                                 <td><b>Spent</b></td>
-                                 <td>28,818,990</td>
-                                 <td>EUR</td>
-                            </tr>
-                       </table>
-                       <div class="topcons-fixed-chart">
-                         <div></div>
-                       </div>
-                       <div class="topcons-link">
-                         <button class="seemore-btn hedge-btn">See more »</button>
-                       </div>
-                  </div>
-
-                  <div class ='cell col-sm-4'>
-                      <div class='title-block'>SPAIN_ONO_FY19/20</div>
-                         <div class='text-title-block'>
-                           <span class='text-span'>
-                              <p>AVG price</p>
-                              <p><b>EUR/MWh</b></p>
-                           </span>
-                           <span class='avg-number'>50.76</span>
-                        </div>
-                       <table class='topcons-data-table'>
-                            <tr>
-                                 <td><b>VaR</b></td>
-                                 <td>0</td>
-                                 <td>EUR</td>
-                            </tr>
-                  
-                            <tr>
-                                 <td><b>Spent</b></td>
-                                 <td>28,818,990</td>
-                                 <td>EUR</td>
-                            </tr>
-                       </table>
-                        <div class="topcons-fixed-chart">
-                           <div></div>
-                        </div>
-                        <div class="topcons-link">
-                          <button class="seemore-btn hedge-btn">See more »</button>
-                        </div>
-                  </div>
-
                 </div>
             </div>
         </div>
