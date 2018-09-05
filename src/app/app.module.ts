@@ -2,7 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }    from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
-import { ChartModule } from 'angular-highcharts';
+import { ChartModule,HIGHCHARTS_MODULES } from 'angular-highcharts';
+
+import * as more from 'highcharts/highcharts-more.src';
+import * as exporting from 'highcharts/modules/exporting.src';
+import * as arc from 'highcharts/modules/solid-gauge.src';
+
 
 import { AppComponent } from './app.component';
 import { NewsDivComponent } from './news-div/news-div.component';
@@ -31,7 +36,9 @@ import { ChartdataComponent } from './chartdata/chartdata.component';
     BrowserModule,
     ChartModule
   ],
-  providers: [],
+  providers: [
+    { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc ] }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

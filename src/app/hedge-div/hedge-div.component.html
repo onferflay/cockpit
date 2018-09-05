@@ -29,7 +29,8 @@
                             </tr>
                        </table>
                         <div class="topcons-fixed-chart">
-                           <div></div>
+                           <div [chart]="ShowMeTheChart(hedge.fixed)"></div>
+                           <!-- {{ ShowMeTheChart(hedge.open,hedge.fixed) | json }}  -->
                         </div>
                         <div class="topcons-link">
                           <button class="seemore-btn hedge-btn">See more »</button>

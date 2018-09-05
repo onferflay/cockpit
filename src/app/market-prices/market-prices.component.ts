@@ -40,7 +40,7 @@ export class MarketPricesComponent implements OnInit {
     this.ids.push(aux);
   }
 
-  console.log(this.ids);
+  // console.log(this.ids);
 
  });
   }

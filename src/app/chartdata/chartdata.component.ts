@@ -67,8 +67,8 @@ export class ChartdataComponent implements OnInit {
 	        }
 
 
-        console.log(this.unit);
-        console.log(this.cur);
+        // console.log(this.unit);
+        // console.log(this.cur);
 
 
 
