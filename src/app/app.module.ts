@@ -7,6 +7,7 @@ import { ChartModule,HIGHCHARTS_MODULES } from 'angular-highcharts';
 import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as arc from 'highcharts/modules/solid-gauge.src';
+import * as data from 'highcharts/modules/data.src';
 
 
 import { AppComponent } from './app.component';
@@ -18,27 +19,31 @@ import { HedgeDivComponent } from './hedge-div/hedge-div.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import * as $ from 'jquery';
 import { ChartdataComponent } from './chartdata/chartdata.component';
+import { ScoringComponent } from './scoring/scoring.component';
+import { WorldmapComponent } from './worldmap/worldmap.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NewsDivComponent,
-    StatsDivComponent,
-    HeaderDivComponent,
-    MarketPricesComponent,
-    HedgeDivComponent,
-    NewsDetailsComponent,
-    ChartdataComponent
+  AppComponent,
+  NewsDivComponent,
+  StatsDivComponent,
+  HeaderDivComponent,
+  MarketPricesComponent,
+  HedgeDivComponent,
+  NewsDetailsComponent,
+  ChartdataComponent,
+  ScoringComponent,
+  WorldmapComponent
   ],
   imports: [
-    HttpClientModule,
-    FormsModule,
-    BrowserModule,
-    ChartModule
+  HttpClientModule,
+  FormsModule,
+  BrowserModule,
+  ChartModule
   ],
   providers: [
-    { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc ] }
+  { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc,data ] }
   ],
   bootstrap: [AppComponent]
-})
-export class AppModule { }
+  })
+ export class AppModule { }

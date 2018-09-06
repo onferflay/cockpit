@@ -1,0 +1,57 @@
+        <div class='col-sm-12 cp-news-div'>
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="subtitle">Procurement Scoring</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                  <div *ngFor = "let scoring of results" class ='cell col-sm-4'>
+                      <div class='title-block'>{{ scoring.name }}</div>
+                       <table class='topcons-data-table scoring-table'>
+                            <tr>
+                                 <td><b>Energy Spend</b></td>
+                                 <td>{{ scoring.ab }}</td>
+                                 <td>{{ scoring.curr }}</td>
+                            </tr>
+                  
+                            <tr>
+                                 <td><b>Energy Spent Spot</b></td>
+                                 <td>{{ scoring.sspot }}</td>
+                                 <td>{{ scoring.curr }}</td>
+                            </tr>
+
+                            <tr>
+                                 <td><b>Energy Spent Avg</b></td>
+                                 <td>{{ scoring.savg }}</td>
+                                 <td>{{ scoring.curr }}</td>
+                            </tr>
+
+                        	<tr>
+                                 <td><b>Optimum Spend</b></td>
+                                 <td>{{ scoring.opt }}</td>
+                                 <td>{{ scoring.curr }}</td>
+                            </tr>
+
+                    		<tr>
+                                 <td><b>Savings Opportunity</b></td>
+                                 <td>{{ scoring.saving }}</td>
+                                 <td>{{ scoring.curr }}</td>
+                            </tr>
+                            <tr>
+                            	<td colspan="3" class="title-block">best strategy</td>
+                            </tr>
+                            <tr>
+                            	<td colspan="3" style="padding: 10px 0;background-color: #00b0f0;">
+                            	<img src="https://www.energymarketprice.com/ivan/images/scoring_img_green.png">
+                            	<div>{{ scoring.best }}</div>
+                            	</td>
+                            </tr>
+                       </table>
+                        <div class="topcons-link">
+                          <a href="https://www.energymarketprice.com/new/Performances.asp?Company=IvanEnergyMP&ContractID={{ scoring.id }}" target="_blank"><button class="seemore-btn">See more »</button></a>
+                        </div>
+                  </div>
+                </div>
+            </div>
+        </div>

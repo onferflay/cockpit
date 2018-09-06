@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Chart } from 'angular-highcharts';
 import { ChartSeries,chartData } from '../news';
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-chartdata',
@@ -14,13 +15,13 @@ export class ChartdataComponent implements OnInit {
 
 
 @Input() takeMe: string;
-		 linedata : ChartSeries = new ChartSeries;
-		 curba : ChartSeries[] = new Array<ChartSeries>();
-		 chart : Chart;
-     cd : chartData = new chartData;
-     unit : string[] = [];
-     cur : string[] = [];
-     saxis : boolean = false;
+		 linedata: ChartSeries = new ChartSeries;
+		 curba: ChartSeries[] = new Array<ChartSeries>();
+		 chart: Chart;
+     cd: chartData = new chartData;
+     unit: string[] = [];
+     cur: string[] = [];
+     saxis: boolean = false;
 
 
   constructor(private http: HttpClient) { }
@@ -38,7 +39,7 @@ export class ChartdataComponent implements OnInit {
       if ( i == 0 )
       {
           this.unit[i] = vano.unit;
-          this.cur[i] = vano.cur;
+          this.cur[i] = vano.cur
           i++;
       }
       else
@@ -54,7 +55,7 @@ export class ChartdataComponent implements OnInit {
         if ( i > 1 ) { this.saxis = true; }
 
 
-	  		this.linedata.name = vano.ln;
+	  		this.linedata.name = vano.name;
 
         for (let hehe of vano.data){
           this.cd = new chartData;
@@ -65,12 +66,6 @@ export class ChartdataComponent implements OnInit {
 	      	this.curba.push(this.linedata);
           this.linedata = new ChartSeries;
 	        }
-
-
-        // console.log(this.unit);
-        // console.log(this.cur);
-
-
 
  	this.chart = new Chart({
               chart: {
@@ -95,8 +90,8 @@ export class ChartdataComponent implements OnInit {
                 tooltip: {
                     formatter: function() {
                         return '<b>'+ this.series.name +'</b><br> Date: ' +
-                            Chart.dateFormat('%B %e, %Y', this.x) + ' <br> ' +
-                            'Value: ' + Chart.numberFormat(this.y, 2);
+                           Highcharts.dateFormat('%B %e, %Y', this.x) + ' <br> ' +
+                            'Value: ' +  Highcharts.numberFormat(this.y, 2);
                     },
                     backgroundColor:'rgba(255,255,255, .05)', shadow:false, borderWidth:0, style: { fontSize: '10px', color:'#000'}
                 },

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Chart } from 'angular-highcharts';
-
+import * as Highcharts from 'highcharts';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -20,7 +20,6 @@ export class HedgeDivComponent implements OnInit {
 	ngOnInit(): void {
 	 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=gethedgedata&cid=1533').subscribe(data => {
 		this.results = data;
-		console.log(this.results);
 	 });
 	}
 

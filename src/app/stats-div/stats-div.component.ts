@@ -12,8 +12,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class StatsDivComponent implements OnInit {
 
 
-	testme : string[];
-	order,wday,wdate : string;
+	testme: string[];
+  order: string;
+  wday: string;
+  wdate: string;
 
   constructor(private http: HttpClient) { }
 
@@ -21,19 +23,23 @@ export class StatsDivComponent implements OnInit {
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=1533').subscribe(data => {
 	this.testme = data.data;
 	this.order = data.orderby
-	this.wday = data.days["wday"].split(",");
-	this.wdate = data.days["wdate"].split(",");
+	this.wday = data.days["wday"].split(',');
+	this.wdate = data.days["wdate"].split(',');
  });
   }
 
   GiveClass(i:string) : string{
-  		if ( i > 0 )
-  			return "bgpink";
-  		else
-  			if (i == 0)
+  		if ( i > 0 ){
+  			return 'bgpink';
+      }
+  		else{
+  			if (i == 0){
   				return "";
-  			else
-  				return "bggoluboi";
+        }
+  			else{
+  				return 'bggoluboi';
+        }
+      }
   }
 
 }

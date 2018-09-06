@@ -315,6 +315,25 @@ button,span,input,textarea,table{
 	border-color: #ffa82c !important;
 }
 
+.scoring-table{
+    font-size: 14px !important;
+}
+.scoring-table img{
+    width:55px;
+    display: inline-block;
+    float: left;
+    margin-left: 15%;
+}
+
+.scoring-table div{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 60px;
+    letter-spacing: 2px;
+    color:white;
+}
+
 .topcons-fixed-chart{
 	height: 180px;
     border: #d0e2f6 1px solid;
