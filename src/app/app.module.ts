@@ -8,7 +8,7 @@ import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as arc from 'highcharts/modules/solid-gauge.src';
 import * as data from 'highcharts/modules/data.src';
-
+import * as europe from 'highcharts/europe';
 
 import { AppComponent } from './app.component';
 import { NewsDivComponent } from './news-div/news-div.component';
@@ -42,7 +42,7 @@ import { WorldmapComponent } from './worldmap/worldmap.component';
   ChartModule
   ],
   providers: [
-  { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc,data ] }
+  { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc,data, europe  ] }
   ],
   bootstrap: [AppComponent]
   })
