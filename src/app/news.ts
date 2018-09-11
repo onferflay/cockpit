@@ -15,3 +15,12 @@ export class chartData{
 	x : number;
 	y : number;
 }
+
+export class newsForm {
+   constructor(
+    public ckid : number,
+    public name: string,
+    public numberof: number,
+    public categories: boolean[],
+     ) { }
+}

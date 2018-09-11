@@ -8,7 +8,7 @@ import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as arc from 'highcharts/modules/solid-gauge.src';
 import * as data from 'highcharts/modules/data.src';
-import * as europe from 'highcharts/europe';
+// import * as europe from 'highcharts/europe';
 
 import { AppComponent } from './app.component';
 import { NewsDivComponent } from './news-div/news-div.component';
@@ -20,7 +20,8 @@ import { NewsDetailsComponent } from './news-details/news-details.component';
 import * as $ from 'jquery';
 import { ChartdataComponent } from './chartdata/chartdata.component';
 import { ScoringComponent } from './scoring/scoring.component';
-import { WorldmapComponent } from './worldmap/worldmap.component';
+import { NewsEditComponent } from './news-edit/news-edit.component';
+// import { WorldmapComponent } from './worldmap/worldmap.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { WorldmapComponent } from './worldmap/worldmap.component';
   NewsDetailsComponent,
   ChartdataComponent,
   ScoringComponent,
-  WorldmapComponent
+  NewsEditComponent
+  // WorldmapComponent
   ],
   imports: [
   HttpClientModule,
@@ -42,7 +44,7 @@ import { WorldmapComponent } from './worldmap/worldmap.component';
   ChartModule
   ],
   providers: [
-  { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc,data, europe  ] }
+  { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc,data ] }
   ],
   bootstrap: [AppComponent]
   })

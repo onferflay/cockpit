@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { News } from '../news';
+import { News,newsForm } from '../news';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -11,21 +11,27 @@ import { catchError, map, tap } from 'rxjs/operators';
   styleUrls: ['./news-div.component.css']
 })
 
-
 export class NewsDivComponent implements OnInit {
 
-	results,text: string[];
+	results : string[];
+	text: string[];
 	stiri : News;
-	img,title: string;
+	img : string;
+	title: string;
+	active : boolean;
+	editn : newsForm;
+	clist : string[];
 
-
+    
   constructor(private http: HttpClient) { }
-
-
 
  ngOnInit(): void {
  	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
 	this.results = data.slice(0,4);
+	this.active = false;
+	this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Economics","Renewables"]
+	this.editn = new newsForm(1, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false]);;
+
  });
 }
 
@@ -38,6 +44,9 @@ ShowMe(id: object): void{
 			validated_text : id.validated_text
 		}
 }
+
+
+get diagnostic() { return JSON.stringify(this.editn); }
 
 SwitchMe(query: string): string {
 	if (/power|electricity|wind|solar|nuclear|energy/gi.test(query))

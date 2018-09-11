@@ -2,6 +2,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <span class="subtitle">Market News</span>
+                    <span class="action_bar" (click)="active = !active">Action<i class="fa fa-caret-up"></i></span>
                 </div>
             </div>
             <div class="row">
@@ -17,4 +18,120 @@
                 </div>
             </div>
         </div>
-        <app-news-details [nid]="stiri"></app-news-details>   
+
+        <app-news-details [nid]="stiri"></app-news-details>
+
+        <div id='fancybox-overlay' [ngStyle]="{ 'display' : active ? 'block' : 'none' }"></div>
+
+        <div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
+            
+         <div class="popup-title"><b>Edit news section</b><i class="fa fa-times closeme" (click)="active = !active"></i></div>
+
+            {{ diagnostic }}
+            <form>
+                <div class="form-group">
+                    <label for="name"><b>Edit name:</b></label>
+                    <input type="text" class="form-control" id="name" required minlength="4" [(ngModel)]="editn.name" name="name" #name = "ngModel">
+                    
+
+
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                        <div *ngIf="name.errors.required">
+                          Name is required.
+                        </div>
+                        <div *ngIf="name.errors.minlength">
+                          Name must be at least 4 characters long.
+                        </div>
+                    </div>
+
+                </div> 
+
+                <input type="hidden" id="ckid" required [(ngModel)]="editn.ckid" name="ckid" value="23">
+
+                <div class="form-group">
+                    <label for="numberof"><b>Select the number of news to display:</b></label>
+                    <select class="form-control" id="numberof" [(ngModel)]="editn.numberof" name="numberof">
+                          <option *ngFor=" let aux of [4,5,6,7,8]" value="{{aux}}">{{ aux }}</option>
+                    </select>
+                </div>    
+
+                <div class="form-group">
+                    <label for="categories"><b>Select the news categories to display:</b></label>
+
+                    
+                    <div class="form-check" *ngFor = " let poh of editn.categories; let tt = index">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat{{tt}}" required [(ngModel)]="editn.categories[tt]" name="cat{{tt}}"  value="{{ editn.categories[tt] }}">{{ clist[tt] }}
+                      </label>
+                    </div>
+
+<!-- 
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat0" required [(ngModel)]="editn.categories[0]" name="cat0"  value="{{ editn.categories[0] }}">{{ clist[0] }}
+                      </label>
+                    </div> -->
+
+                    <!-- <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat1" required [(ngModel)]="editn.categories[1]" name="cat1"  value="{{ editn.categories[1] }}">{{ clist[1] }}
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat2" required [(ngModel)]="editn.categories[2]" name="cat2"  value="{{ editn.categories[2] }}">{{ clist[2] }}
+                      </label>
+                    </div>
+                    
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat3" required [(ngModel)]="editn.categories[3]" name="cat3"  value="{{ editn.categories[3] }}">{{ clist[3] }}
+                      </label>
+                    </div>
+                    
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat4" required [(ngModel)]="editn.categories[4]" name="cat4"  value="{{ editn.categories[4] }}">{{ clist[4] }}
+                      </label>
+                    </div>
+                    
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat5" required [(ngModel)]="editn.categories[5]" name="cat5"  value="{{ editn.categories[5] }}">{{ clist[5] }}
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat6" required [(ngModel)]="editn.categories[6]" name="cat6"  value="{{ editn.categories[6] }}">{{ clist[6] }}
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat7" required [(ngModel)]="editn.categories[7]" name="cat7"  value="{{ editn.categories[7] }}">{{ clist[7] }}
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat8" required [(ngModel)]="editn.categories[8]" name="cat8"  value="{{ editn.categories[8] }}">{{ clist[8] }}
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input categories" id="cat9" required [(ngModel)]="editn.categories[9]" name="cat9"  value="{{ editn.categories[9] }}">{{ clist[9] }}
+                      </label>
+                    </div> -->
+
+
+                </div>    
+                <hr>
+                <div class="form-group" style="text-align: right">
+                    <button type="reset" class='reset-btn'>Cancel</button>
+                    <button type="submit" class="submit-btn">Save Settings</button>
+                </div>    
+            </form>
+        </div>
