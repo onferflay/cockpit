@@ -392,7 +392,7 @@ button,span,input,textarea,table{
     z-index: 1100;
 }
 
-#fancybox-wrap,.news_edit {
+#fancybox-wrap,.news_edit,.color-scheme{
     position: absolute;
     padding: 20px;
     z-index: 1101;
@@ -406,20 +406,20 @@ button,span,input,textarea,table{
     box-shadow: 0px 0px 10px 5px #9e9d9d;
     border-radius: 4px;
 }
-.news_edit{
-    width: 400px;
+.news_edit,.color-scheme{
+    width: 500px;
     left: calc( (100% - 400px)/2);
     padding: 0;
     height: auto;
     top: 18%;
 }
-.news_edit form{
+.news_edit form,.color-scheme form{
     padding: 20px;
 }
 .news_edit form select{
     width: 60px;
 }
-.news_edit hr{
+.news_edit hr,.color-scheme hr{
     width: 400px;
     position: relative;
     left: -20px;

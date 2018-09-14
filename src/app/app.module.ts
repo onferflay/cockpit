@@ -21,6 +21,7 @@ import * as $ from 'jquery';
 import { ChartdataComponent } from './chartdata/chartdata.component';
 import { ScoringComponent } from './scoring/scoring.component';
 import { NewsEditComponent } from './news-edit/news-edit.component';
+import { ColorSchemeComponent } from './color-scheme/color-scheme.component';
 // import { WorldmapComponent } from './worldmap/worldmap.component';
 
 @NgModule({
@@ -34,7 +35,8 @@ import { NewsEditComponent } from './news-edit/news-edit.component';
   NewsDetailsComponent,
   ChartdataComponent,
   ScoringComponent,
-  NewsEditComponent
+  NewsEditComponent,
+  ColorSchemeComponent
   // WorldmapComponent
   ],
   imports: [

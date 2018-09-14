@@ -1,0 +1,24 @@
+<!-- <div>
+    <button (click)='active = !active;offMe()'>offme</button>
+</div>
+ -->
+
+
+        <div *ngIf="active" class="color-scheme" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
+            
+        <div class="popup-title"><b>Adjust color scheme</b><i class="fa fa-times closeme" (click)="cmon = !cmon;offMe()"></i></div>
+<!--             <form (ngSubmit)="onSubmit()" #editForm="ngForm" >
+                <div class="form-group">
+                    <label for="name"><b>Edit name:</b></label>
+                    <input type="text" class="form-control" id="name" required minlength="4" [(ngModel)]="editn.name" name="name" #name = "ngModel">
+                </div>
+
+                <hr>
+
+                <div class="form-group" style="text-align: right">
+                    <button type="reset" class='reset-btn'>Cancel</button>
+                    <button type="submit" class="submit-btn"  [disabled]="!editForm.form.valid">Save Settings</button>
+                </div>
+
+            </form> -->
+        </div>

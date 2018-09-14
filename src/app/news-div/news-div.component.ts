@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { News,newsForm } from '../news';
+import { SharableService } from "../sharable.service";
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -26,27 +27,25 @@ export class NewsDivComponent implements OnInit {
 	active : boolean;
 	editn : newsForm;
 	clist : string[];
+	acolor: boolean;
    
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient,private vano: SharableService) { }
 
 	ngOnInit(): void {
 	 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
 		this.results = data.slice(0,4);
 		this.active = false;
 		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Economics","Renewables"]
-		this.editn = new newsForm(1, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false]);;	
+		this.editn = new newsForm(1, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false]);
 	 });
 	}
 
-onSubmit(){	
-
-	var kk = {
-		act : "testme",
-		privet : "vano"
+	offMe(){
+		console.log(this.acolor);
+		this.vano.active.subscribe(acolor => this.acolor = acolor);
 	}
 
-	console.log(kk);
-
+onSubmit(){
 	return this.http.post('http://www.marketpricesolutions.com/apitest.asp', this.editn,httpOptions).
 	subscribe(data => 
     {alert(data);},

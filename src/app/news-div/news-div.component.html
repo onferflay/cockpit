@@ -2,7 +2,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <span class="subtitle">Market News</span>
-                    <span class="action_bar" (click)="active = !active">Action<i class="fa fa-caret-up"></i></span>
+                    <span class="action_bar" (click)="active = !active">Edit section<i class="fa fa-caret-up"></i></span>
+                    <span class="action_bar" (click)="acolor = !acolor;offMe()">Edit color scheme<i class="fa fa-caret-up"></i></span>
                 </div>
             </div>
             <div class="row">
@@ -20,14 +21,14 @@
         </div>
 
         <app-news-details [nid]="stiri"></app-news-details>
+        <app-color-scheme [active]="acolor"></app-color-scheme>
 
-        <div id='fancybox-overlay' [ngStyle]="{ 'display' : active ? 'block' : 'none' }"></div>
+        <div id='fancybox-overlay' [ngStyle]="{ 'display' : active || acolor ? 'block' : 'none' }"></div>
 
         <div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
             
-         <div class="popup-title"><b>Edit news section</b><i class="fa fa-times closeme" (click)="active = !active"></i></div>
-
-            {{ diagnostic }}
+        <div class="popup-title"><b>Edit news section</b><i class="fa fa-times closeme" (click)="active = !active"></i></div>
+<!--             {{ diagnostic }} -->
             <form (ngSubmit)="onSubmit()" #editForm="ngForm" >
                 <div class="form-group">
                     <label for="name"><b>Edit name:</b></label>
