@@ -2,6 +2,16 @@
             <div class="row">
                 <div class="col-sm-12">
                     <span class="subtitle">Statistics</span>
+                    <div class="action_bar" (click)='action = !action'>
+                        <p>Action
+                            <i class="fa" [ngClass]="{'fa-caret-up': action, 'fa-caret-down': !action }"></i>
+                        </p>
+                        <div *ngIf="action" class='action_menu'>
+                            <span (click)="active = !active">Edit section</span>
+                            <span (click)="acolor = !acolor; offMe()">Edit color scheme</span>
+                            <span (click)='sdelete = !sdelete'>Delete</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -40,4 +50,43 @@
                   </table>
                 </div>
             </div>
+        </div>
+
+        <button id='settodefault' style="display: none;" (click)='active=false; sdelete=false; acolor=false;'></button>
+        <div id='fancybox-overlay' [ngStyle]="{ 'display' : active || acolor || sdelete ? 'block' : 'none' }"></div>
+
+
+
+        <app-deletesection [active]="sdelete"></app-deletesection>
+        <app-color-scheme [active]="acolor"></app-color-scheme>
+
+
+        <div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
+            
+        <div class="popup-title"><b>Edit news section</b><i class="fa fa-times closeme" (click)="active = !active"></i></div>
+            <form (ngSubmit)="onSubmit()" #editForm="ngForm">
+                <div class="form-group">
+                    <label for="name"><b>Edit name:</b></label>
+                    <input type="text" class="form-control" required minlength="4">
+<!--                     <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                        <div *ngIf="name.errors.required">
+                          Name is required.
+                        </div>
+                        <div *ngIf="name.errors.minlength">
+                          Name must be at least 4 characters long.
+                        </div>
+                    </div> -->
+
+                </div> 
+
+                <input type="hidden" required name="ckid" value="23"> 
+
+                <hr>
+
+                <div class="form-group" style="text-align: right">
+                    <button type="reset" class='reset-btn'>Cancel</button>
+                    <button type="submit" class="submit-btn"  [disabled]="!editForm.form.valid">Save Settings</button>
+                </div>
+            </form>
+
         </div>

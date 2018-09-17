@@ -6,11 +6,6 @@ import { SharableService } from "../sharable.service";
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-
-const httpOptions = {
-  			headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-			};
-
 @Component({
   selector: 'app-news-div',
   templateUrl: './news-div.component.html',
@@ -28,30 +23,34 @@ export class NewsDivComponent implements OnInit {
 	editn : newsForm;
 	clist : string[];
 	acolor: boolean;
+	sdelete: boolean;
    
 	constructor(private http: HttpClient,private vano: SharableService) { }
 
-	ngOnInit(): void {
+	ngOnInit(){
 	 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
 		this.results = data.slice(0,4);
 		this.active = false;
 		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Economics","Renewables"]
 		this.editn = new newsForm(1, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false]);
+		this.vano.active.subscribe(acolor => this.acolor = acolor);
+		this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
 	 });
+
+     	$(document).keyup(function(e){
+            if (e.keyCode === 27 ){
+        		$('.news_edit,#fancybox-overlay').hide();
+        		$('#settodefault').click();
+            }
+  	 	});
+
 	}
 
 	offMe(){
-		console.log(this.acolor);
-		this.vano.active.subscribe(acolor => this.acolor = acolor);
+		this.vano.changeActive(this.acolor);
 	}
-
-onSubmit(){
-	return this.http.post('http://www.marketpricesolutions.com/apitest.asp', this.editn,httpOptions).
-	subscribe(data => 
-    {alert(data);},
-     error => 
-     {alert("Error");}
-    );
+	offMee(){
+		this.vano.changeDel(this.sdelete);
 	}
 	
 	ShowMe(id: object): void{

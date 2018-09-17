@@ -24,8 +24,57 @@ button,span,input,textarea,table{
     float: right;
     margin-right: 20px;
     cursor: pointer;
+    position: relative;
 }
-.action_bar:hover{
+.action_bar p{
+    margin:0;
+}
+.action_menu{
+    position: absolute;
+    top: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px 0;
+    right: 0;
+    background-color: white;
+    z-index: 1;
+}
+
+.reqdel h5{
+    font-size: 23px;
+    color:white;
+}
+.reqdel>div:nth-child(1) {
+    background-color: #e74c3c;
+    padding: 40px;
+    display: block;
+    border-radius: 3px;
+    position: relative;
+}
+.reqdel p{
+    font-size: 16px;
+    line-height: 22px;
+    color:white;
+}
+.reqdel .submit-btn{
+    background-color: #e74c3c !important;
+    border: 1px solid #e74c3c !important;
+    margin:20px 10px 20px 0;
+}
+
+.action_menu span{
+    display: block;
+    white-space: nowrap;
+    line-height: 24px;
+    font-size: 14px;
+    padding: 5px 20px;
+}
+.action_menu span:hover{
+    color: #00b0f0;
+    text-decoration: underline;
+}
+
+.action_bar p:hover{
     text-decoration: underline;
     color:#00b0f0 !important;
 }
@@ -413,6 +462,35 @@ button,span,input,textarea,table{
     height: auto;
     top: 18%;
 }
+.color-palet{
+    padding: 0;
+    width:28px !important;
+    margin-left:5px;
+    height: 28px;
+    cursor: pointer;
+}
+.color-form>div{
+    margin-top:15px;
+}
+
+.color-form label{
+    display: inline-block !important;
+    width: 140px;
+}
+.color-hex{
+    width: 80px;
+    margin: 0 10px;
+    border-radius: 3px;
+    border: 1px solid #3333;
+    padding: 2px 5px;
+}
+.clear-color{
+    padding: 2px 8px !important;
+}
+.clear-color i{
+    font-size: 14px;
+    padding: 0 4px;
+}
 .news_edit form,.color-scheme form{
     padding: 20px;
 }
@@ -433,7 +511,7 @@ button,span,input,textarea,table{
     color:white;
     position: relative;
 }
-.popup-title i{
+.popup-title i,.reqdel>div:nth-child(1) i{
     color:white;
     padding: 5px 7px;
     border:1px solid white;
@@ -443,6 +521,11 @@ button,span,input,textarea,table{
     cursor: pointer;
     position: relative;
     top: 7px;
+}
+.reqdel>div:nth-child(1) i{
+    position: absolute !important;
+    top: 10px !important;
+    right: 20px;
 }
 .reset-btn,.submit-btn{
     padding: 6px 16px;

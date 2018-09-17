@@ -1,24 +1,48 @@
-<!-- <div>
-    <button (click)='active = !active;offMe()'>offme</button>
-</div>
- -->
 
-
-        <div *ngIf="active" class="color-scheme" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
-            
-        <div class="popup-title"><b>Adjust color scheme</b><i class="fa fa-times closeme" (click)="cmon = !cmon;offMe()"></i></div>
-<!--             <form (ngSubmit)="onSubmit()" #editForm="ngForm" >
-                <div class="form-group">
-                    <label for="name"><b>Edit name:</b></label>
-                    <input type="text" class="form-control" id="name" required minlength="4" [(ngModel)]="editn.name" name="name" #name = "ngModel">
-                </div>
-
-                <hr>
-
-                <div class="form-group" style="text-align: right">
-                    <button type="reset" class='reset-btn'>Cancel</button>
-                    <button type="submit" class="submit-btn"  [disabled]="!editForm.form.valid">Save Settings</button>
-                </div>
-
-            </form> -->
+<div *ngIf="active" class="color-scheme" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
+    
+<div class="popup-title"><b>Adjust color scheme</b><i class="fa fa-times closeme" (click)="cmon=!cmon;offMe()"></i></div>
+    <form (ngSubmit)="onSubmit()" #editForm="ngForm" class="form-inline color-form">
+        <div>
+            <label for="name"><b>Background color:</b></label>
+             <span style="font-size: 14px">
+                <input type="color" class="form-control color-palet" id="name">
+                Current color
+              </span>
+            <input type="text" name="hex-color" class='color-hex' value='#00b0f0'>
+            <button class='reset-btn clear-color'><i class="fa fa-times"></i>Clear</button>
         </div>
+
+        <br>
+        
+        <div>
+            <label for="name"><b>Header color:</b></label>
+             <span style="font-size: 14px">
+                <input type="color" class="form-control color-palet" id="name">
+                Current color
+              </span>
+            <input type="text" name="hex-color" class='color-hex' value='#00b0f0'>
+            <button class='reset-btn clear-color'><i class="fa fa-times"></i>Clear</button>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="name"><b>Header text color:</b></label>
+             <span style="font-size: 14px">
+                <input type="color" class="form-control color-palet" id="name">
+                Current color
+              </span>
+            <input type="text" name="hex-color" class='color-hex' value='#00b0f0'>
+            <button class='reset-btn clear-color'><i class="fa fa-times"></i>Clear</button>
+        </div>
+
+        <hr>
+
+        <div style="text-align: right">
+            <button type="reset" class='reset-btn'>Cancel</button>
+            <button type="submit" class="submit-btn"  [disabled]="!editForm.form.valid">Save Settings</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,23 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { SharableService } from "../sharable.service";
+
+@Component({
+  selector: 'app-deletesection',
+  templateUrl: './deletesection.component.html',
+  styleUrls: ['./deletesection.component.css']
+})
+export class DeletesectionComponent implements OnInit {
+
+	@Input() active: boolean;
+
+  constructor(private vano: SharableService){}
+
+  ngOnInit(){
+  	this.vano.adel.subscribe(cmon => this.cmon = cmon);
+  }
+
+  offMe(){
+  	this.vano.changeDel(this.cmon);
+  }
+
+}
