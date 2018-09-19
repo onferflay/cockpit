@@ -12,6 +12,8 @@ export class DeletesectionComponent implements OnInit {
 
   constructor(private vano: SharableService){}
 
+  cmon: boolean;
+
   ngOnInit(){
   	this.vano.adel.subscribe(cmon => this.cmon = cmon);
   }

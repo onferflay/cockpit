@@ -68,11 +68,11 @@ onSubmit(){
   }
   
   GiveClass(i:string) : string{
-  		if ( i > 0 ){
+  		if ( i.length() > 0 ){
   			return 'bgpink';
       }
   		else{
-  			if (i == 0){
+  			if (i.length() == 0){
   				return "";
         }
   			else{

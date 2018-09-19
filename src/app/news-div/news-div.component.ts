@@ -53,12 +53,12 @@ export class NewsDivComponent implements OnInit {
 		this.vano.changeDel(this.sdelete);
 	}
 	
-	ShowMe(id: object): void{
+	ShowMe(id: News): void{
 		this.stiri = {
-				title :id.title,
-				id : id.id,
-				created : id.created,
-				source : id.source.title,
+				title: id.title,
+				id: id.id,
+				created: id.created,
+				source: id.source.title,
 				validated_text : id.validated_text
 			}
 	}

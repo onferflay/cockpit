@@ -24,6 +24,7 @@ import { NewsEditComponent } from './news-edit/news-edit.component';
 import { ColorSchemeComponent } from './color-scheme/color-scheme.component';
 import { WorldmapComponent } from './worldmap/worldmap.component';
 import { DeletesectionComponent } from './deletesection/deletesection.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { DeletesectionComponent } from './deletesection/deletesection.component'
   HttpClientModule,
   FormsModule,
   BrowserModule,
-  ChartModule
+  ChartModule,
+  AppRoutingModule
   ],
   providers: [
   { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc,data ] }
