@@ -27,16 +27,18 @@ export class StatsDivComponent implements OnInit {
   active: boolean;
   acolor: boolean;
   sdelete: boolean;
+  editn: any;
+  action : any;
 
   constructor(private http: HttpClient,private vano: SharableService) { }
 
   ngOnInit() {
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=1533').subscribe(data => {
-	this.testme = data.data;
-	this.order = data.orderby
+	this.testme = data["data"];
+	this.order = data["orderby"];
   this.active = false;
-	this.wday = data.days["wday"].split(',');
-	this.wdate = data.days["wdate"].split(',');
+	this.wday = data["days"]["wday"].split(',');
+	this.wdate = data["days"]["wdate"].split(',');
   this.vano.active.subscribe(acolor => this.acolor = acolor);
   this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
  });

@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class NewsEditComponent implements OnInit {
 
   constructor() { }
+  
+  ckid:any;
+  active:any;
 
   ngOnInit() {
   }

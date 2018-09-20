@@ -13,7 +13,7 @@ export class ScoringComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  results : string[];
+  results : any;
 
   ngOnInit() {
  	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=getscoringdata&cid=1533').subscribe(data => {

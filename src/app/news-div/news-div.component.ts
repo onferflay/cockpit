@@ -14,7 +14,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 export class NewsDivComponent implements OnInit {
 
-	results : string[];
+	results : any;
 	text: string[];
 	stiri : News;
 	img : string;
@@ -24,12 +24,14 @@ export class NewsDivComponent implements OnInit {
 	clist : string[];
 	acolor: boolean;
 	sdelete: boolean;
+	action : any;
    
 	constructor(private http: HttpClient,private vano: SharableService) { }
 
 	ngOnInit(){
 	 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
-		this.results = data.slice(0,4);
+		this.results = data;
+		this.results = this.results.slice(0,4);
 		this.active = false;
 		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Economics","Renewables"]
 		this.editn = new newsForm(1, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false]);
@@ -55,11 +57,11 @@ export class NewsDivComponent implements OnInit {
 	
 	ShowMe(id: News): void{
 		this.stiri = {
-				title: id.title,
-				id: id.id,
-				created: id.created,
-				source: id.source.title,
-				validated_text : id.validated_text
+				title: id["title"],
+				id: id["id"],
+				created: id["created"],
+				source: id["source"]["title"],
+				validated_text : id["validated_text"]
 			}
 	}
 	

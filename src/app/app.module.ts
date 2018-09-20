@@ -39,8 +39,8 @@ import { AppRoutingModule } from './/app-routing.module';
   ScoringComponent,
   NewsEditComponent,
   ColorSchemeComponent,
-  DeletesectionComponent
-  // WorldmapComponent
+  DeletesectionComponent,
+  WorldmapComponent
   ],
   imports: [
   HttpClientModule,

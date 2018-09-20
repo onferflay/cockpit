@@ -15,59 +15,58 @@ export class ChartdataComponent implements OnInit {
 
 
 @Input() takeMe: string;
-		 linedata: ChartSeries = new ChartSeries;
-		 curba: ChartSeries[] = new Array<ChartSeries>();
-		 chart: Chart;
-     cd: chartData = new chartData;
-     unit: string[] = [];
-     cur: string[] = [];
-     saxis: boolean = false;
+linedata: ChartSeries = new ChartSeries;
+curba: ChartSeries[] = new Array<ChartSeries>();
+chart: Chart = new Chart;
+cd: chartData = new chartData;
+unit: string[] = [];
+cur: string[] = [];
+saxis: boolean = false;
 
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
 
-     this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=getdataforchart&cid=' + this.takeMe).subscribe(data =>{
-		// console.log(this.takeMe);
+ this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=getdataforchart&cid=' + this.takeMe)
+ .subscribe(data =>{
+  
+  var i = 0;
+  this.saxis = false;
+  let results:any = data;
 
-    var i = 0;
-    this.saxis = false;
-    
-	for ( let vano of data){
+	results.forEach(vano =>{
 
       if ( i == 0 )
       {
-          this.unit[i] = vano.unit;
-          this.cur[i] = vano.cur
-          i++;
-      }
+          this.unit[i] = vano['unit'];
+          this.cur[i] = vano['cur'];
+          i++;}
       else
       {
-          if ( this.unit[i-1].toLowerCase() != vano.unit.toLowerCase() ) 
+          if ( this.unit[i-1].toLowerCase() != vano['unit'].toLowerCase() ) 
           {
-            this.unit[i] = vano.unit;
-            this.cur[i] = vano.cur;
+            this.unit[i] = vano['unit'];
+            this.cur[i] = vano['cur'];
             i++;
-          }
-      }
+          }}
 
-        if ( i > 1 ) { this.saxis = true; }
+      if ( i > 1 ) { this.saxis = true; }
+
+      this.linedata.name = vano['name'];
+      for (let hehe of vano['data'])
+        {
+            this.cd = new chartData;
+            this.cd.x = Date.parse(hehe.date);
+            this.cd.y = parseFloat(hehe.value);
+            this.linedata.data.push(this.cd);}
+
+    	this.curba.push(this.linedata);
+      this.linedata = new ChartSeries;
+  })
 
 
-	  		this.linedata.name = vano.name;
-
-        for (let hehe of vano.data){
-          this.cd = new chartData;
-          this.cd.x = Date.parse(hehe.date);
-          this.cd.y = parseFloat(hehe.value);
-          this.linedata.data.push(this.cd);
-        }
-	      	this.curba.push(this.linedata);
-          this.linedata = new ChartSeries;
-	        }
-
- 	this.chart = new Chart({
+  this.chart = new Chart(<any>{
               chart: {
                     height: 370,
                     zoomType: 'x',
@@ -102,8 +101,8 @@ export class ChartdataComponent implements OnInit {
     credits: {enabled: false},
     series: this.curba
 
+});      
 });
-     });
   }
 }
 

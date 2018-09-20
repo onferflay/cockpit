@@ -14,7 +14,7 @@ export class HedgeDivComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-	results : string[];
+	results : any;
 	chart : Chart;
 
 	ngOnInit(): void {
@@ -24,7 +24,7 @@ export class HedgeDivComponent implements OnInit {
 	}
 
 
-ShowMeTheChart(fixed : number) : Chart{
+ShowMeTheChart(fixed : any) : Chart{
 	this.chart = new Chart(<any>{
         chart: {
             plotBackgroundColor: null,

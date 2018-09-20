@@ -31,17 +31,18 @@ export class MarketPricesComponent implements OnInit {
 	this.charts = data[0];
   this.objKeys = Object.keys(this.charts);
 
-  for (let vano  of this.objKeys){
+  let arr:any = this.objKeys;
+
+  console.log(arr);
+
+  arr.forEach( vano => {
     let aux = "";
     for ( let index of data[0][vano] ){
-      aux += index.id + ",";
+      aux += index["id"] + ",";
     }
     aux = aux.substring(0,aux.length-1);
     this.ids.push(aux);
-  }
-
-  // console.log(this.ids);
-
+  })
  });
   }
 
