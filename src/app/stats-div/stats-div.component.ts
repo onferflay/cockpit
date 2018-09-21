@@ -9,16 +9,14 @@ const httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
       };
 
+
 @Component({
   selector: 'app-stats-div',
   templateUrl: './stats-div.component.html',
   styleUrls: ['./stats-div.component.css']
 })
 
-
-
 export class StatsDivComponent implements OnInit {
-
 
 	testme: string[];
   order: string;
@@ -29,19 +27,33 @@ export class StatsDivComponent implements OnInit {
   sdelete: boolean;
   editn: any;
   action : any;
+  enrglist : string[] = ["power","gas","coal","emissions","oil","rates","others"];
+  rnd : any = 0;
 
   constructor(private http: HttpClient,private vano: SharableService) { }
+
+
+  Hello(nr:number){
+     if (nr > this.rnd)
+     {
+        this.rnd = nr;
+        return true;
+     }
+     else { return false; }
+  }
 
   ngOnInit() {
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=1533').subscribe(data => {
 	this.testme = data["data"];
 	this.order = data["orderby"];
+  this.wday = data["days"]["wday"].split(',');
+  this.wdate = data["days"]["wdate"].split(',');
+  console.log(this.testme);
+ });
+
   this.active = false;
-	this.wday = data["days"]["wday"].split(',');
-	this.wdate = data["days"]["wdate"].split(',');
   this.vano.active.subscribe(acolor => this.acolor = acolor);
   this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
- });
 
   $(document).keyup(function(e){
     if (e.keyCode === 27 ){
@@ -69,12 +81,12 @@ onSubmit(){
     );
   }
   
-  GiveClass(i:string) : string{
-  		if ( i.length > 0 ){
+  GiveClass(i:any) : string{
+  		if ( i > 0 ){
   			return 'bgpink';
       }
   		else{
-  			if (i.length == 0){
+  			if (i == 0){
   				return "";
         }
   			else{

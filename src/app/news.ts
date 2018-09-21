@@ -17,10 +17,10 @@ export class chartData{
 }
 
 export class newsForm {
-   constructor(
-    public ckid : number,
-    public name: string,
-    public numberof: number,
-    public categories: boolean[],
-     ) { }
+    constructor(
+        public ckid : number,
+        public name: string,
+        public numberof: number,
+        public categories: boolean[]
+    ){}
 }

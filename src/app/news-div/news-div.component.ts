@@ -29,15 +29,12 @@ export class NewsDivComponent implements OnInit {
 	constructor(private http: HttpClient,private vano: SharableService) { }
 
 	ngOnInit(){
-	 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
-		this.results = data;
-		this.results = this.results.slice(0,4);
+
 		this.active = false;
 		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Economics","Renewables"]
 		this.editn = new newsForm(1, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false]);
 		this.vano.active.subscribe(acolor => this.acolor = acolor);
 		this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
-	 });
 
      	$(document).keyup(function(e){
             if (e.keyCode === 27 ){
@@ -45,6 +42,14 @@ export class NewsDivComponent implements OnInit {
         		$('#settodefault').click();
             }
   	 	});
+
+
+	 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
+		this.results = data;
+		this.results = this.results.slice(0,4);
+	 });
+
+
 
 	}
 

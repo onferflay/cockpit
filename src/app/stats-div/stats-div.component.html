@@ -20,7 +20,7 @@
                       <thead>
                         <tr>
                             <th>FROM THE BEGINNING OF THIS YEAR</th>
-                            <th *ngFor = "let days of wday; let i = index">{{ days }}<br><span>{{ wdate[i] }}</span></th>
+                            <th *ngFor = "let days of wday; let i = index;">{{ days }}<br><span>{{ wdate[i] }}</span></th>
                             <th>VAR D-1</th>
                             <th>VAR W-1</th>
                             <th>AVG.</th>
@@ -28,11 +28,13 @@
                             <th>MIN</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody *ngFor="let data of testme">
+
+                        <tr *ngIf='tt'> 
+                          <td class="newenergy" colspan="12"></td>
+                        </tr>
+
                         <tr>
-                          <td class="newenergy" colspan="12">gas</td>
-                        </tr> 
-                        <tr *ngFor = "let data of testme">
                           <td> {{ data.name }} {{ data.unit }}/{{ data.curr }}</td>
                           <td> {{ data.v1 }} </td>
                           <td> {{ data.v2 }} </td>

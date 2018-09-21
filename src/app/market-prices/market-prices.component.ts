@@ -33,8 +33,6 @@ export class MarketPricesComponent implements OnInit {
 
   let arr:any = this.objKeys;
 
-  console.log(arr);
-
   arr.forEach( vano => {
     let aux = "";
     for ( let index of data[0][vano] ){
