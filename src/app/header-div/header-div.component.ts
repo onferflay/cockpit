@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderDivComponent implements OnInit {
 
+	test : any;
   constructor() { }
 
   ngOnInit() {
+  	this.test = false;
+  }
+  privet(){
+  	this.test = !this.test;
+  	console.log(this.test);
   }
 
 }

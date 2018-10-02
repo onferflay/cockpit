@@ -28,13 +28,13 @@
                             <th>MIN</th>
                         </tr>
                       </thead>
-                      <tbody *ngFor="let data of testme">
+                      <tbody *ngFor="let order of auxstring">
 
-                        <tr *ngIf='tt'> 
-                          <td class="newenergy" colspan="12"></td>
+                        <tr> 
+                          <td class="newenergy" colspan="12">{{ enrglist[order-1] }}</td>
                         </tr>
 
-                        <tr>
+                        <tr *ngFor='let data of filterOf(order)'>
                           <td> {{ data.name }} {{ data.unit }}/{{ data.curr }}</td>
                           <td> {{ data.v1 }} </td>
                           <td> {{ data.v2 }} </td>

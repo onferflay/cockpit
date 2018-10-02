@@ -23,10 +23,16 @@
                   <div class="chart-div">
                     <p>{{ chartname }}</p>
                     <div style="width:100%; height: 370px;"><app-chartdata [takeMe]="ids[i]"></app-chartdata></div>
-                    <button class="seemore-btn">See more »</button>
+                    <button (click)='ajaxLoad("https://www.energymarketprice.com/ivan/SitePage.asp?act=ChViewCP&Market_ID_List=629&Name=Rate%20EUR/USD%20/&Title=exchange&UserID=0&prid=515&ackid=1533&CockpitKey=4F5008A6-56E3-46BF-94FD-6E9E2B622D69&UserKey=9A40AE44-846D-40A8-B772-26B5239DBDDD&Chart=5843"); active = !active' class="seemore-btn">See more »</button>
                   </div>
 
                 </div>
 
             </div>
+        </div>
+
+        <div id='fancybox-overlay'  [ngStyle]="{ 'display' : active ? 'block' : 'none'}"></div>
+        <div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none', 'top' : '1500px'}">
+          <div class="popup-title"><b>Here will be chart</b><i class="fa fa-times closeme" (click)="active = !active"></i></div>
+          <div style="width:200px; height: 200px;">{{ ajax }}</div>
         </div>

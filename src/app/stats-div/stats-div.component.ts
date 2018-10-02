@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SharableService } from "../sharable.service";
 
@@ -18,6 +18,8 @@ const httpOptions = {
 
 export class StatsDivComponent implements OnInit {
 
+@Input() check:any;
+
 	testme: string[];
   order: string;
   wday: string;
@@ -28,19 +30,11 @@ export class StatsDivComponent implements OnInit {
   editn: any;
   action : any;
   enrglist : string[] = ["power","gas","coal","emissions","oil","rates","others"];
-  rnd : any = 0;
+  uid : any = 0;
+  auxstring : string[] = [];
 
   constructor(private http: HttpClient,private vano: SharableService) { }
 
-
-  Hello(nr:number){
-     if (nr > this.rnd)
-     {
-        this.rnd = nr;
-        return true;
-     }
-     else { return false; }
-  }
 
   ngOnInit() {
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=1533').subscribe(data => {
@@ -48,7 +42,13 @@ export class StatsDivComponent implements OnInit {
 	this.order = data["orderby"];
   this.wday = data["days"]["wday"].split(',');
   this.wdate = data["days"]["wdate"].split(',');
-  console.log(this.testme);
+  data["data"].forEach(x => {
+    if (x.uid > this.uid)
+    {
+      this.uid = x.uid;
+      this.auxstring.push(x.uid);
+    }
+  });
  });
 
   this.active = false;
@@ -61,7 +61,10 @@ export class StatsDivComponent implements OnInit {
     $('#settodefault').click();
     }
   });
+  }
 
+  filterOf(nr:number){
+    return this.testme.filter(x => x.uid == nr);
   }
 
 

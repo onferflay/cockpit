@@ -16,11 +16,13 @@ export class HedgeDivComponent implements OnInit {
 
 	results : any;
 	chart : Chart;
+    empty : any = true;
 
 	ngOnInit(): void {
 	 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=gethedgedata&cid=1533').subscribe(data => {
 		this.results = data;
 	 });
+     if ( $.isEmptyObject(this.results) ) { this.empty = false; }
 	}
 
 
