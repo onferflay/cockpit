@@ -14,6 +14,9 @@ button,span,input,textarea,table{
   border-left: 5px solid #a94442; /* red */
 }
 
+.news-block{
+    margin-top: 20px;
+}
 .wrapall{
 	background-color: #f4f7f9;
 	height: 100%;
@@ -227,6 +230,7 @@ button,span,input,textarea,table{
     overflow: hidden;
     line-height: 18px;
     font-size: 14px;
+    height: 90px;
 }
 .ntitle{
 	font-weight: bold;

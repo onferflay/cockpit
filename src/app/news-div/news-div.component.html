@@ -1,7 +1,7 @@
         <div class='col-sm-12 cp-news-div'>
             <div class="row">
                 <div class="col-sm-12">
-                    <span class="subtitle">Market News</span>
+                    <span class="subtitle">{{ editn.name }}</span>
                     <div class="action_bar" (click)='action = !action'>
                         <p>Action
                             <i class="fa" [ngClass]="{'fa-caret-up': action, 'fa-caret-down': !action }"></i>
@@ -41,7 +41,7 @@
         <div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
             
         <div class="popup-title"><b>Edit news section</b><i class="fa fa-times closeme" (click)="active = !active"></i></div>
-<!--             {{ diagnostic }} -->
+            <!-- {{ diagnostic }} -->
             <form (ngSubmit)="onSubmit()" #editForm="ngForm" >
                 <div class="form-group">
                     <label for="name"><b>Edit name:</b></label>
@@ -62,8 +62,8 @@
 
                 <div class="form-group">
                     <label for="numberof"><b>Select the number of news to display:</b></label>
-                    <select class="form-control" id="numberof" [(ngModel)]="editn.numberof" name="numberof">
-                          <option *ngFor=" let aux of [4,5,6,7,8]" value="{{aux}}">{{ aux }}</option>
+                    <select class="form-control" id="numberof" (change)="setNews()" [(ngModel)]="editn.numberof" name="numberof">
+                          <option *ngFor="let aux of [4,5,6,7,8]" value="{{aux}}">{{ aux }}</option>
                     </select>
                 </div>    
 
@@ -135,7 +135,7 @@
                 <hr>
 
                 <div class="form-group" style="text-align: right">
-                    <button type="reset" class='reset-btn'>Cancel</button>
+                    <button type="reset" class='reset-btn' (click)="filterNews()">Cancel</button>
                     <button type="submit" class="submit-btn"  [disabled]="!editForm.form.valid">Save Settings</button>
                 </div>
 

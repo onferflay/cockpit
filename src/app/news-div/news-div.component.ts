@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { News,newsForm } from '../news';
 import { SharableService } from "../sharable.service";
@@ -25,11 +25,11 @@ export class NewsDivComponent implements OnInit {
 	acolor: boolean;
 	sdelete: boolean;
 	action : any;
+	maindata : any;
    
 	constructor(private http: HttpClient,private vano: SharableService) { }
 
 	ngOnInit(){
-
 		this.active = false;
 		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Economics","Renewables"]
 		this.editn = new newsForm(1, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false]);
@@ -45,12 +45,18 @@ export class NewsDivComponent implements OnInit {
 
 
 	 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
-		this.results = data;
-		this.results = this.results.slice(0,4);
+		this.maindata = data;
+		this.results = this.maindata.slice(0,4);
 	 });
 
+	}
 
+	setNews(){
+		this.results = this.maindata.slice(0,this.editn.numberof); 
+	}
 
+	filterNews(){
+		console.log(this.results);
 	}
 
 	offMe(){
@@ -118,3 +124,4 @@ export class NewsDivComponent implements OnInit {
 	
 	}
 }
+

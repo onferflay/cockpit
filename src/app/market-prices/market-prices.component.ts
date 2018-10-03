@@ -60,7 +60,7 @@ export class MarketPricesComponent implements OnInit {
         active = true;
       },
       error : function(){
-        error('Error here!');
+        alert('Error here!');
       }
     });
 
