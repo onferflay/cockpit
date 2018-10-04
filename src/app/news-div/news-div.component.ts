@@ -46,11 +46,24 @@ export class NewsDivComponent implements OnInit {
 
 	 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
 		this.maindata = data;
+		console.log(this.maindata);
 		this.results = this.maindata.slice(0,4);
 	 });
 
 	}
 
+	filterMe(){
+		if (this.editn.categories[0]) { console.log("all categories") }
+		if (this.editn.categories[1]) { console.log("daily") }
+		if (this.editn.categories[2]) { console.log("oil") }
+		if (this.editn.categories[3]) { console.log("natural gas") }
+		if (this.editn.categories[4]) { console.log("power") }
+		if (this.editn.categories[5]) { console.log("energy") }
+		if (this.editn.categories[6]) { console.log("nuclear") }
+		if (this.editn.categories[7]) { console.log("coal") }
+		if (this.editn.categories[8]) { console.log("economics") }
+		if (this.editn.categories[9]) { console.log("renewables") }
+	}
 	setNews(){
 		this.results = this.maindata.slice(0,this.editn.numberof); 
 	}
