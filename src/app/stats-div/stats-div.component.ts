@@ -32,9 +32,9 @@ export class StatsDivComponent implements OnInit {
   enrglist : string[] = ["power","gas","coal","emissions","oil","rates","others"];
   uid : any = 0;
   auxstring : string[] = [];
+  colors : string[] = ['#ffffff','#37475a'];
 
   constructor(private http: HttpClient,private vano: SharableService) { }
-
 
   ngOnInit() {
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=1533').subscribe(data => {
@@ -55,6 +55,9 @@ export class StatsDivComponent implements OnInit {
   this.vano.active.subscribe(acolor => this.acolor = acolor);
   this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
 
+  this.vano.colorBg1.subscribe(bgc => this.colors[0] = bgc);
+  this.vano.colorFont1.subscribe(fc => this.colors[1] = fc);
+
   $(document).keyup(function(e){
     if (e.keyCode === 27 ){
     $('.news_edit,#fancybox-overlay').hide();
@@ -70,6 +73,7 @@ export class StatsDivComponent implements OnInit {
 
   offMe(){
     this.vano.changeActive(this.acolor);
+    this.vano.changeCO(1);
   }
   offMee(){
     this.vano.changeDel(this.sdelete);

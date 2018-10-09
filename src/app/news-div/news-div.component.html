@@ -1,9 +1,9 @@
-        <div class='col-sm-12 cp-news-div'>
+        <div class='col-sm-12 cp-news-div' [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">
-                    <span class="subtitle">{{ editn.name }}</span>
+                    <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">{{ editn.name }}</span>
                     <div class="action_bar" (click)='action = !action'>
-                        <p>Action
+                        <p [ngStyle]="{ 'color' : colors[1] }">Action
                             <i class="fa" [ngClass]="{'fa-caret-up': action, 'fa-caret-down': !action }"></i>
                         </p>
                         <div *ngIf="action" class='action_menu'>
@@ -33,7 +33,7 @@
         <button id='settodefault' style="display: none;" (click)='active=false; sdelete=false; acolor=false;'></button>
 
         <app-news-details [nid]="stiri"></app-news-details>
-        <app-color-scheme [active]="acolor"></app-color-scheme>
+        <app-color-scheme [active]="acolor" [colorBG]="colors[0]" [co]="co" [colorFont]="colors[1]"></app-color-scheme>
         <app-deletesection [active]="sdelete"></app-deletesection>
 
         <div id='fancybox-overlay' [ngStyle]="{ 'display' : active || acolor || sdelete ? 'block' : 'none' }"></div>

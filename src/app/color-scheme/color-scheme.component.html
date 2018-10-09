@@ -1,28 +1,16 @@
 
 <div *ngIf="active" class="color-scheme" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
     
-<div class="popup-title"><b>Adjust color scheme</b><i class="fa fa-times closeme" (click)="cmon=!cmon;offMe()"></i></div>
+<div class="popup-title" (click)="privet()"><b>Adjust color scheme</b><i class="fa fa-times closeme" (click)="cmon=!cmon;offMe()"></i></div>
     <form (ngSubmit)="onSubmit()" #editForm="ngForm" class="form-inline color-form">
         <div>
             <label for="name"><b>Background color:</b></label>
              <span style="font-size: 14px">
-                <input type="color" class="form-control color-palet" id="name">
+                <input type="color" name="bg-color" class="form-control color-palet" (change)="changeColorBG()" [(ngModel)]="colorBG">
                 Current color
               </span>
-            <input type="text" name="hex-color" class='color-hex' value='#00b0f0'>
-            <button class='reset-btn clear-color'><i class="fa fa-times"></i>Clear</button>
-        </div>
-
-        <br>
-        
-        <div>
-            <label for="name"><b>Header color:</b></label>
-             <span style="font-size: 14px">
-                <input type="color" class="form-control color-palet" id="name">
-                Current color
-              </span>
-            <input type="text" name="hex-color" class='color-hex' value='#00b0f0'>
-            <button class='reset-btn clear-color'><i class="fa fa-times"></i>Clear</button>
+            <input type="text" class='color-hex' value='{{ colorBG }}'>
+            <span class='reset-btn clear-color' (click)="colorBG='#ffffff';changeColorBG()"><i class="fa fa-times"></i>Clear</span>
         </div>
 
         <br>
@@ -30,11 +18,11 @@
         <div>
             <label for="name"><b>Header text color:</b></label>
              <span style="font-size: 14px">
-                <input type="color" class="form-control color-palet" id="name">
+                <input type="color" name="font-color" class="form-control color-palet"  (change)="changeColorF()" [(ngModel)]="colorFont">
                 Current color
               </span>
-            <input type="text" name="hex-color" class='color-hex' value='#00b0f0'>
-            <button class='reset-btn clear-color'><i class="fa fa-times"></i>Clear</button>
+            <input type="text" class='color-hex' value='{{ colorFont }}'>
+            <span class='reset-btn clear-color' (click)="colorFont='#37475a';changeColorF()"><i class="fa fa-times"></i>Clear</span>
         </div>
 
         <hr>

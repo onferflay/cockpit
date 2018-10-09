@@ -1,9 +1,9 @@
-        <div class='col-sm-12 cp-news-div'>
+        <div class='col-sm-12 cp-news-div' [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">
-                    <span class="subtitle">Statistics</span>
+                    <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">Statistics</span>
                     <div class="action_bar" (click)='action = !action'>
-                        <p>Action
+                        <p [ngStyle]="{ 'color' : colors[1] }">Action
                             <i class="fa" [ngClass]="{'fa-caret-up': action, 'fa-caret-down': !action }"></i>
                         </p>
                         <div *ngIf="action" class='action_menu'>
@@ -60,7 +60,7 @@
 
 
         <app-deletesection [active]="sdelete"></app-deletesection>
-        <app-color-scheme [active]="acolor"></app-color-scheme>
+        <!-- <app-color-scheme [active]="acolor"></app-color-scheme> -->
 
 
         <div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">

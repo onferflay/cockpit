@@ -26,6 +26,8 @@ export class NewsDivComponent implements OnInit {
 	sdelete: boolean;
 	action : any;
 	maindata : any;
+	colors : string[] = ['#ffffff','#37475a'];
+	co :number;
    
 	constructor(private http: HttpClient,private vano: SharableService) { }
 
@@ -33,8 +35,12 @@ export class NewsDivComponent implements OnInit {
 		this.active = false;
 		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Economics","Renewables"]
 		this.editn = new newsForm(1, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false]);
+
 		this.vano.active.subscribe(acolor => this.acolor = acolor);
 		this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
+	    this.vano.colorBg.subscribe(bgc => this.colors[0] = bgc);
+    	this.vano.colorFont.subscribe(fc => this.colors[1] = fc);
+    	this.vano.co.subscribe(co => this.co = co);
 
      	$(document).keyup(function(e){
             if (e.keyCode === 27 ){
@@ -74,6 +80,7 @@ export class NewsDivComponent implements OnInit {
 
 	offMe(){
 		this.vano.changeActive(this.acolor);
+		this.vano.changeCO(0);
 	}
 	offMee(){
 		this.vano.changeDel(this.sdelete);

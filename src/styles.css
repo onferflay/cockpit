@@ -224,6 +224,7 @@ button,span,input,textarea,table{
 		padding: 10px;
 		border-radius: 3px;
     	border: 1px solid #cbd6e2;
+        background-color: white;
 }
 .ncontent{
     max-height: 90px;
@@ -268,6 +269,7 @@ button,span,input,textarea,table{
 	width: 100%;
     border-right: 1px solid #e1e9ec;
     color:#37475a;
+    background-color: white;
 }
 .cp-statistics-table th,.cp-statistics-table td{
 		padding: 10px;
