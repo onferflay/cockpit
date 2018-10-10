@@ -81,6 +81,8 @@ export class NewsDivComponent implements OnInit {
 	offMe(){
 		this.vano.changeActive(this.acolor);
 		this.vano.changeCO(0);
+		// this.vano.changeColorBG(this.colors[0]);
+		// this.vano.changeColorF(this.colors[1]);
 	}
 	offMee(){
 		this.vano.changeDel(this.sdelete);

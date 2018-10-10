@@ -74,6 +74,8 @@ export class StatsDivComponent implements OnInit {
   offMe(){
     this.vano.changeActive(this.acolor);
     this.vano.changeCO(1);
+    // this.vano.changeColorBG(this.colors[0]);
+    // this.vano.changeColorF(this.colors[1]);
   }
   offMee(){
     this.vano.changeDel(this.sdelete);
