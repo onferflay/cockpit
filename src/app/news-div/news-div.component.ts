@@ -28,6 +28,8 @@ export class NewsDivComponent implements OnInit {
 	maindata : any;
 	colors : string[] = ['#ffffff','#37475a'];
 	co :number;
+	colorbg:string = '#ffffff';
+	colorf:string = '#37475a';
    
 	constructor(private http: HttpClient,private vano: SharableService) { }
 
@@ -38,24 +40,28 @@ export class NewsDivComponent implements OnInit {
 
 		this.vano.active.subscribe(acolor => this.acolor = acolor);
 		this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
+
 	    this.vano.colorBg.subscribe(bgc => this.colors[0] = bgc);
     	this.vano.colorFont.subscribe(fc => this.colors[1] = fc);
+
+    	this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
+    	this.vano.colorf.subscribe(fc => this.colorf = fc);
+
     	this.vano.co.subscribe(co => this.co = co);
-
-     	$(document).keyup(function(e){
-            if (e.keyCode === 27 ){
-        		$('.news_edit,#fancybox-overlay').hide();
-        		$('#settodefault').click();
-            }
-  	 	});
-
-
+    	this.co =0;
+    	
 	 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
 		this.maindata = data;
 		console.log(this.maindata);
 		this.results = this.maindata.slice(0,4);
 	 });
 
+	}
+
+	closeall(){
+		this.active = false;
+		this.vano.changeActive(false);
+		this.vano.changeDel(false);
 	}
 
 	filterMe(){
@@ -81,9 +87,14 @@ export class NewsDivComponent implements OnInit {
 	offMe(){
 		this.vano.changeActive(this.acolor);
 		this.vano.changeCO(0);
-		// this.vano.changeColorBG(this.colors[0]);
-		// this.vano.changeColorF(this.colors[1]);
+	    this.colorbg = this.colors[0];
+    	this.colorf = this.colors[1];
 	}
+
+  verify(){
+    if (this.editn.name.length < 4) { this.editn.name = 'Market News' }
+  }
+
 	offMee(){
 		this.vano.changeDel(this.sdelete);
 	}

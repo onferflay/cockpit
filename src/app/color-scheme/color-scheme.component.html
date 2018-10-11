@@ -1,7 +1,7 @@
 
 <div *ngIf="active" class="color-scheme" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
     
-<div class="popup-title" (click)="privet()"><b>Adjust color scheme</b><i class="fa fa-times closeme" (click)="cmon=!cmon;offMe()"></i></div>
+<div class="popup-title"><b>Adjust color scheme</b><i class="fa fa-times closeme" (click)="cmon=!cmon;offMe()"></i></div>
     <form (ngSubmit)="onSubmit()" #editForm="ngForm" class="form-inline color-form">
         <div>
             <label for="name"><b>Background color:</b></label>

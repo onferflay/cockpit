@@ -336,6 +336,7 @@ button,span,input,textarea,table{
 .chart-div p{
 	font-size: 18px;
 	font-weight: 500;
+    margin: 0;
 }
 .chart-div{
 	text-align: center;
@@ -343,7 +344,8 @@ button,span,input,textarea,table{
 }
 .cell{
 	float: left;
-    margin-bottom: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 .title-block{
     background-color: #37475a;
@@ -448,7 +450,7 @@ button,span,input,textarea,table{
 }
 
 #fancybox-wrap,.news_edit,.color-scheme{
-    position: absolute;
+    position: fixed;
     padding: 20px;
     z-index: 1101;
     opacity: 1;

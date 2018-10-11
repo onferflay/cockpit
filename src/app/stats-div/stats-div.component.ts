@@ -33,6 +33,10 @@ export class StatsDivComponent implements OnInit {
   uid : any = 0;
   auxstring : string[] = [];
   colors : string[] = ['#ffffff','#37475a'];
+  co:number;
+  colorbg:string = '#ffffff';
+  colorf:string = '#37475a';
+  stats:string = 'Statistics';
 
   constructor(private http: HttpClient,private vano: SharableService) { }
 
@@ -42,6 +46,7 @@ export class StatsDivComponent implements OnInit {
 	this.order = data["orderby"];
   this.wday = data["days"]["wday"].split(',');
   this.wdate = data["days"]["wdate"].split(',');
+  this.co =1;
   data["data"].forEach(x => {
     if (x.uid > this.uid)
     {
@@ -58,24 +63,25 @@ export class StatsDivComponent implements OnInit {
   this.vano.colorBg1.subscribe(bgc => this.colors[0] = bgc);
   this.vano.colorFont1.subscribe(fc => this.colors[1] = fc);
 
-  $(document).keyup(function(e){
-    if (e.keyCode === 27 ){
-    $('.news_edit,#fancybox-overlay').hide();
-    $('#settodefault').click();
-    }
-  });
+  this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
+  this.vano.colorf.subscribe(fc => this.colorf = fc);
   }
 
   filterOf(nr:number){
-    return this.testme.filter(x => x.uid == nr);
+    return this.testme.filter(x => x["uid"] == nr);
   }
 
+  verify(){
+    if (this.stats.length < 4) { this.stats = 'Statistics' }
+  }
 
   offMe(){
     this.vano.changeActive(this.acolor);
     this.vano.changeCO(1);
-    // this.vano.changeColorBG(this.colors[0]);
-    // this.vano.changeColorF(this.colors[1]);
+    this.colorbg = this.colors[0];
+    this.colorf = this.colors[1];
+    this.vano.changeAuxColorBg(this.colorbg);
+    this.vano.changeAuxColorF(this.colorf);
   }
   offMee(){
     this.vano.changeDel(this.sdelete);

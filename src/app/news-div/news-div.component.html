@@ -30,10 +30,10 @@
 
         </div>
 
-        <button id='settodefault' style="display: none;" (click)='active=false; sdelete=false; acolor=false;'></button>
+        <button class='closeallbtn' style="display: none;" (click)='closeall();'></button>
 
         <app-news-details [nid]="stiri"></app-news-details>
-        <app-color-scheme [active]="acolor" [colorBG]="colors[0]" [co]="co" [colorFont]="colors[1]"></app-color-scheme>
+        <app-color-scheme [active]="acolor" [colorBG]="colorbg" [co]="co" [colorFont]="colorf"></app-color-scheme>
         <app-deletesection [active]="sdelete"></app-deletesection>
 
         <div id='fancybox-overlay' [ngStyle]="{ 'display' : active || acolor || sdelete ? 'block' : 'none' }"></div>
@@ -45,14 +45,14 @@
             <form (ngSubmit)="onSubmit()" #editForm="ngForm" >
                 <div class="form-group">
                     <label for="name"><b>Edit name:</b></label>
-                    <input type="text" class="form-control" id="name" required minlength="4" [(ngModel)]="editn.name" name="name" #name = "ngModel">
+                    <input type="text" class="form-control" id="name" (change)="verify()" required minlength="4" [(ngModel)]="editn.name" name="name" #name = "ngModel">
                     
                     <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
                         <div *ngIf="name.errors.required">
-                          Name is required.
+                          Field is required.
                         </div>
                         <div *ngIf="name.errors.minlength">
-                          Name must be at least 4 characters long.
+                          Field must be at least 4 characters long.
                         </div>
                     </div>
 

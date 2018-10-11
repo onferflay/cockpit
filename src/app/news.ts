@@ -9,6 +9,7 @@ export class News {
 export class ChartSeries {
     name : string;
     data : chartData[] = [];
+    yAxis : number;
 }
 
 export class chartData{
@@ -22,5 +23,5 @@ export class newsForm {
         public name: string,
         public numberof: number,
         public categories: boolean[]
-    ){}
+    ){} 
 }

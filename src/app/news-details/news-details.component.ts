@@ -15,10 +15,6 @@ export class NewsDetailsComponent implements OnInit {
 
 @Input() nid: News;
 
-eventHide() : void{
-	this.nid = null;
-}
-
   constructor() { }
 
   ngOnInit() {
