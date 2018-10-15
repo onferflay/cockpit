@@ -91,7 +91,7 @@ export class MarketPricesComponent implements OnInit {
     let active : any;
     
     $.ajax({
-      'method' : 'post',
+      'type' : 'post',
       'url' : href,
       'dataType' : 'html',
       success : function(data){
@@ -100,15 +100,16 @@ export class MarketPricesComponent implements OnInit {
       },
       error : function(){
         alert('Error here!');
+
       }
     });
 
-    // setTimeout(function(){
-    // this.ajax = ajax;
+    setTimeout(function(){
+    this.ajax = ajax;
     // this.active = active;
-    // console.log(this.ajax);
+    console.log(this.ajax);
     // console.log(this.active);
-    // },1000);
+    },2000);
 
   }
 

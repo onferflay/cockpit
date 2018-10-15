@@ -8,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderDivComponent implements OnInit {
 
 	test : any;
+  active:string;
   constructor() { }
 
   ngOnInit() {
-  	this.test = false;
-  }
-  privet(){
-  	this.test = !this.test;
-  	console.log(this.test);
+    this.active = "newssection";
   }
 
+  jump(){
+      $('html, body').animate({ scrollTop: $("#"+this.active).offset().top}, 2000);
+  }
 }
