@@ -449,7 +449,43 @@ button,span,input,textarea,table{
     z-index: 1100;
 }
 
-#fancybox-wrap,.news_edit,.color-scheme{
+.chart-menu{
+    padding: 20px;
+    text-align: center;
+}
+.chart-menu span{
+    font-weight: bold;
+    margin-right: 10px;
+}
+.chart-menu>div{
+    display: inline-block;
+    padding: 0 15px;
+}
+.chart-menu>button{
+    border-radius: 3px;
+    border: 1px solid #f08a27;
+    cursor: pointer;
+    color: white;
+    padding: 2px 20px;
+    background-color: #f08a27;
+}
+.chart-menu>button:hover{
+    background-color: orange;
+}
+.chart-menu>div input{
+    width: 100px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    line-height: 26px;
+}
+
+.chart-menu>input{
+    position: relative;
+    top: 12px;
+    margin-left: 15px;
+}
+
+#fancybox-wrap,.news_edit,.color-scheme,#fancybox-wrap-chart{
     position: fixed;
     padding: 20px;
     z-index: 1101;
@@ -462,6 +498,10 @@ button,span,input,textarea,table{
     background-color: white;
     box-shadow: 0px 0px 10px 5px #9e9d9d;
     border-radius: 4px;
+}
+#fancybox-wrap-chart{
+    width: 800px !important;
+    height: 600px !important;
 }
 .news_edit,.color-scheme{
     width: 500px;

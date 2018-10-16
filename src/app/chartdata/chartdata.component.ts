@@ -15,6 +15,9 @@ export class ChartdataComponent implements OnInit {
 
 
 @Input() takeMe: string;
+@Input() dfrom: any;
+@Input() dto: any;
+
 linedata: ChartSeries = new ChartSeries;
 curba: ChartSeries[] = new Array<ChartSeries>();
 chart: Chart = new Chart;
@@ -25,23 +28,34 @@ colors:string[] =[];
 saxis: boolean = false;
 acolors : string[] = ['#70AD47', '#AFABAB', '#5B9BD5', '#ED7D31', '#4472C4', '#FFD966'];
 
+constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) { }
 
   ngOnInit() {
 
- this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=getdataforchart&cid=' + this.takeMe)
+
+ if ( typeof this.dfrom == 'undefined'){
+
+      this.dfrom = new Date();
+      this.dfrom.setMonth(this.dfrom.getMonth()-4);
+
+      this.dfrom = this.dateToDMY(this.dfrom);
+    
+      this.dto = new Date();
+      // this.dto.setDate(this.dto.getDate() +1);
+      this.dto = this.dateToDMY(this.dto);
+  }
+
+
+
+ this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=getdataforchart&cid=' + this.takeMe + '&dfrom='+ this.dfrom +'&dto='+ this.dto)
  .subscribe(data =>{
   
-  // console.log(this.takeMe);
-
   let i = 0;
   let n = 0;
   this.saxis = false;
 
   let results:any = data;
-
-  // console.log(data);
 
 	results.forEach(vano =>{
 
@@ -65,30 +79,24 @@ acolors : string[] = ['#70AD47', '#AFABAB', '#5B9BD5', '#ED7D31', '#4472C4', '#F
 
       n++;
 
-      // console.log(i);
-
       if ( i > 1 ) { this.saxis = true; this.linedata.yAxis = 1; }
       else { this.linedata.yAxis = 0; }
-
-      // console.log(vano);
 
       this.linedata.name = vano['name'];
       
       for (let hehe of vano['data'])
         {
             this.cd = new chartData;
-            this.cd.x = Date.parse(hehe.date);
+            this.cd.x = Date.parse(hehe.date) + 3600*24*1000;
             this.cd.y = parseFloat(hehe.value);
             this.linedata.data.push(this.cd);
         }
 
-
     	this.curba.push(this.linedata);
       this.linedata = new ChartSeries;
+  });
 
-      console.log(this.curba);
-  })
-
+  console.log(this.curba);
 
   this.chart = new Chart(<any>{
               chart: {
@@ -115,7 +123,7 @@ acolors : string[] = ['#70AD47', '#AFABAB', '#5B9BD5', '#ED7D31', '#4472C4', '#F
                     formatter: function() {
                         return '<b>'+ this.series.name +'</b><br> Date: ' +
                            Highcharts.dateFormat('%B %e, %Y', this.x) + ' <br> ' +
-                            'Value: ' +  Highcharts.numberFormat(this.y, 2);
+                            'Value: ' +  Highcharts.numberFormat(this.y, 4);
                     },
                     backgroundColor:'rgba(255,255,255, .05)', shadow:false, borderWidth:0, style: { fontSize: '10px', color:'#000'}
                 },
@@ -145,13 +153,20 @@ acolors : string[] = ['#70AD47', '#AFABAB', '#5B9BD5', '#ED7D31', '#4472C4', '#F
     gridLineWidth:1,
     opposite:this.saxis
   }],
-
-
     credits: {enabled: false},
     series: this.curba
 
 });      
 });
   }
+
+
+dateToDMY(date) {
+    var d = date.getDate();
+    var m = date.getMonth() + 1;
+    var y = date.getFullYear();
+    return '' + (d <= 9 ? '0' + d : d) + '/' + (m <= 9 ? '0' + m : m) + '/' + y;
+}
+
 }
 

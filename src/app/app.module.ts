@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { ChartModule,HIGHCHARTS_MODULES } from 'angular-highcharts';
 
+
 import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as arc from 'highcharts/modules/solid-gauge.src';
@@ -25,6 +26,7 @@ import { ColorSchemeComponent } from './color-scheme/color-scheme.component';
 import { WorldmapComponent } from './worldmap/worldmap.component';
 import { DeletesectionComponent } from './deletesection/deletesection.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { ChartDetailComponent } from './chart-detail/chart-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { AppRoutingModule } from './/app-routing.module';
   NewsEditComponent,
   ColorSchemeComponent,
   DeletesectionComponent,
-  WorldmapComponent
+  WorldmapComponent,
+  ChartDetailComponent
   ],
   imports: [
   HttpClientModule,

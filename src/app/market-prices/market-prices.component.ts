@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Chart } from 'angular-highcharts';
-import { ChartSeries } from '../news';
+import { ChartSeries,chartData } from '../news';
+import * as Highcharts from 'highcharts';
 import { SharableService } from "../sharable.service";
 
 
@@ -34,6 +35,9 @@ export class MarketPricesComponent implements OnInit {
     colorbg:string = '#ffffff';
     colorf:string = '#37475a';
     mpt : string = 'Market Prices & Trends';
+    auxname:string;
+
+    sukaa : number = 0;
 
     constructor(private http: HttpClient, private vano: SharableService) { }
 
@@ -63,11 +67,8 @@ export class MarketPricesComponent implements OnInit {
     aux = aux.substring(0,aux.length-1);
     this.ids.push(aux);
   })
- });
-  
+ }); 
   }
-
-
 
   verify(){
     if (this.mpt.length < 4) { this.mpt = 'Market Prices & Trends' }
@@ -85,34 +86,11 @@ export class MarketPricesComponent implements OnInit {
     this.vano.changeDel(this.sdelete);
   }
 
-  ajaxLoad(href){
-
-    let ajax : any;
-    let active : any;
-    
-    $.ajax({
-      'type' : 'post',
-      'url' : href,
-      'dataType' : 'html',
-      success : function(data){
-        ajax = data;
-        active = true;
-      },
-      error : function(){
-        alert('Error here!');
-
-      }
-    });
-
-    setTimeout(function(){
-    this.ajax = ajax;
-    // this.active = active;
-    console.log(this.ajax);
-    // console.log(this.active);
-    },2000);
-
-  }
-
+  // privet(){
+  //   this.sukaa = this.sukaa + 1;
+  //   this.ajax = this.ajax + this.sukaa;
+  //   console.log(this.ajax);
+  // }
 }
 
 
