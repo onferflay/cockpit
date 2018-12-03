@@ -3,7 +3,7 @@ import { Chart } from 'angular-highcharts';
 import * as Highcharts from 'highcharts';
 import * as hmaps from 'highcharts/modules/map';
 import * as hc from 'highcharts/highcharts';
-import * as europe from 'highcharts/europe';
+// import * as europe from 'highcharts/europe';
 
 @Component({
   selector: 'app-worldmap',

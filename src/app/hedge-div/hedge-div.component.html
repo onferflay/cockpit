@@ -1,4 +1,4 @@
-        <div *ngIf="empty" class='col-sm-12 cp-news-div' id="hedgesection" [ngStyle]="{ 'backgroundColor' : colors[0] }">
+        <div *ngIf="empty" class='col-sm-12 cp-news-div' cdkDropList (cdkDropListDropped)="drop($event)" id="hedgesection" [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">
                     <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">{{ hr }}</span>
@@ -16,7 +16,8 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                  <div *ngFor = "let hedge of results; let i = index;" class ='cell col-sm-4'>
+                  <div *ngFor = "let hedge of results; let i = index;" cdkDrag class ='cell col-sm-4'>
+                    <div class="example-custom-placeholder cell col-sm-4" *cdkDragPlaceholder></div>
                       <div class='title-block'>{{ hedge.name }}</div>
                          <div class='text-title-block'>
                            <span class='text-span'>

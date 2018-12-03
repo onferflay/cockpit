@@ -5,6 +5,7 @@ import * as Highcharts from 'highcharts';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { SharableService } from "../sharable.service";
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-hedge-div',
@@ -135,6 +136,9 @@ export class HedgeDivComponent implements OnInit {
     if (this.hr.length < 4) { this.hr = 'Hedge Reporting' }
   }
 
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.results, event.previousIndex, event.currentIndex);
+  }
   offMe(){
     this.vano.changeActive(this.acolor);
     this.vano.changeCO(3);

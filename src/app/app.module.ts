@@ -25,8 +25,11 @@ import { NewsEditComponent } from './news-edit/news-edit.component';
 import { ColorSchemeComponent } from './color-scheme/color-scheme.component';
 import { WorldmapComponent } from './worldmap/worldmap.component';
 import { DeletesectionComponent } from './deletesection/deletesection.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { ChartDetailComponent } from './chart-detail/chart-detail.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MaterialModule } from './material';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +53,9 @@ import { ChartDetailComponent } from './chart-detail/chart-detail.component';
   FormsModule,
   BrowserModule,
   ChartModule,
-  AppRoutingModule
+  AppRoutingModule,
+  BrowserAnimationsModule,
+  MaterialModule
   ],
   providers: [
   { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc,data ] }
