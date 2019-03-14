@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SharableService } from "../sharable.service";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-color-scheme',
@@ -15,7 +16,7 @@ export class ColorSchemeComponent implements OnInit {
 
   cmon : boolean;
 
-  constructor(private vano: SharableService){}
+  constructor(private http: HttpClient,private vano: SharableService){}
 
   ngOnInit(){
   	this.vano.active.subscribe(cmon => this.cmon = cmon);
@@ -23,6 +24,19 @@ export class ColorSchemeComponent implements OnInit {
     this.vano.colorBg.subscribe(bgc => this.colorBG = bgc);
     this.vano.colorFont1.subscribe(fc => this.colorFont = fc);
     this.vano.colorBg1.subscribe(bgc => this.colorBG = bgc);
+  }
+
+  onSubmit(){
+    this.active = false;
+		this.vano.changeActive(false);
+    if (this.co == 0)
+    {
+    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editnews&type=1&ckid=1533&bgcolor='+ this.colorBG +'&fcolor=' + this.colorFont,{
+			headers: {
+				"Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+      }}).subscribe();
+    }
+
   }
 
   changeColorBG(){

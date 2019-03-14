@@ -5,6 +5,8 @@ import { SharableService } from "../sharable.service";
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+// import { create } from 'domain';
 
 @Component({
   selector: 'app-news-div',
@@ -30,13 +32,14 @@ export class NewsDivComponent implements OnInit {
 	co :number;
 	colorbg:string = '#ffffff';
 	colorf:string = '#37475a';
+	nfilter: string;
    
 	constructor(private http: HttpClient,private vano: SharableService) { }
 
 	ngOnInit(){
 		this.active = false;
-		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Economics","Renewables"]
-		this.editn = new newsForm(1, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false]);
+		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Forex","Renewables","Carbon"]
+		this.editn = new newsForm(1533, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false,false]);
 
 		this.vano.active.subscribe(acolor => this.acolor = acolor);
 		this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
@@ -48,11 +51,15 @@ export class NewsDivComponent implements OnInit {
     	this.vano.colorf.subscribe(fc => this.colorf = fc);
 
     	this.vano.co.subscribe(co => this.co = co);
-    	this.co =0;
-    	
-	 	this.http.get('http://149.56.102.173:80/api/v1/latest/validated/').subscribe(data => {
-		this.maindata = data;
-		console.log(this.maindata);
+		this.co =0;
+		
+
+		this.http.post('http://149.56.102.173/api/v1/filter/posts/','filter=&query=&country=&code=&sources=&sentiment=&date_from=&forecasters=&date_to=&language=&pag=1',{
+			headers: {
+				"Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+			}
+		}).subscribe(data => {
+		this.maindata = data["results"];
 		this.results = this.maindata.slice(0,4);
 	 });
 
@@ -64,24 +71,49 @@ export class NewsDivComponent implements OnInit {
 		this.vano.changeDel(false);
 	}
 
+	onSubmit(){
+		this.active = false;
+		this.vano.changeActive(false);
+
+		this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editnews&type=0&nname='+ this.editn.name +'&ckid='+ this.editn.ckid +'&nrnews='+ this.editn.numberof +'&filter=' + this.editn.categories,{
+			headers: {
+				"Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+			}}).subscribe();
+	}
+
 	filterMe(){
-		if (this.editn.categories[0]) { console.log("all categories") }
-		if (this.editn.categories[1]) { console.log("daily") }
-		if (this.editn.categories[2]) { console.log("oil") }
-		if (this.editn.categories[3]) { console.log("natural gas") }
-		if (this.editn.categories[4]) { console.log("power") }
-		if (this.editn.categories[5]) { console.log("energy") }
-		if (this.editn.categories[6]) { console.log("nuclear") }
-		if (this.editn.categories[7]) { console.log("coal") }
-		if (this.editn.categories[8]) { console.log("economics") }
-		if (this.editn.categories[9]) { console.log("renewables") }
+		let filter = '';
+		if (this.editn.categories[0]) { filter = '' }
+		else
+		{
+			if (this.editn.categories[1]) { filter += 'daily,' }
+			if (this.editn.categories[2]) { filter += 'oil,gasoline,fuel,petrochemicals,' }
+			if (this.editn.categories[3]) { filter += 'gas,LNG,CNG,Henry,' }
+			if (this.editn.categories[4]) { filter += 'electricity,european power, europe power,french power,german power,nordic power,power grid,power interconnections,power prices,power types,uk power' }
+			if (this.editn.categories[5]) { filter += 'energy,' }
+			if (this.editn.categories[6]) { filter += 'nuclear power,nuclear station,nuclear fuel,' }
+			if (this.editn.categories[7]) { filter += 'coal,' }
+			if (this.editn.categories[8]) { filter += 'forex,' }
+			if (this.editn.categories[10]) { filter += 'emissions,carbon,' }
+			if (this.editn.categories[9]) { filter += 'renewables,eeg,wind,h2,geothermal,Feed in tariffs,Electric Vehicles,solar,' }
+			filter = filter.substring(0,filter.length - 1);
+		}
+
+		this.http.post('http://149.56.102.173/api/v1/filter/posts/','filter=&query='+ filter +'&country=&code=&sources=&sentiment=&date_from=&forecasters=&date_to=&language=&pag=1',{
+			headers: {
+				"Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+			}
+		}).subscribe(data => {
+		this.maindata = data["results"];
+		this.results = this.maindata.slice(0,this.editn.numberof);
+	 });
+		
 	}
 	setNews(){
 		this.results = this.maindata.slice(0,this.editn.numberof); 
 	}
 
 	filterNews(){
-		console.log(this.results);
 	}
 
 	offMe(){
@@ -109,20 +141,36 @@ export class NewsDivComponent implements OnInit {
 			}
 	}
 	
+	drop(event: CdkDragDrop<string[]>) {
+		moveItemInArray(this.results, event.previousIndex, event.currentIndex);
+	  }
+	  
 	get diagnostic() { return JSON.stringify(this.editn); }
 	
 	SwitchMe(query: string): string {
-		if (/power|electricity|wind|solar|nuclear|energy/gi.test(query))
+		if (/electricity|european power| europe power|french power|german power|nordic power|power grid|power interconnections|power prices|power types|uk power/gi.test(query))
 		{
-			this.img ='https://www.energymarketprice.com/ivan/uploads/power.png';
+			this.img ='https://www.energymarketprice.com/ivan/uploads/rozetka.png';
 			this.title = 'power';
 			return "dpower";
 		}
-		else if (/oil|gasoline/gi.test(query))
+		else if (/nuclear power|nuclear station|nuclear fuel/gi.test(query))
+		{
+			this.img ='https://www.energymarketprice.com/ivan/uploads/nuclear.png';
+			this.title = 'nuclear';
+			return "dnuclear";
+		}
+		else if (/oil|gasoline|fuel|petrochemicals/gi.test(query))
 		{
 			this.img ='https://www.energymarketprice.com/ivan/uploads/oil.png';
 			this.title = 'oil';
 			return "doil";
+		}
+		else if (/energy/gi.test(query))
+		{
+			this.img ='https://www.energymarketprice.com/ivan/uploads/power.png';
+			this.title = 'energy';
+			return "denergy";
 		}
 		else if (/coal/gi.test(query))
 		{
@@ -130,13 +178,13 @@ export class NewsDivComponent implements OnInit {
 			this.title = 'coal';
 			return "dcoal";
 		}
-		else if (/ gas|gas|LNG/gi.test(query))
+		else if (/gas|LNG|CNG|Henry/gi.test(query))
 		{
 			this.img ='https://www.energymarketprice.com/ivan/uploads/naturalgas.png';
 			this.title = 'natural gas';
 			return "dgas";
 		}
-		else if (/renewables|emissions|Feed in tariffs|Electric Vehicles/gi.test(query))
+		else if (/renewables|eeg|wind|h2|geothermal|Feed in tariffs|Electric Vehicles|solar/gi.test(query))
 		{
 			this.img ='https://www.energymarketprice.com/ivan/uploads/CO2.png';
 			this.title = 'renewables';
@@ -147,6 +195,18 @@ export class NewsDivComponent implements OnInit {
 			this.img ='https://www.energymarketprice.com/ivan/uploads/daily.png';
 			this.title = 'daily';
 			return "ddaily";
+		}
+		else if (/emissions|carbon,/gi.test(query))
+		{
+			this.img ='https://www.energymarketprice.com/ivan/uploads/cloud.png';
+			this.title = 'Carbon';
+			return "dcarbon";
+		}
+		else if (/forex/gi.test(query))
+		{
+			this.img ='https://www.energymarketprice.com/ivan/uploads/forex.png';
+			this.title = 'forex';
+			return "deco";
 		}
 		else
 		{

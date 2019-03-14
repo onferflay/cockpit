@@ -1,4 +1,4 @@
-        <div class='col-sm-12 cp-news-div' id="newssection" [ngStyle]="{ 'backgroundColor' : colors[0] }">
+        <div class='col-sm-12 cp-news-div example-list' id="newssection"  cdkDropList (cdkDropListDropped)="drop($event)" [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">
                     <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">{{ editn.name }}</span>
@@ -16,7 +16,7 @@
             </div>
 
             <div class="row">
-                <div *ngFor="let news of results" class='col-sm-3 news-block {{ SwitchMe(news.query) }}' >
+                <div *ngFor="let news of results"  cdkDrag class='col-sm-3 example-list news-block {{ SwitchMe(news.query) }}' >
                     <div class="col-sm-12">
                         <span class='ncategory'><img src='{{ img }}'>{{ title }}</span>
                         <span class="ntitle">{{ news.title | slice:0:80 }}...</span>
@@ -127,6 +127,12 @@
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="checkbox" (change)="filterMe()" class="form-check-input categories" id="cat9" [(ngModel)]="editn.categories[9]" name="cat9"  value="{{ editn.categories[9] }}">{{ clist[9] }}
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" (change)="filterMe()" class="form-check-input categories" id="cat10" [(ngModel)]="editn.categories[10]" name="cat10"  value="{{ editn.categories[10] }}">{{ clist[10] }}
                       </label>
                     </div>
 
