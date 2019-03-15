@@ -41,6 +41,21 @@ export class StatsDivComponent implements OnInit {
   constructor(private http: HttpClient,private vano: SharableService) { }
 
   ngOnInit() {
+
+    this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=sendcockpit&ckid=1533').subscribe( data =>{
+			if (data) 
+			{
+				this.colors[0] = data[0].bgcolor;
+				this.colors[1] = data[0].textcolor;
+				this.editn = new newsForm(1533, data[0].name, data[0].newsnumber, data[0].newsfilter);
+			}
+
+			console.log(this.editn);
+
+			this.filterMe();
+
+    });
+    
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=1533').subscribe(data => {
 	this.testme = data["data"];
 	this.order = data["orderby"];
