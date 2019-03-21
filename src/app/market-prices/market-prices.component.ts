@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Chart } from 'angular-highcharts';
 import { ChartSeries,chartData } from '../news';
@@ -16,6 +16,11 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 
 export class MarketPricesComponent implements OnInit {
+
+
+  @Input() mpt : string = 'Market Prices & Trends';
+  @Input() colors : string[] = ['#ffffff','#37475a'];
+
   	charts : string[];
     ids: string[] = [];
     wtfthis : string;
@@ -30,14 +35,10 @@ export class MarketPricesComponent implements OnInit {
     ajax: any;
     acolor:any;
     action: any;
-    colors : string[] = ['#ffffff','#37475a'];
     co :number;
     colorbg:string = '#ffffff';
     colorf:string = '#37475a';
-    mpt : string = 'Market Prices & Trends';
     auxname:string;
-
-    sukaa : number = 0;
 
     constructor(private http: HttpClient, private vano: SharableService) { }
 
@@ -51,9 +52,6 @@ export class MarketPricesComponent implements OnInit {
 
   this.vano.active.subscribe(acolor => this.acolor = acolor);
   this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
-
-  this.vano.colorBg2.subscribe(bgc => this.colors[0] = bgc);
-  this.vano.colorFont2.subscribe(fc => this.colors[1] = fc);
 
   this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
   this.vano.colorf.subscribe(fc => this.colorf = fc);
@@ -74,6 +72,16 @@ export class MarketPricesComponent implements OnInit {
     if (this.mpt.length < 4) { this.mpt = 'Market Prices & Trends' }
   }
 
+  onSubmit(){
+    this.active = false;
+    this.vano.changeActive(false);
+    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editmarkets&type=0&marketsname='+ encodeURI(this.mpt) +'&ckid=1533',{
+      headers: {
+        "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+      }}).subscribe();
+  
+    }
+
   offMe(){
     this.vano.changeActive(this.acolor);
     this.vano.changeCO(2);
@@ -86,11 +94,6 @@ export class MarketPricesComponent implements OnInit {
     this.vano.changeDel(this.sdelete);
   }
 
-  // privet(){
-  //   this.sukaa = this.sukaa + 1;
-  //   this.ajax = this.ajax + this.sukaa;
-  //   console.log(this.ajax);
-  // }
 }
 
 

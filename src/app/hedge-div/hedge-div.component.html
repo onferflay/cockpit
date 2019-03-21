@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 example-list" cdkDropList (cdkDropListDropped)="drop($event)">
+                <div class="col-sm-12 no-padding" cdkDropList (cdkDropListDropped)="drop($event)">
                   <div *ngFor = "let hedge of results; let i = index;" cdkDrag class ='cell draggme col-sm-4'>
                     <div class="example-custom-placeholder cell col-sm-4" *cdkDragPlaceholder></div>
                       <div class='title-block'>{{ hedge.name }}</div>
@@ -73,8 +73,6 @@
                 </div> 
 
                 <input type="hidden" required name="ckid" value="23"> 
-
-                <hr>
 
                 <div class="form-group" style="text-align: right">
                     <button type="reset" class='reset-btn'>Cancel</button>

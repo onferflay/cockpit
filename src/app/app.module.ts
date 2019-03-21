@@ -29,6 +29,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ChartDetailComponent } from './chart-detail/chart-detail.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
+import { ConsolidatedDivComponent } from './consolidated-div/consolidated-div.component';
+import { TopconsolidatedDivComponent } from './topconsolidated-div/topconsolidated-div.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { MaterialModule } from './material';
   ColorSchemeComponent,
   DeletesectionComponent,
   WorldmapComponent,
-  ChartDetailComponent
+  ChartDetailComponent,
+  ConsolidatedDivComponent,
+  TopconsolidatedDivComponent
   ],
   imports: [
   HttpClientModule,

@@ -1,12 +1,11 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { News,newsForm } from '../news';
-import { SharableService } from "../sharable.service";
+import { SharableService} from "../sharable.service";
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-// import { create } from 'domain';
 
 @Component({
   selector: 'app-news-div',
@@ -16,19 +15,19 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 export class NewsDivComponent implements OnInit {
 
+	@Input() colors:string[] = ['red','green'];
+	@Input() editn : newsForm = new newsForm(1533, 'vano', 4, [false,false,false,false,false,false,false,false,false,false,false]);
 	results : any;
 	text: string[];
 	stiri : News;
 	img : string;
 	title: string;
 	active : boolean;
-	editn : newsForm = new newsForm(1533, 'Market News', 4, [false,false,false,false,false,false,false,false,false,false,false]);
 	clist : string[];
 	acolor: boolean;
 	sdelete: boolean;
 	action : any;
 	maindata : any;
-	colors : string[]=['#ccc','#ccc'];
 	co :number;
 	colorbg:string;
 	colorf:string;
@@ -38,34 +37,14 @@ export class NewsDivComponent implements OnInit {
 
 	ngOnInit(){
 		this.active = false;
-		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Forex","Renewables","Carbon"]
-
-		this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=sendcockpit&ckid=1533').subscribe( data =>{
-			if (data) 
-			{
-				this.colors[0] = data[0].bgcolor;
-				this.colors[1] = data[0].textcolor;
-				this.editn = new newsForm(1533, data[0].name, data[0].newsnumber, data[0].newsfilter);
-			}
-
-			console.log(this.editn);
-
-			this.filterMe();
-
-		});
-
-		this.vano.colorBg.subscribe(bgc => this.colors[0] = bgc);
-		this.vano.colorFont.subscribe(fc => this.colors[1] = fc);
-
+		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Forex","Renewables","Carbon"];
+		this.filterMe();
 		this.vano.active.subscribe(acolor => this.acolor = acolor);
 		this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
-		
-    	this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
+		this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
 		this.vano.colorf.subscribe(fc => this.colorf = fc);
-
-    	this.vano.co.subscribe(co => this.co = co);
+		this.vano.co.subscribe(co => this.co = co);
 		this.co =0;
-
 	}
 
 	closeall(){
@@ -102,7 +81,7 @@ export class NewsDivComponent implements OnInit {
 			filter = filter.substring(0,filter.length - 1);
 		}
 
-		this.http.post('http://149.56.102.173/api/v1/filter/posts/','filter=&query='+ filter +'&country=&code=&sources=&sentiment=&date_from=&forecasters=&date_to=&language=&pag=1',{
+		this.http.post('http://api.energymarketprice.com/api/v1/filter/posts/','filter=&query='+ filter +'&country=&code=&sources=&sentiment=&date_from=&forecasters=&date_to=&language=&pag=1',{
 			headers: {
 				"Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
 			}
@@ -122,8 +101,8 @@ export class NewsDivComponent implements OnInit {
 	offMe(){
 		this.vano.changeActive(this.acolor);
 		this.vano.changeCO(0);
-	    this.colorbg = this.colors[0];
-    	this.colorf = this.colors[1];
+		this.colorbg = this.colors[0];
+		this.colorf = this.colors[1];
 	}
 
   verify(){

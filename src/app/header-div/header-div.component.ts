@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ValueTransformer } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-header-div',
   templateUrl: './header-div.component.html',
   styleUrls: ['./header-div.component.css']
 })
-export class HeaderDivComponent implements OnInit {
 
+export class HeaderDivComponent implements OnInit {
 	test : any;
   active:string;
   constructor() { }

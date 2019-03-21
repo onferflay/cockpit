@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
@@ -12,6 +12,9 @@ import { SharableService } from "../sharable.service";
 })
 export class ScoringComponent implements OnInit {
 
+  @Input() colors : string[] = ['#ffffff','#37475a'];
+  @Input() score : string = 'Procurement Scoring';
+
   constructor(private http: HttpClient,private vano: SharableService) { }
 
   results : any;
@@ -19,11 +22,9 @@ export class ScoringComponent implements OnInit {
   active: any;
   acolor:any;
   sdelete: boolean;
-  colors : string[] = ['#ffffff','#37475a'];
   co :number;
   colorbg:string = '#ffffff';
   colorf:string = '#37475a';
-  score : string = 'Procurement Scoring';
 
 
   ngOnInit() {
@@ -37,16 +38,19 @@ export class ScoringComponent implements OnInit {
         this.vano.active.subscribe(acolor => this.acolor = acolor);
         this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
         
-        this.vano.colorBg4.subscribe(bgc => this.colors[0] = bgc);
-        this.vano.colorFont4.subscribe(fc => this.colors[1] = fc);
-        
         this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
         this.vano.colorf.subscribe(fc => this.colorf = fc);
 	 });
-
-  // }
-
 }
+
+onSubmit(){
+  this.active = false;
+  this.vano.changeActive(false);
+  this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editscoring&type=0&scoringname='+ encodeURI(this.score) +'&ckid=1533',{
+    headers: {
+      "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+    }}).subscribe();
+  }
 
 
   verify(){

@@ -5,16 +5,15 @@ import * as Highcharts from 'highcharts';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { SharableService } from "../sharable.service";
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-hedge-div',
-  templateUrl: './hedge-div.component.html',
-  styleUrls: ['./hedge-div.component.css']
+  selector: 'app-consolidated-div',
+  templateUrl: './consolidated-div.component.html',
+  styleUrls: ['./consolidated-div.component.css']
 })
-export class HedgeDivComponent implements OnInit {
+export class ConsolidatedDivComponent implements OnInit {
 
-  @Input() hr : string = 'Hedge Reporting';
+  @Input() cons : string = 'Consolidated Reports';
   @Input() colors : string[] = ['#ffffff','#37475a'];
 
   constructor(private http: HttpClient,private vano: SharableService) { }
@@ -32,13 +31,13 @@ export class HedgeDivComponent implements OnInit {
 
 	ngOnInit(){
         this.active = false;
- 	      this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=gethedgedata&cid=1533').subscribe(data => {
+ 	      this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=getconsdata&cid=1533').subscribe(data => {
 
             this.results = data;
 
             if ( $.isEmptyObject(data) ) { this.empty = false; }
 
-            this.co =3;
+            this.co =5;
     
             this.vano.active.subscribe(acolor => this.acolor = acolor);
             this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
@@ -100,7 +99,7 @@ export class HedgeDivComponent implements OnInit {
                        },
                       plotOptions: {
                            solidgauge: {
-                              borderColor: '#ffa82c',
+                              borderColor: '#0060A8',
                               borderWidth: 12,
                               radius: 90,
                               innerRadius: '90%',
@@ -129,25 +128,22 @@ export class HedgeDivComponent implements OnInit {
 
 
   verify(){
-    if (this.hr.length < 4) { this.hr = 'Hedge Reporting' }
+    if (this.cons.length < 4) { this.cons = 'Consolidated Reports' }
   }
 
   onSubmit(){
     this.active = false;
     this.vano.changeActive(false);
-    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edithedges&type=0&hedgesname='+ encodeURI(this.hr) +'&ckid=1533',{
+    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editcons&type=0&consname='+ encodeURI(this.cons) +'&ckid=1533',{
       headers: {
         "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
       }}).subscribe();
 
     }
 
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.results, event.previousIndex, event.currentIndex);
-  }
   offMe(){
     this.vano.changeActive(this.acolor);
-    this.vano.changeCO(3);
+    this.vano.changeCO(5);
     this.colorbg = this.colors[0];
     this.colorf = this.colors[1];
     this.vano.changeAuxColorBg(this.colorbg);
@@ -156,7 +152,5 @@ export class HedgeDivComponent implements OnInit {
   offMee(){
     this.vano.changeDel(this.sdelete);
   }
-
-
 
 }

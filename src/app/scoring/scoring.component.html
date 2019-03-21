@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 no-padding">
                   <div *ngFor = "let scoring of results" class ='cell col-sm-4'>
                       <div class='title-block'>{{ scoring.name }}</div>
                        <table class='topcons-data-table scoring-table'>
@@ -88,8 +88,6 @@
                 </div> 
 
                 <input type="hidden" required name="ckid" value="23"> 
-
-                <hr>
 
                 <div class="form-group" style="text-align: right">
                     <button type="reset" class='reset-btn'>Cancel</button>

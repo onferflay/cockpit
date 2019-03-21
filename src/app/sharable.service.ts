@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { News,newsForm } from './news';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class SharableService {
 
 	private activedef = new BehaviorSubject(false);
@@ -22,6 +25,12 @@ export class SharableService {
 
   private bgcolor4 = new BehaviorSubject('#ffffff');
   private fontcolor4 = new BehaviorSubject('#37475a');
+
+  private bgcolor5 = new BehaviorSubject('#ffffff');
+  private fontcolor5 = new BehaviorSubject('#37475a');
+
+  private bgcolor6 = new BehaviorSubject('#ffffff');
+  private fontcolor6 = new BehaviorSubject('#37475a');
 
   private auxcolorbg =new BehaviorSubject('#ffffff');
   private auxcolorf = new BehaviorSubject('#37475a');
@@ -42,6 +51,12 @@ export class SharableService {
 
   colorBg4 = this.bgcolor4.asObservable();
   colorFont4 = this.fontcolor4.asObservable();
+
+  colorBg5 = this.bgcolor5.asObservable();
+  colorFont5 = this.fontcolor5.asObservable()
+
+  colorBg6 = this.bgcolor6.asObservable();
+  colorFont6 = this.fontcolor6.asObservable()
 
   colorbg = this.auxcolorbg.asObservable();
   colorf = this.auxcolorf.asObservable();
@@ -90,6 +105,13 @@ export class SharableService {
       this.bgcolor4.next(bgc)
     }
 
+  changeColorBG5(bgc:string){
+      this.bgcolor5.next(bgc)
+    }
+
+  changeColorBG6(bgc:string){
+      this.bgcolor6.next(bgc)
+    }
   changeColorF(fc:string){
       this.fontcolor.next(fc)
     } 
@@ -108,6 +130,13 @@ export class SharableService {
 
   changeColorF4(fc:string){
       this.fontcolor4.next(fc)
+    }
+  changeColorF5(fc:string){
+      this.fontcolor5.next(fc)
+    }
+
+  changeColorF6(fc:string){
+      this.fontcolor6.next(fc)
     }
 
   changeDel(aux: boolean){

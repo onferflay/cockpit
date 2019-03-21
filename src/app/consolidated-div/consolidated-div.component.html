@@ -1,0 +1,77 @@
+<div *ngIf="empty" class='col-sm-12 cp-news-div'  id="hedgesection" [ngStyle]="{ 'backgroundColor' : colors[0] }">
+  <div class="row">
+      <div class="col-sm-12">
+          <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">{{ cons }}</span>
+          <div class="action_bar" (click)='action = !action'>
+              <p [ngStyle]="{ 'color' : colors[1] }">Action
+                  <i class="fa" [ngClass]="{'fa-caret-up': action, 'fa-caret-down': !action }"></i>
+              </p>
+              <div *ngIf="action" class='action_menu'>
+                  <span (click)="active = !active">Edit section</span>
+                  <span (click)="acolor = !acolor; offMe()">Edit color scheme</span>
+                  <span (click)='sdelete = !sdelete; offMee()'>Delete</span>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-12 no-padding" cdkDropList (cdkDropListDropped)="drop($event)">
+        <div *ngFor = "let hedge of results; let i = index;" cdkDrag class ='cell draggme col-sm-4'>
+          <div class="example-custom-placeholder cell col-sm-4" *cdkDragPlaceholder></div>
+            <div class='title-block'>{{ hedge.name }}</div>
+               <div class='text-title-block cons-color'>
+                 <span class='text-span'>
+                    <p>AVG price</p>
+                    <p><b>{{ hedge.curr }}/{{ hedge.unit }}</b></p>
+                 </span>
+                 <span class='avg-number'>{{ hedge.avg }}</span>
+              </div>
+             <table class='topcons-data-table'>        
+                  <tr>
+                       <td><b>Spent</b></td>
+                       <td>{{ hedge.spent }}</td>
+                       <td>{{ hedge.curr }}</td>
+                  </tr>
+             </table>
+              <div class="topcons-fixed-chart">
+                 <div [chart]="chart[i]"></div>
+                 <!-- {{ ShowMeTheChart(hedge.open,hedge.fixed) | json }}  -->
+              </div>
+              <div class="topcons-link">
+              <a href="https://www.energymarketprice.com/Consolidated.asp?Company=IvanEnergyMP&ContractID={{ hedge.id }}" target="_blank">  <button class="seemore-btn cons-btn">See more »</button></a>
+              </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<button class="closeallbtn" style="display: none;" (click)='active=false'></button>
+<div id='fancybox-overlay'  [ngStyle]="{ 'display' : active ? 'block' : 'none'}"></div>
+
+<div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
+  <div class="popup-title"><b>Edit consolidated section</b><i class="fa fa-times closeme" (click)="active = !active"></i></div>
+  <form (ngSubmit)="onSubmit()" #editForm="ngForm">
+      <div class="form-group">
+          <label for="name"><b>Edit section name:</b></label>
+          <input type="text" class="form-control" required minlength="4" (change)='verify()' [(ngModel)]="cons" name='hedge-name' #hedgeName='ngModel'>
+
+          <div *ngIf="hedgeName.invalid && (hedgeName.dirty || hedgeName.touched)" class="alert alert-danger">
+              <div *ngIf="hedgeName.errors.required">
+                Field is required.
+              </div>
+              <div *ngIf="hedgeName.errors.minlength">
+                Field must be at least 4 characters long.
+              </div>
+          </div>
+
+      </div> 
+
+      <input type="hidden" required name="ckid" value="23"> 
+
+      <div class="form-group" style="text-align: right">
+          <button type="reset" class='reset-btn'>Cancel</button>
+          <button type="submit" class="submit-btn"  [disabled]="!editForm.form.valid">Save Settings</button>
+      </div>
+  </form>
+
+</div>

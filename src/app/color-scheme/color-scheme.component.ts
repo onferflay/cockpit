@@ -36,6 +36,51 @@ export class ColorSchemeComponent implements OnInit {
 				"Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
       }}).subscribe();
     }
+    if (this.co == 1)
+    {
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editstats&type=1&ckid=1533&sbgcolor='+ this.colorBG +'&scolor=' + this.colorFont,{
+        headers: {
+          "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+        }}).subscribe();
+    }
+    if (this.co == 2)
+    {
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editmarkets&type=1&ckid=1533&mbgcolor='+ this.colorBG +'&mcolor=' + this.colorFont,{
+        headers: {
+          "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+        }}).subscribe();
+    }
+    if (this.co == 3)
+    {
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edithedges&type=1&ckid=1533&hbgcolor='+ this.colorBG +'&hcolor=' + this.colorFont,{
+        headers: {
+          "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+        }}).subscribe();
+    }
+
+    if (this.co == 4)
+    {
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editscoring&type=1&ckid=1533&scbgcolor='+ this.colorBG +'&sccolor=' + this.colorFont,{
+        headers: {
+          "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+        }}).subscribe();
+    }
+
+    if (this.co == 5)
+    {
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editcons&type=1&ckid=1533&consbgcolor='+ this.colorBG +'&conscolor=' + this.colorFont,{
+        headers: {
+          "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+        }}).subscribe();
+    }
+
+    if (this.co == 6)
+    {
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edittopcons&type=1&ckid=1533&topconsbgcolor='+ this.colorBG +'&topconscolor=' + this.colorFont,{
+        headers: {
+          "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+        }}).subscribe();
+    }
 
   }
 
@@ -50,6 +95,10 @@ export class ColorSchemeComponent implements OnInit {
       this.vano.changeColorBG3(this.colorBG);
     else if (this.co == 4) 
       this.vano.changeColorBG4(this.colorBG);
+    else if (this.co == 5) 
+      this.vano.changeColorBG5(this.colorBG);
+    else if (this.co == 6) 
+      this.vano.changeColorBG6(this.colorBG);
   }
 
   changeColorF(){
@@ -63,6 +112,10 @@ export class ColorSchemeComponent implements OnInit {
       this.vano.changeColorF3(this.colorFont);
     else if (this.co == 4)
       this.vano.changeColorF4(this.colorFont);
+    else if (this.co == 5)
+      this.vano.changeColorF5(this.colorFont);
+    else if (this.co == 6)
+      this.vano.changeColorF6(this.colorFont);
   }
    
   offMe(){

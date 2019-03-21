@@ -24,6 +24,9 @@ button,span,input,textarea,table{
 	width: 100%;
     color:#37475a;
 }
+.no-padding{
+    padding: 0;
+}
 .action_bar{
     float: right;
     margin-right: 20px;
@@ -382,6 +385,21 @@ button,span,input,textarea,table{
     font-size: 16px;
     line-height: initial;
 }
+.cons-color{
+    background-color: #0060A8;
+}
+.cons-btn{
+    border-color: #0060A8 !important;
+    color:#0060A8 !important;
+}
+
+.topcons-color{
+    background-color: #00863D;
+}
+.topcons-btn{
+    border-color: #00863D !important;
+    color:#00863D !important;
+}
 .avg-number{
     font-size: 40px;
     font-weight: bold;
@@ -438,6 +456,7 @@ button,span,input,textarea,table{
     border: #d0e2f6 1px solid;
     border-top: 0;
     border-bottom: 0;
+    background-color: white;
 }
 
 .topcons-fixed-chart div{
@@ -451,6 +470,7 @@ button,span,input,textarea,table{
     padding: 20px 0;
     border: 1px solid #d0e2f6;
     border-top: 0;
+    background-color: white;
 }
 .cp-stats-div{
 	padding: 0;
