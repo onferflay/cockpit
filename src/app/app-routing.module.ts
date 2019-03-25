@@ -5,10 +5,11 @@ import { AppComponent }      from './app.component';
 
 const routes: Routes = [
   { path: 'cockpit', component: AppComponent },
-  { path: '', redirectTo: '/cockpit', pathMatch: 'full' }
+  { path: 'cockpit/:ckid', component: AppComponent }
 ];
 
 @NgModule({
+  imports: [RouterModule.forRoot(routes)],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}

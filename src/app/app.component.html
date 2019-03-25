@@ -1,13 +1,15 @@
-<div class="wrapall">    
-    <div class="container">
-    <app-header-div></app-header-div>
-    <app-news-div *ngIf="showinfo" [colors] = "[ncolorbg,ncolorfont]" [editn]="ninfo"></app-news-div>
-    <app-stats-div *ngIf="showinfo" [colors] = "[scolorbg,scolorfont]" [stats]="sinfo"></app-stats-div>
-    <app-market-prices *ngIf="showinfo" [colors] = "[mcolorbg,mcolorfont]" [mpt]="minfo"></app-market-prices>
-    <app-hedge-div *ngIf="showinfo" [colors] = "[hcolorbg,hcolorfont]" [hr]="hinfo"></app-hedge-div>
-    <app-consolidated-div *ngIf="showinfo" [colors] = "[conscolorbg,conscolorfont]" [cons]="consinfo"></app-consolidated-div>
-    <app-topconsolidated-div *ngIf="showinfo" [colors] = "[topconscolorbg,topconscolorfont]" [topcons]="topconsinfo"></app-topconsolidated-div>
-    <app-scoring *ngIf="showinfo" [colors] = "[sccolorbg,sccolorfont]" [score]="scinfo"></app-scoring>
-    <!-- <app-worldmap></app-worldmap> -->
+    <div class="wrapall">    
+        <div class="container">
+        <app-header-div></app-header-div>
+        <router-outlet></router-outlet>
+        <app-news-div *ngIf="showinfo" [colors] = "[ncolorbg,ncolorfont]" [editn]="ninfo"></app-news-div>
+        <app-stats-div *ngIf="showinfo" [colors] = "[scolorbg,scolorfont]" [stats]="sinfo"></app-stats-div>
+        <app-market-prices *ngIf="showinfo" [colors] = "[mcolorbg,mcolorfont]" [mpt]="minfo"></app-market-prices>
+        <app-hedge-div *ngIf="showinfo" [colors] = "[hcolorbg,hcolorfont]" [hr]="hinfo"></app-hedge-div>
+        <app-consolidated-div *ngIf="showinfo" [colors] = "[conscolorbg,conscolorfont]" [cons]="consinfo"></app-consolidated-div>
+        <app-topconsolidated-div *ngIf="showinfo" [colors] = "[topconscolorbg,topconscolorfont]" [topcons]="topconsinfo"></app-topconsolidated-div>
+        <app-scoring *ngIf="showinfo" [colors] = "[sccolorbg,sccolorfont]" [score]="scinfo"></app-scoring>
+        <!-- <app-worldmap></app-worldmap> -->
+        </div>
     </div>
-</div>
+

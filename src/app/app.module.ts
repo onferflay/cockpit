@@ -9,7 +9,6 @@ import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as arc from 'highcharts/modules/solid-gauge.src';
 import * as data from 'highcharts/modules/data.src';
-// import * as europe from 'highcharts/europe';
 
 import { AppComponent } from './app.component';
 import { NewsDivComponent } from './news-div/news-div.component';
