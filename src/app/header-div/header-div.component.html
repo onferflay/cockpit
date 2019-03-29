@@ -1,20 +1,8 @@
 <div class="col-sm-12 cp-name-div">
-    <!-- <span class="cockpit-name">Daily Cockpit</span> -->
-    <span class="cockpit-name">{{ sroot }} {{ droot }}</span>
+    <span class="cockpit-name">Daily Cockpit</span>
     <button class="button button-blue">Save changes</button>
     <button class="button button-white">Preview</button>
 </div>
-
-<div>
-    <div>
-        <button (click)="goto(1533)">Dog</button>
-        <button (click)="goto(1544)">Cat</button>
-        <button (click)="goto(1559)">Owl</button>
-        <button (click)="goto(1643)">Cheetah</button>
-        <button (click)="goto(1648)">Narwhal</button>
-      </div>
-</div>
-
 <div class='col-sm-12'>
     <ul class="menu-ul">
           <li class='menu-li' [ngClass]="{active:active=='newssection'}" (click)="active = 'newssection';jump()"><i class='fa fa-file-alt'></i><span>market news</span></li>

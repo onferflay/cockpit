@@ -29,11 +29,7 @@ saxis: boolean = false;
 acolors : string[] = ['#70AD47', '#AFABAB', '#5B9BD5', '#ED7D31', '#4472C4', '#FFD966'];
 
 constructor(private http: HttpClient) { }
-
-
   ngOnInit() {
-
-
  if ( typeof this.dfrom == 'undefined'){
 
       this.dfrom = new Date();
@@ -45,8 +41,6 @@ constructor(private http: HttpClient) { }
       // this.dto.setDate(this.dto.getDate() +1);
       this.dto = this.dateToDMY(this.dto);
   }
-
-
 
  this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=getdataforchart&cid=' + this.takeMe + '&dfrom='+ this.dfrom +'&dto='+ this.dto)
  .subscribe(data =>{
@@ -95,8 +89,6 @@ constructor(private http: HttpClient) { }
     	this.curba.push(this.linedata);
       this.linedata = new ChartSeries;
   });
-
-  console.log(this.curba);
 
   this.chart = new Chart(<any>{
               chart: {

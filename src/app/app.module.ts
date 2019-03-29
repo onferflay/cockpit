@@ -24,13 +24,13 @@ import { NewsEditComponent } from './news-edit/news-edit.component';
 import { ColorSchemeComponent } from './color-scheme/color-scheme.component';
 import { WorldmapComponent } from './worldmap/worldmap.component';
 import { DeletesectionComponent } from './deletesection/deletesection.component';
-import { AppRoutingModule } from './app-routing.module';
 import { ChartDetailComponent } from './chart-detail/chart-detail.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { ConsolidatedDivComponent } from './consolidated-div/consolidated-div.component';
 import { TopconsolidatedDivComponent } from './topconsolidated-div/topconsolidated-div.component';
-
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -49,16 +49,17 @@ import { TopconsolidatedDivComponent } from './topconsolidated-div/topconsolidat
   WorldmapComponent,
   ChartDetailComponent,
   ConsolidatedDivComponent,
-  TopconsolidatedDivComponent
+  TopconsolidatedDivComponent,
+  ErrorPageComponent
   ],
   imports: [
   HttpClientModule,
   FormsModule,
   BrowserModule,
   ChartModule,
-  AppRoutingModule,
   BrowserAnimationsModule,
-  MaterialModule
+  MaterialModule,
+  AppRoutingModule
   ],
   providers: [
   { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc,data ] }

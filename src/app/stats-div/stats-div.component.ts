@@ -4,6 +4,7 @@ import { SharableService } from "../sharable.service";
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-stats-div',
@@ -32,12 +33,17 @@ export class StatsDivComponent implements OnInit {
   co:number;
   colorbg:string = '#ffffff';
   colorf:string = '#37475a';
+  ckid : string;
 
-  constructor(private http: HttpClient,private vano: SharableService) { }
+  constructor(private http: HttpClient,private vano: SharableService,private route:ActivatedRoute) { }
 
   ngOnInit() {
 
-	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=1533').subscribe(data => {
+  this.route.queryParamMap.subscribe(params =>{
+    this.ckid = params.get("ckid");
+  });
+
+	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=' + this.ckid ).subscribe(data => {
 	this.testme = data["data"];
 	this.order = data["orderby"];
   this.wday = data["days"]["wday"].split(',');

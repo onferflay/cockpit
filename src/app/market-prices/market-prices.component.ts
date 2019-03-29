@@ -4,6 +4,7 @@ import { Chart } from 'angular-highcharts';
 import { ChartSeries,chartData } from '../news';
 import * as Highcharts from 'highcharts';
 import { SharableService } from "../sharable.service";
+import { ActivatedRoute } from "@angular/router";
 
 
 import { Observable, of } from 'rxjs';
@@ -39,12 +40,14 @@ export class MarketPricesComponent implements OnInit {
     colorbg:string = '#ffffff';
     colorf:string = '#37475a';
     auxname:string;
+    ckid : string;
 
-    constructor(private http: HttpClient, private vano: SharableService) { }
+    constructor(private http: HttpClient, private vano: SharableService,private route: ActivatedRoute) { }
 
   ngOnInit() {
   this.active = false;
-	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=dataforchart&cid=1533').subscribe(data => {
+  this.route.queryParamMap.subscribe(params => { this.ckid = params.get("ckid")});
+	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=dataforchart&cid=' + this.ckid).subscribe(data => {
 	this.charts = data[0];
   this.objKeys = Object.keys(this.charts);
 
@@ -75,7 +78,7 @@ export class MarketPricesComponent implements OnInit {
   onSubmit(){
     this.active = false;
     this.vano.changeActive(false);
-    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editmarkets&type=0&marketsname='+ encodeURI(this.mpt) +'&ckid=1533',{
+    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editmarkets&type=0&marketsname='+ encodeURI(this.mpt) +'&ckid=' + this.ckid,{
       headers: {
         "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
       }}).subscribe();

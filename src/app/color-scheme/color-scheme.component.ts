@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SharableService } from "../sharable.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-color-scheme',
@@ -15,8 +16,9 @@ export class ColorSchemeComponent implements OnInit {
   @Input() co:number;
 
   cmon : boolean;
+  ckid : string;
 
-  constructor(private http: HttpClient,private vano: SharableService){}
+  constructor(private http: HttpClient,private vano: SharableService, private route : ActivatedRoute){}
 
   ngOnInit(){
   	this.vano.active.subscribe(cmon => this.cmon = cmon);
@@ -28,31 +30,36 @@ export class ColorSchemeComponent implements OnInit {
 
   onSubmit(){
     this.active = false;
+
+    this.route.queryParamMap.subscribe(params =>{
+      this.ckid = params.get("ckid");
+    });
+
 		this.vano.changeActive(false);
     if (this.co == 0)
     {
-    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editnews&type=1&ckid=1533&bgcolor='+ this.colorBG +'&fcolor=' + this.colorFont,{
+    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editnews&type=1&ckid=' + this.ckid + '&bgcolor='+ this.colorBG +'&fcolor=' + this.colorFont,{
 			headers: {
 				"Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
       }}).subscribe();
     }
     if (this.co == 1)
     {
-      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editstats&type=1&ckid=1533&sbgcolor='+ this.colorBG +'&scolor=' + this.colorFont,{
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editstats&type=1&ckid=' + this.ckid + '&sbgcolor='+ this.colorBG +'&scolor=' + this.colorFont,{
         headers: {
           "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
         }}).subscribe();
     }
     if (this.co == 2)
     {
-      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editmarkets&type=1&ckid=1533&mbgcolor='+ this.colorBG +'&mcolor=' + this.colorFont,{
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editmarkets&type=1&ckid=' + this.ckid + '&mbgcolor='+ this.colorBG +'&mcolor=' + this.colorFont,{
         headers: {
           "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
         }}).subscribe();
     }
     if (this.co == 3)
     {
-      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edithedges&type=1&ckid=1533&hbgcolor='+ this.colorBG +'&hcolor=' + this.colorFont,{
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edithedges&type=1&ckid=' + this.ckid + '&hbgcolor='+ this.colorBG +'&hcolor=' + this.colorFont,{
         headers: {
           "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
         }}).subscribe();
@@ -60,7 +67,7 @@ export class ColorSchemeComponent implements OnInit {
 
     if (this.co == 4)
     {
-      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editscoring&type=1&ckid=1533&scbgcolor='+ this.colorBG +'&sccolor=' + this.colorFont,{
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editscoring&type=1&ckid=' + this.ckid + '&scbgcolor='+ this.colorBG +'&sccolor=' + this.colorFont,{
         headers: {
           "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
         }}).subscribe();
@@ -68,7 +75,7 @@ export class ColorSchemeComponent implements OnInit {
 
     if (this.co == 5)
     {
-      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editcons&type=1&ckid=1533&consbgcolor='+ this.colorBG +'&conscolor=' + this.colorFont,{
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editcons&type=1&ckid=' + this.ckid + '&consbgcolor='+ this.colorBG +'&conscolor=' + this.colorFont,{
         headers: {
           "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
         }}).subscribe();
@@ -76,7 +83,7 @@ export class ColorSchemeComponent implements OnInit {
 
     if (this.co == 6)
     {
-      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edittopcons&type=1&ckid=1533&topconsbgcolor='+ this.colorBG +'&topconscolor=' + this.colorFont,{
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edittopcons&type=1&ckid=' + this.ckid + '&topconsbgcolor='+ this.colorBG +'&topconscolor=' + this.colorFont,{
         headers: {
           "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
         }}).subscribe();

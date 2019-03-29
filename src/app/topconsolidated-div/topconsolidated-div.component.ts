@@ -5,6 +5,7 @@ import * as Highcharts from 'highcharts';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { SharableService } from "../sharable.service";
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-topconsolidated-div',
@@ -16,7 +17,7 @@ export class TopconsolidatedDivComponent implements OnInit {
   @Input() topcons : string = 'TopConsolidated Reports';
   @Input() colors : string[] = ['#ffffff','#37475a'];
 
-  constructor(private http: HttpClient,private vano: SharableService) { }
+  constructor(private http: HttpClient,private vano: SharableService, private route:ActivatedRoute) { }
 
 	results : any;
 	chart : Chart[] = new Array<Chart>();
@@ -28,10 +29,16 @@ export class TopconsolidatedDivComponent implements OnInit {
   colorbg:string = '#ffffff';
   colorf:string = '#37475a';
   vanoo : any;
+  ckid : string;
 
 	ngOnInit(){
         this.active = false;
- 	      this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=gettopconsdata&cid=1533').subscribe(data => {
+
+        this.route.queryParamMap.subscribe(params =>{
+          this.ckid = params.get("ckid");
+        });
+
+ 	      this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=gettopconsdata&cid=' + this.ckid).subscribe(data => {
 
             this.results = data;
 
@@ -134,7 +141,7 @@ export class TopconsolidatedDivComponent implements OnInit {
   onSubmit(){
     this.active = false;
     this.vano.changeActive(false);
-    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edittopcons&type=0&topconsname='+ encodeURI(this.topcons) +'&ckid=1533',{
+    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edittopcons&type=0&topconsname='+ encodeURI(this.topcons) +'&ckid=' + this.ckid,{
       headers: {
         "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
       }}).subscribe();

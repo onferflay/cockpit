@@ -1,15 +1,16 @@
 import { Component,OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 import { News,newsForm } from './news';
 import { SharableService} from "./sharable.service";
 import { HttpClient} from '@angular/common/http';
-
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'cockpit';
   ncolorbg : string;
   ncolorfont : string;
@@ -35,13 +36,18 @@ export class AppComponent implements OnInit{
   topconscolorbg : string;
   topconscolorfont : string;
 
+  ckid : string;
+
 
   showinfo : boolean = false;
-  constructor(private http: HttpClient,private vano: SharableService) { }
+  constructor(private http: HttpClient,private vano: SharableService, private route: ActivatedRoute) { }
 
 ngOnInit() {
 
-  this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=sendcockpit&ckid=1533').subscribe( data =>{
+  this.route.queryParamMap.pipe(debounceTime(100)).subscribe(params =>{
+    this.ckid = params.get("ckid");
+
+  this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=sendcockpit&ckid=' + this.ckid).subscribe( data =>{
     if (data) 
     {
       // for news start 
@@ -99,6 +105,7 @@ ngOnInit() {
 
     }
     })
+  });
 
 	 	$(document).keyup(function(e){
             if (e.keyCode === 27 ){

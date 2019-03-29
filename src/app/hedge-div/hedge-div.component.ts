@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { SharableService } from "../sharable.service";
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-hedge-div',
@@ -17,7 +18,7 @@ export class HedgeDivComponent implements OnInit {
   @Input() hr : string = 'Hedge Reporting';
   @Input() colors : string[] = ['#ffffff','#37475a'];
 
-  constructor(private http: HttpClient,private vano: SharableService) { }
+  constructor(private http: HttpClient,private vano: SharableService,private route:ActivatedRoute) { }
 
 	results : any;
 	chart : Chart[] = new Array<Chart>();
@@ -29,10 +30,16 @@ export class HedgeDivComponent implements OnInit {
   colorbg:string = '#ffffff';
   colorf:string = '#37475a';
   vanoo : any;
+  ckid : string;
 
 	ngOnInit(){
+
+    this.route.queryParamMap.subscribe(params =>{
+      this.ckid = params.get("ckid");
+    });
+
         this.active = false;
- 	      this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=gethedgedata&cid=1533').subscribe(data => {
+ 	      this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=gethedgedata&cid=' + this.ckid).subscribe(data => {
 
             this.results = data;
 
@@ -135,7 +142,7 @@ export class HedgeDivComponent implements OnInit {
   onSubmit(){
     this.active = false;
     this.vano.changeActive(false);
-    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edithedges&type=0&hedgesname='+ encodeURI(this.hr) +'&ckid=1533',{
+    this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=edithedges&type=0&hedgesname='+ encodeURI(this.hr) +'&ckid='+ this.ckid,{
       headers: {
         "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
       }}).subscribe();
