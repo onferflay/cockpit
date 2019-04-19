@@ -25,6 +25,8 @@ export class HeaderDivComponent implements OnInit {
         // {
         //   console.log(localStorage.key(i) + ' = ' + localStorage.getItem(localStorage.key(i)));
         // }
+
+
         
   }
 

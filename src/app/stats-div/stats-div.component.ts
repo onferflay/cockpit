@@ -88,7 +88,7 @@ export class StatsDivComponent implements OnInit {
 onSubmit(){
   this.active = false;
   this.vano.changeActive(false);
-  this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editstats&type=0&statsname='+ encodeURI(this.stats) +'&ckid=1533',{
+  this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editstats&type=0&statsname='+ encodeURI(this.stats) +'&ckid='+ this.ckid,{
     headers: {
       "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
     }}).subscribe();

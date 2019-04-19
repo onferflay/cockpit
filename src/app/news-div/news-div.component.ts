@@ -63,6 +63,24 @@ export class NewsDivComponent implements OnInit {
 			}}).subscribe();
 	}
 
+	filterMeCheck(){
+		let i = 0;
+		if (this.editn.categories[0]){
+			this.editn.categories.forEach(element => {
+				this.editn.categories[i] = true;
+				i++;
+			});
+		}
+		else
+		{
+			this.editn.categories.forEach(element => {
+				this.editn.categories[i] = false;
+				i++;
+			});
+		}
+		this.filterMe();
+	}
+
 	filterMe(){
 		let filter = '';
 		if (this.editn.categories[0]) { filter = '' }

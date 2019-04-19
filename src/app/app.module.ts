@@ -20,7 +20,6 @@ import { NewsDetailsComponent } from './news-details/news-details.component';
 import * as $ from 'jquery';
 import { ChartdataComponent } from './chartdata/chartdata.component';
 import { ScoringComponent } from './scoring/scoring.component';
-import { NewsEditComponent } from './news-edit/news-edit.component';
 import { ColorSchemeComponent } from './color-scheme/color-scheme.component';
 import { WorldmapComponent } from './worldmap/worldmap.component';
 import { DeletesectionComponent } from './deletesection/deletesection.component';
@@ -44,7 +43,6 @@ import { CookieService } from 'ngx-cookie-service';
   NewsDetailsComponent,
   ChartdataComponent,
   ScoringComponent,
-  NewsEditComponent,
   ColorSchemeComponent,
   DeletesectionComponent,
   WorldmapComponent,
