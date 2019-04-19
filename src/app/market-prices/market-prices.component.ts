@@ -41,6 +41,8 @@ export class MarketPricesComponent implements OnInit {
     colorf:string = '#37475a';
     auxname:string;
     ckid : string;
+    achart : boolean;
+
 
     constructor(private http: HttpClient, private vano: SharableService,private route: ActivatedRoute) { }
 
@@ -55,6 +57,7 @@ export class MarketPricesComponent implements OnInit {
 
   this.vano.active.subscribe(acolor => this.acolor = acolor);
   this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
+  this.vano.achart.subscribe(achart => this.achart = achart );
 
   this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
   this.vano.colorf.subscribe(fc => this.colorf = fc);
@@ -70,6 +73,13 @@ export class MarketPricesComponent implements OnInit {
   })
  }); 
   }
+
+  showchart(){
+    this.achart = !this.achart;
+    this.vano.changeChart(this.achart);
+  }
+
+
 
   verify(){
     if (this.mpt.length < 4) { this.mpt = 'Market Prices & Trends' }

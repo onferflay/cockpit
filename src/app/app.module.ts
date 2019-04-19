@@ -31,6 +31,7 @@ import { ConsolidatedDivComponent } from './consolidated-div/consolidated-div.co
 import { TopconsolidatedDivComponent } from './topconsolidated-div/topconsolidated-div.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { AppRoutingModule } from './app-routing.module';
   AppRoutingModule
   ],
   providers: [
+    [ CookieService ],
   { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting, arc,data ] }
   ],
   bootstrap: [AppComponent]

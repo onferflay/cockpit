@@ -284,6 +284,12 @@ button,span,input,textarea,table{
 	background-color: white;
 }
 
+.wtff{
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+
 /* statistics div here*/
 
 .cp-statistics-table thead tr{

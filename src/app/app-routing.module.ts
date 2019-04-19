@@ -4,7 +4,7 @@ import { AppComponent }      from './app.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', redirectTo: '/cockpit', pathMatch: 'full' },
   { path: 'cockpit', component: AppComponent}
 ];
 

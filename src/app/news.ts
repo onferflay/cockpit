@@ -22,6 +22,7 @@ export class newsForm {
         public ckid : number,
         public name: string,
         public numberof: number,
-        public categories: boolean[]
+        public categories: boolean[] 
+        // 11
     ){} 
 }

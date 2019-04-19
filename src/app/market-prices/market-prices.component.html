@@ -31,7 +31,7 @@
                   <div class="chart-div">
                     <p>{{ chartname }}</p>
                     <div style="width:100%; height: 400px;"><app-chartdata [takeMe]="ids[i]"></app-chartdata></div>
-                    <button (click)='ajax = ids[i]; auxname = chartname' class="seemore-btn">See more »</button>
+                    <button (click)='ajax = ids[i]; auxname = chartname; showchart();' class="seemore-btn">See more »</button>
                   </div>
                 </div>
 

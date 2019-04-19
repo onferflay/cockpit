@@ -9,6 +9,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class SharableService {
 
+
+  private redraw = new BehaviorSubject(false);
+  private activechart = new BehaviorSubject(false);
 	private activedef = new BehaviorSubject(false);
 	private actdel = new BehaviorSubject(false);
   private bgcolor = new BehaviorSubject('#ffffff');
@@ -62,12 +65,20 @@ export class SharableService {
   colorf = this.auxcolorf.asObservable();
 
 	active = this.activedef.asObservable();
-	adel =  this.actdel.asObservable();
+  adel =  this.actdel.asObservable();
+  achart =  this.activechart.asObservable();
+
+  crd =  this.redraw.asObservable();
 
   co = this.colorOrder.asObservable();
 
 
   constructor() { }
+
+  redrawChart(aux:boolean){
+    this.redraw.next(aux)
+  }
+
 
   changeAuxColorBg(aux:string){
     this.auxcolorbg.next(aux)
@@ -141,6 +152,9 @@ export class SharableService {
 
   changeDel(aux: boolean){
   		this.actdel.next(aux)
+    }
+  changeChart(aux: boolean){
+  		this.activechart.next(aux)
   	}
 
 }
