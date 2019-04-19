@@ -71,8 +71,3 @@
             </form>
 
         </div>
-
-        <div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none', 'top' : '1500px'}">
-          <div class="popup-title"><b>Here will be chart</b><i class="fa fa-times closeme" (click)="active = !active"></i></div>
-          <div style="width:200px; height: 200px;">{{ ajax }}</div>
-        </div>
