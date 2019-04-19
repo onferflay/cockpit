@@ -55,7 +55,7 @@ ngOnInit() {
       this.vano.colorFont.subscribe(fc =>this.ncolorfont = fc);
       this.ncolorbg = data[0].bgcolor;
       this.ncolorfont = data[0].textcolor;
-      this.ninfo = new newsForm(parseInt(this.ckid), data[0].name, data[0].newsnumber, data[0].newsfilter);
+      this.ninfo = new newsForm(parseInt(this.ckid), data[0].name, data[0].newssearch, data[0].newsnumber, data[0].newsfilter);
 
       // for statistics
       this.vano.colorBg1.subscribe(bgc => this.scolorbg = bgc);
@@ -108,7 +108,7 @@ ngOnInit() {
             this.vano.colorFont.subscribe(fc =>this.ncolorfont = fc);
             this.ncolorbg = '#ffffff';
             this.ncolorfont = '#333333';
-            this.ninfo = new newsForm(parseInt(this.ckid), 'Market News', 4, [true,true,true,true,true,true,true,true,true,true,true]);
+            this.ninfo = new newsForm(parseInt(this.ckid), 'Market News','', 4, [true,true,true,true,true,true,true,true,true,true,true]);
       
             // for statistics
             this.vano.colorBg1.subscribe(bgc => this.scolorbg = bgc);

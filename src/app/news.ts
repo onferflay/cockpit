@@ -21,6 +21,7 @@ export class newsForm {
     constructor(
         public ckid : number,
         public name: string,
+        public search : string,
         public numberof: number,
         public categories: boolean[] 
         // 11

@@ -16,7 +16,7 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 export class NewsDivComponent implements OnInit {
 
 	@Input() colors:string[] = ['red','green'];
-	@Input() editn : newsForm = new newsForm(1533, 'vano', 4, [false,false,false,false,false,false,false,false,false,false,false]);
+	@Input() editn : newsForm = new newsForm(1533, '','', 4, [false,false,false,false,false,false,false,false,false,false,false]);
 	results : any;
 	text: string[];
 	stiri : News;
@@ -57,7 +57,7 @@ export class NewsDivComponent implements OnInit {
 		this.active = false;
 		this.vano.changeActive(false);
 
-		this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editnews&type=0&nname='+ encodeURI(this.editn.name) +'&ckid='+ this.editn.ckid +'&nrnews='+ this.editn.numberof +'&filter=' + this.editn.categories,{
+		this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editnews&type=0&search='+ encodeURI(this.editn.search) +'&nname='+ encodeURI(this.editn.name) +'&ckid='+ this.editn.ckid +'&nrnews='+ this.editn.numberof +'&filter=' + this.editn.categories,{
 			headers: {
 				"Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
 			}}).subscribe();
@@ -99,7 +99,7 @@ export class NewsDivComponent implements OnInit {
 			filter = filter.substring(0,filter.length - 1);
 		}
 
-		this.http.post('http://api.energymarketprice.com/api/v1/filter/posts/','filter=&query='+ filter +'&country=&code=&sources=&sentiment=&date_from=&forecasters=&date_to=&language=&pag=1',{
+		this.http.post('http://api.energymarketprice.com/api/v1/filter/posts/','filter='+ this.editn.search +'&query='+ filter +'&country=&code=&sources=&sentiment=&date_from=&forecasters=&date_to=&language=&pag=1',{
 			headers: {
 				"Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
 			}

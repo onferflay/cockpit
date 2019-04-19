@@ -8,9 +8,6 @@ import { News } from '../news';
   styleUrls: ['./news-details.component.css']
 })
 
-
-
-
 export class NewsDetailsComponent implements OnInit {
 
 @Input() nid: News;

@@ -557,6 +557,9 @@ button,span,input,textarea,table{
     height: auto;
     top: 18%;
 }
+.news_edit{
+    top:5% !important;
+}
 .color-palet{
     padding: 0;
     width:28px !important;
