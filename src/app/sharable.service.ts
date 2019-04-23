@@ -13,7 +13,15 @@ export class SharableService {
   private redraw = new BehaviorSubject(false);
   private activechart = new BehaviorSubject(false);
 	private activedef = new BehaviorSubject(false);
-	private actdel = new BehaviorSubject(false);
+  private actdel = new BehaviorSubject(false);
+  
+  private newssection = new BehaviorSubject(true);
+  private statssection = new BehaviorSubject(true);
+  private marketsection = new BehaviorSubject(true);
+  private hedgesection = new BehaviorSubject(true);
+  private scoresection = new BehaviorSubject(true);
+  private libsection = new BehaviorSubject(true);
+
   private bgcolor = new BehaviorSubject('#ffffff');
   private fontcolor = new BehaviorSubject('#37475a');
 
@@ -68,12 +76,43 @@ export class SharableService {
   adel =  this.actdel.asObservable();
   achart =  this.activechart.asObservable();
 
+  vnewssection = this.newssection.asObservable();
+  vstatssection = this.statssection.asObservable();
+  vmarketsection = this.marketsection.asObservable();
+  vhedgesection = this.hedgesection.asObservable();
+  vscoresection = this.scoresection.asObservable();
+  vlibsection = this.libsection.asObservable();
+
   crd =  this.redraw.asObservable();
 
   co = this.colorOrder.asObservable();
 
 
   constructor() { }
+
+  changeNewsSection(aux:boolean){
+    this.newssection.next(aux);
+  }
+
+  changeStatsSection(aux:boolean){
+    this.statssection.next(aux);
+  }
+
+  changeMarketSection(aux:boolean){
+    this.marketsection.next(aux);
+  }
+
+  changeHedgeSection(aux:boolean){
+    this.hedgesection.next(aux);
+  }
+
+  changeScoreSection(aux:boolean){
+    this.scoresection.next(aux);
+  }
+
+  changeLibSection(aux:boolean){
+    this.libsection.next(aux);
+  }
 
   redrawChart(aux:boolean){
     this.redraw.next(aux)

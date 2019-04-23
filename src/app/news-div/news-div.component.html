@@ -1,4 +1,4 @@
-        <div class='col-sm-12 cp-news-div example-list' id="newssection"  cdkDropList (cdkDropListDropped)="drop($event)" [ngStyle]="{ 'backgroundColor' : colors[0] }">
+        <div class='col-sm-12 cp-news-div example-list' id="newssection" *ngIf='sdelete'  cdkDropList (cdkDropListDropped)="drop($event)" [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">
                     <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">{{ editn.name }}</span>
@@ -8,8 +8,8 @@
                         </p>
                         <div *ngIf="action" class='action_menu'>
                             <span (click)="active = !active">Edit section</span>
-                            <span (click)="acolor = !acolor; offMe()">Edit color scheme</span>
-                            <span (click)='sdelete = !sdelete; offMee()'>Delete</span>
+                            <span (click)="offMe()">Edit color scheme</span>
+                            <span (click)='offMee();'>Hide Section</span>
                         </div>
                     </div>
                 </div>
@@ -30,13 +30,16 @@
 
         </div>
 
+        <div *ngIf='!sdelete' style="height: 40px;">
+                <button (click)='offMee();' style="float:right;" class="button button-blue">Show News Section</button>
+        </div>
+
         <button class='closeallbtn' style="display: none;" (click)='closeall();'></button>
 
         <app-news-details [nid]="stiri"></app-news-details>
         <app-color-scheme [active]="acolor" [colorBG]="colorbg" [co]="co" [colorFont]="colorf"></app-color-scheme>
-        <app-deletesection [active]="sdelete"></app-deletesection>
 
-        <div id='fancybox-overlay' [ngStyle]="{ 'display' : active || acolor || sdelete ? 'block' : 'none' }"></div>
+        <div id='fancybox-overlay' [ngStyle]="{ 'display' : active || acolor ? 'block' : 'none' }"></div>
 
         <div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
             

@@ -32,6 +32,7 @@ export class NewsDivComponent implements OnInit {
 	colorbg:string;
 	colorf:string;
 	nfilter: string;
+	vnewssection: boolean;
    
 	constructor(private http: HttpClient,private vano: SharableService) { }
 
@@ -39,8 +40,10 @@ export class NewsDivComponent implements OnInit {
 		this.active = false;
 		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Forex","Renewables","Carbon"];
 		this.filterMe();
+		this.vano.vnewssection.subscribe(aux => this.vnewssection = aux );
+		console.log(this.vnewssection)
 		this.vano.active.subscribe(acolor => this.acolor = acolor);
-		this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
+		// this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
 		this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
 		this.vano.colorf.subscribe(fc => this.colorf = fc);
 		this.vano.co.subscribe(co => this.co = co);
@@ -117,18 +120,23 @@ export class NewsDivComponent implements OnInit {
 	}
 
 	offMe(){
+		this.acolor = !this.acolor;
 		this.vano.changeActive(this.acolor);
 		this.vano.changeCO(0);
 		this.colorbg = this.colors[0];
 		this.colorf = this.colors[1];
 	}
 
-  verify(){
+  	verify(){
     if (this.editn.name.length < 4) { this.editn.name = 'Market News' }
-  }
+  	}
 
 	offMee(){
-		this.vano.changeDel(this.sdelete);
+		this.sdelete = !this.sdelete; 
+		this.action = false;
+		this.vnewssection = !this.vnewssection;
+		this.vano.changeNewsSection(this.vnewssection);
+		// this.vano.changeDel(this.sdelete);
 	}
 	
 	ShowMe(id: News): void{
@@ -140,6 +148,8 @@ export class NewsDivComponent implements OnInit {
 				validated_text : id["validated_text"]
 			}
 	}
+
+
 	
 	drop(event: CdkDragDrop<string[]>) {
 		moveItemInArray(this.results, event.previousIndex, event.currentIndex);

@@ -44,7 +44,7 @@ export class AppComponent{
 
 ngOnInit() {
 
-  this.route.queryParamMap.pipe(debounceTime(100)).subscribe(params =>{
+    this.route.queryParamMap.pipe(debounceTime(100)).subscribe(params =>{
     this.ckid = params.get("ckid");
 
   this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=sendcockpit&ckid=' + this.ckid).subscribe( data =>{
@@ -161,7 +161,16 @@ ngOnInit() {
 	 	$(document).keyup(function(e){
             if (e.keyCode === 27 ){
         		$('.closeallbtn').click();
-            }
-  	 	});
+            }            
+       });
+
+    $(document).mouseup(function(event) {
+			var container = $('.action_menu');
+			if ( container.is(':visible') )
+			if ( !container.is(event.target) && container.has(event.target).length === 0 ) 
+			{
+				container.parent().click();
+			}
+		});
   }
 }

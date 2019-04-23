@@ -79,6 +79,7 @@ button,span,input,textarea,table{
 .action_menu span:hover{
     color: #00b0f0;
     text-decoration: underline;
+    background-color: #EDF2F6;
 }
 
 .action_bar p:hover{
@@ -144,7 +145,6 @@ button,span,input,textarea,table{
     border: 1px solid #cbd6e2;
     border-radius: 3px;
     padding: 30px 15px;
-    margin-left: 15px;
     width: 100%;
     margin-top: 30px;
 }
