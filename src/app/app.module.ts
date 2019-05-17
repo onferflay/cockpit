@@ -31,6 +31,7 @@ import { TopconsolidatedDivComponent } from './topconsolidated-div/topconsolidat
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CookieService } from 'ngx-cookie-service';
+import { WeeklyDivComponent } from './weekly-div/weekly-div.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CookieService } from 'ngx-cookie-service';
   ChartDetailComponent,
   ConsolidatedDivComponent,
   TopconsolidatedDivComponent,
-  ErrorPageComponent
+  ErrorPageComponent,
+  WeeklyDivComponent
   ],
   imports: [
   HttpClientModule,

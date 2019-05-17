@@ -1,0 +1,76 @@
+<div style="height: 40px;">
+    <button (click)='offMee();' style="float:right;" class="button button-blue">{{ vweeklysection ? 'Hide Weekly section' : 'Show Weekly section' }}</button>
+</div>
+
+<div *ngIf="vweeklysection" class='col-sm-12 cp-news-div'  id="hedgesection" [ngStyle]="{ 'backgroundColor' : colors[0] }">
+  <div class="row">
+      <div class="col-sm-12">
+          <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">{{ weekly }}</span>
+          <div class="action_bar" (click)='action = !action'>
+              <p [ngStyle]="{ 'color' : colors[1] }">Action
+                  <i class="fa" [ngClass]="{'fa-caret-up': action, 'fa-caret-down': !action }"></i>
+              </p>
+              <div *ngIf="action" class='action_menu'>
+                  <span (click)="active = !active">Edit section</span>
+                  <span (click)="acolor = !acolor; offMe()">Edit color scheme</span>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-6 col-md-4" *ngFor="let item of results; let i = index;" style="margin-top: 40px">
+       <div class="weekly-body">
+         <div class="weekly-first-div">
+
+           <div class="w-img-div" *ngIf="i==0"><img src="https://www.energymarketprice.com/assets/img/brent.png"></div>
+           <div style="color:#5e3b85;" *ngIf="i==0" class="w-market-name">BRENT M+1</div>
+           <div class="w-market-value" *ngIf="i==0" >{{ item.value }} $/bbl</div>
+
+           <div class="w-img-div" *ngIf="i==1"><img src="https://www.energymarketprice.com/assets/img/gas.bmp"></div>
+           <div style="color:#c92132;" *ngIf="i==1" class="w-market-name">GAS TTF Y+1</div>
+           <div class="w-market-value" *ngIf="i==1">{{ item.value }} €/MWh</div>
+
+           <div class="w-img-div" *ngIf="i==2"><img src="https://www.energymarketprice.com/assets/img/power.bmp"></div>
+           <div style="color:#f39c12;" *ngIf="i==2" class="w-market-name">POWER GE Y+1</div>
+           <div class="w-market-value" *ngIf="i==2">{{ item.value }} €/MWh</div>
+
+           <div class="w-text"><p>{{ item.info}}</p></div>
+         </div>
+         <div class="w-second-div">
+           <p class="w-outlook">Outlook:</p>
+           <p class="w-horizon">(Horizon 1 week)</p>
+           <div class="w-arrow" [ngClass]="{'w-up': item.flag=='up', 'w-down': item.flag=='down' }" >→</div>
+         </div>
+       </div>
+     </div>
+</div>
+</div>
+
+<button class="closeallbtn" style="display: none;" (click)='active=false'></button>
+<div id='fancybox-overlay'  [ngStyle]="{ 'display' : active ? 'block' : 'none'}"></div>
+
+<div *ngIf="active" class="news_edit" [ngStyle]="{ 'display' : active ? 'block' : 'none'}">
+  <div class="popup-title"><b>Edit weekly section</b><i class="fa fa-times closeme" (click)="active = !active"></i></div>
+  <form (ngSubmit)="onSubmit()" #editForm="ngForm">
+      <div class="form-group">
+          <label for="name"><b>Edit section name:</b></label>
+          <input type="text" class="form-control" required minlength="4" (change)='verify()' [(ngModel)]="weekly" name='hedge-name' #weeklyName='ngModel'>
+
+          <div *ngIf="weeklyName.invalid && (weeklyName.dirty || weeklyName.touched)" class="alert alert-danger">
+              <div *ngIf="weeklyName.errors.required">
+                Field is required.
+              </div>
+              <div *ngIf="weeklyName.errors.minlength">
+                Field must be at least 4 characters long.
+              </div>
+          </div>
+
+      </div> 
+
+      <div class="form-group" style="text-align: right">
+          <button type="reset" class='reset-btn'>Cancel</button>
+          <button type="submit" class="submit-btn"  [disabled]="!editForm.form.valid">Save Settings</button>
+      </div>
+  </form>
+
+</div>

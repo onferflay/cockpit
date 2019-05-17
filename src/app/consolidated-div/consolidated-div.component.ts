@@ -30,6 +30,7 @@ export class ConsolidatedDivComponent implements OnInit {
   colorf:string = '#37475a';
   vanoo : any;
   ckid : string;
+  vconssection: boolean;
 
 	ngOnInit(){
         this.active = false;
@@ -47,7 +48,7 @@ export class ConsolidatedDivComponent implements OnInit {
     
             this.vano.active.subscribe(acolor => this.acolor = acolor);
             this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
-            
+            this.vano.vconssection.subscribe( aux => this.vconssection = aux);
             this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
             this.vano.colorf.subscribe(fc => this.colorf = fc);
 
@@ -156,7 +157,8 @@ export class ConsolidatedDivComponent implements OnInit {
     this.vano.changeAuxColorF(this.colorf);
   }
   offMee(){
-    this.vano.changeDel(this.sdelete);
+    this.vconssection = !this.vconssection;
+    this.vano.changeConsSection(this.vconssection);
   }
 
 }

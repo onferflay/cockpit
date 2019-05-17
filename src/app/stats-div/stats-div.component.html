@@ -1,4 +1,8 @@
-        <div class='col-sm-12 cp-news-div' id="statssection" [ngStyle]="{ 'backgroundColor' : colors[0] }">
+          <div style="height: 40px;">
+            <button (click)='offMee();' style="float:right;" class="button button-blue">{{ vstatssection ? 'Hide statistics section' : 'Show statistics section' }}</button>
+          </div>
+
+          <div class='col-sm-12 cp-news-div' id="statssection" *ngIf="vstatssection" [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">
                     <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">{{ stats }}</span>
@@ -9,11 +13,11 @@
                         <div *ngIf="action" class='action_menu'>
                             <span (click)="active = !active">Edit section</span>
                             <span (click)="acolor = !acolor; offMe()">Edit color scheme</span>
-                            <span (click)='sdelete = !sdelete; offMee()'>Delete</span>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="news-block col-sm-12 cp-stats-div">
                   <table class="cp-statistics-table">
@@ -83,5 +87,4 @@
                     <button type="submit" class="submit-btn"  [disabled]="!editForm.form.valid">Save Settings</button>
                 </div>
             </form>
-
-        </div>
+          </div>

@@ -1,4 +1,8 @@
-        <div class='col-sm-12 cp-news-div' id="marketsection" [ngStyle]="{ 'backgroundColor' : colors[0] }">
+<div style="height: 40px;">
+        <button (click)='offMee();' style="float:right;" class="button button-blue">{{ vmarketsection ? 'Hide market section' : 'Show market section' }}</button>
+</div>
+
+        <div class='col-sm-12 cp-news-div' id="marketsection" *ngIf='vmarketsection' [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">
                     <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">{{ mpt }}</span>
@@ -9,7 +13,6 @@
                         <div *ngIf="action" class='action_menu'>
                             <span (click)="active = !active">Edit section</span>
                             <span (click)="acolor = !acolor; offMe()">Edit color scheme</span>
-                            <span (click)='sdelete = !sdelete; offMee()'>Delete</span>
                         </div>
                     </div>
                 </div>

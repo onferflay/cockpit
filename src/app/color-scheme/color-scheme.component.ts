@@ -89,6 +89,14 @@ export class ColorSchemeComponent implements OnInit {
         }}).subscribe();
     }
 
+    if (this.co == 7)
+    {
+      this.http.post('http://www.marketpricesolutions.com/apitest.asp','act=editweekly&type=1&ckid=' + this.ckid + '&weeklybgcolor='+ this.colorBG +'&weeklycolor=' + this.colorFont,{
+        headers: {
+          "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8"
+        }}).subscribe();
+    }
+
   }
 
   changeColorBG(){
@@ -106,6 +114,8 @@ export class ColorSchemeComponent implements OnInit {
       this.vano.changeColorBG5(this.colorBG);
     else if (this.co == 6) 
       this.vano.changeColorBG6(this.colorBG);
+    else if (this.co == 7) 
+      this.vano.changeColorBG7(this.colorBG);
   }
 
   changeColorF(){
@@ -123,6 +133,8 @@ export class ColorSchemeComponent implements OnInit {
       this.vano.changeColorF5(this.colorFont);
     else if (this.co == 6)
       this.vano.changeColorF6(this.colorFont);
+    else if (this.co == 7)
+      this.vano.changeColorF7(this.colorFont);
   }
    
   offMe(){

@@ -21,6 +21,9 @@ export class SharableService {
   private hedgesection = new BehaviorSubject(true);
   private scoresection = new BehaviorSubject(true);
   private libsection = new BehaviorSubject(true);
+  private conssection = new BehaviorSubject(true);
+  private topconssection = new BehaviorSubject(true);
+  private weeklysection = new BehaviorSubject(true);
 
   private bgcolor = new BehaviorSubject('#ffffff');
   private fontcolor = new BehaviorSubject('#37475a');
@@ -42,6 +45,9 @@ export class SharableService {
 
   private bgcolor6 = new BehaviorSubject('#ffffff');
   private fontcolor6 = new BehaviorSubject('#37475a');
+
+  private bgcolor7 = new BehaviorSubject('#ffffff');
+  private fontcolor7 = new BehaviorSubject('#37475a');
 
   private auxcolorbg =new BehaviorSubject('#ffffff');
   private auxcolorf = new BehaviorSubject('#37475a');
@@ -69,6 +75,9 @@ export class SharableService {
   colorBg6 = this.bgcolor6.asObservable();
   colorFont6 = this.fontcolor6.asObservable()
 
+  colorBg7 = this.bgcolor7.asObservable();
+  colorFont7 = this.fontcolor7.asObservable()
+
   colorbg = this.auxcolorbg.asObservable();
   colorf = this.auxcolorf.asObservable();
 
@@ -82,6 +91,9 @@ export class SharableService {
   vhedgesection = this.hedgesection.asObservable();
   vscoresection = this.scoresection.asObservable();
   vlibsection = this.libsection.asObservable();
+  vconssection = this.conssection.asObservable();
+  vtopconsection = this.topconssection.asObservable();
+  vweeklysection = this.weeklysection.asObservable();
 
   crd =  this.redraw.asObservable();
 
@@ -92,6 +104,18 @@ export class SharableService {
 
   changeNewsSection(aux:boolean){
     this.newssection.next(aux);
+  }
+
+  changeWeeklySection(aux:boolean){
+    this.weeklysection.next(aux);
+  }
+
+  changeConsSection(aux:boolean){
+    this.conssection.next(aux);
+  }
+
+  changeTopConsSection(aux:boolean){
+    this.topconssection.next(aux);
   }
 
   changeStatsSection(aux:boolean){
@@ -162,6 +186,11 @@ export class SharableService {
   changeColorBG6(bgc:string){
       this.bgcolor6.next(bgc)
     }
+
+  changeColorBG7(bgc:string){
+      this.bgcolor7.next(bgc)
+    }
+
   changeColorF(fc:string){
       this.fontcolor.next(fc)
     } 
@@ -187,6 +216,10 @@ export class SharableService {
 
   changeColorF6(fc:string){
       this.fontcolor6.next(fc)
+    }
+
+  changeColorF7(fc:string){
+      this.fontcolor7.next(fc)
     }
 
   changeDel(aux: boolean){

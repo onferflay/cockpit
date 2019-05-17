@@ -30,6 +30,7 @@ export class TopconsolidatedDivComponent implements OnInit {
   colorf:string = '#37475a';
   vanoo : any;
   ckid : string;
+  vtopconsection: boolean;
 
 	ngOnInit(){
         this.active = false;
@@ -48,6 +49,7 @@ export class TopconsolidatedDivComponent implements OnInit {
     
             this.vano.active.subscribe(acolor => this.acolor = acolor);
             this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
+            this.vano.vtopconsection.subscribe(aux => this.vtopconsection = aux);
             
             this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
             this.vano.colorf.subscribe(fc => this.colorf = fc);
@@ -157,7 +159,8 @@ export class TopconsolidatedDivComponent implements OnInit {
     this.vano.changeAuxColorF(this.colorf);
   }
   offMee(){
-    this.vano.changeDel(this.sdelete);
+    this.vtopconsection = !this.vtopconsection;
+    this.vano.changeTopConsSection(this.vtopconsection);
   }
 
 }

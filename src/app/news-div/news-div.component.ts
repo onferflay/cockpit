@@ -41,7 +41,6 @@ export class NewsDivComponent implements OnInit {
 		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Forex","Renewables","Carbon"];
 		this.filterMe();
 		this.vano.vnewssection.subscribe(aux => this.vnewssection = aux );
-		console.log(this.vnewssection)
 		this.vano.active.subscribe(acolor => this.acolor = acolor);
 		// this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
 		this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
@@ -132,11 +131,9 @@ export class NewsDivComponent implements OnInit {
   	}
 
 	offMee(){
-		this.sdelete = !this.sdelete; 
 		this.action = false;
 		this.vnewssection = !this.vnewssection;
 		this.vano.changeNewsSection(this.vnewssection);
-		// this.vano.changeDel(this.sdelete);
 	}
 	
 	ShowMe(id: News): void{

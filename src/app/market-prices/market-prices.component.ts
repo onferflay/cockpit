@@ -42,6 +42,7 @@ export class MarketPricesComponent implements OnInit {
     auxname:string;
     ckid : string;
     achart : boolean;
+    vmarketsection : boolean;
 
 
     constructor(private http: HttpClient, private vano: SharableService,private route: ActivatedRoute) { }
@@ -52,7 +53,7 @@ export class MarketPricesComponent implements OnInit {
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=dataforchart&cid=' + this.ckid).subscribe(data => {
 	this.charts = data[0];
   this.objKeys = Object.keys(this.charts);
-
+  this.vano.vmarketsection.subscribe(aux => this.vmarketsection = aux);
   this.co =2;
 
   this.vano.active.subscribe(acolor => this.acolor = acolor);
@@ -104,7 +105,8 @@ export class MarketPricesComponent implements OnInit {
     this.vano.changeAuxColorF(this.colorf);
   }
   offMee(){
-    this.vano.changeDel(this.sdelete);
+    this.vmarketsection = !this.vmarketsection;
+    this.vano.changeMarketSection(this.vmarketsection);
   }
 
 }

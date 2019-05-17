@@ -36,6 +36,10 @@ export class AppComponent{
   topconscolorbg : string;
   topconscolorfont : string;
 
+  weeklyinfo : string;
+  weeklycolorbg : string;
+  weeklycolorfont : string;
+
   ckid : string;
 
 
@@ -92,6 +96,13 @@ ngOnInit() {
       this.topconscolorfont = data[0].topconstextcolor;
       this.topconsinfo = data[0].topconsname;
 
+      //for weekly
+      this.vano.colorBg7.subscribe(bgc => this.weeklycolorbg = bgc);
+      this.vano.colorFont7.subscribe(fc =>  this.weeklycolorfont = fc);
+      this.weeklycolorbg = data[0].weeklybgcolor;
+      this.weeklycolorfont = data[0].weeklytextcolor;
+      this.weeklyinfo = data[0].weeklyname;
+
       //for scoring
       this.vano.colorBg4.subscribe(bgc => this.sccolorbg = bgc);
       this.vano.colorFont4.subscribe(fc => this.sccolorfont = fc);
@@ -144,6 +155,13 @@ ngOnInit() {
             this.topconscolorbg = '#ffffff';
             this.topconscolorfont = '#333333';
             this.topconsinfo = 'Top Consolidated Reports';
+
+            //for weekly 
+            this.vano.colorBg7.subscribe(bgc => this.weeklycolorbg = bgc);
+            this.vano.colorFont7.subscribe(fc =>  this.weeklycolorfont = fc);
+            this.weeklycolorbg = '#ffffff';
+            this.weeklycolorfont = '#333333';
+            this.weeklyinfo = 'LAST WEEK AT A GLANCE';
       
             //for scoring
             this.vano.colorBg4.subscribe(bgc => this.sccolorbg = bgc);

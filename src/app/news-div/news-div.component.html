@@ -1,4 +1,7 @@
-        <div class='col-sm-12 cp-news-div example-list' id="newssection" *ngIf='sdelete'  cdkDropList (cdkDropListDropped)="drop($event)" [ngStyle]="{ 'backgroundColor' : colors[0] }">
+        <div style="height: 40px;">
+                <button (click)='offMee();' style="float:right;" class="button button-blue">{{ vnewssection ? 'Hide news section' : 'Show news section' }}</button>
+        </div>
+        <div class='col-sm-12 cp-news-div example-list' id="newssection" *ngIf='vnewssection'   cdkDropList (cdkDropListDropped)="drop($event)" [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">
                     <span class="subtitle" [ngStyle]="{ 'color' : colors[1] }">{{ editn.name }}</span>
@@ -9,7 +12,6 @@
                         <div *ngIf="action" class='action_menu'>
                             <span (click)="active = !active">Edit section</span>
                             <span (click)="offMe()">Edit color scheme</span>
-                            <span (click)='offMee();'>Hide Section</span>
                         </div>
                     </div>
                 </div>
@@ -28,10 +30,6 @@
                 </div>
             </div>
 
-        </div>
-
-        <div *ngIf='!sdelete' style="height: 40px;">
-                <button (click)='offMee();' style="float:right;" class="button button-blue">Show News Section</button>
         </div>
 
         <button class='closeallbtn' style="display: none;" (click)='closeall();'></button>

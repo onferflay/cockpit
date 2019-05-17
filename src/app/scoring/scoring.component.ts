@@ -27,6 +27,7 @@ export class ScoringComponent implements OnInit {
   colorbg:string = '#ffffff';
   colorf:string = '#37475a';
   ckid : string;
+  vscoresection : boolean;
 
 
   ngOnInit() {
@@ -44,6 +45,7 @@ export class ScoringComponent implements OnInit {
 
         this.vano.active.subscribe(acolor => this.acolor = acolor);
         this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
+        this.vano.vscoresection.subscribe(aux => this.vscoresection = aux);
         
         this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
         this.vano.colorf.subscribe(fc => this.colorf = fc);
@@ -73,6 +75,7 @@ onSubmit(){
     this.vano.changeAuxColorF(this.colorf);
   }
   offMee(){
-    this.vano.changeDel(this.sdelete);
+    this.vscoresection = !this.vscoresection;
+    this.vano.changeScoreSection(this.vscoresection);
   }
 }

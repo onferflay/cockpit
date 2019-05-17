@@ -34,6 +34,7 @@ export class StatsDivComponent implements OnInit {
   colorbg:string = '#ffffff';
   colorf:string = '#37475a';
   ckid : string;
+  vstatssection : boolean;
 
   constructor(private http: HttpClient,private vano: SharableService,private route:ActivatedRoute) { }
 
@@ -42,7 +43,7 @@ export class StatsDivComponent implements OnInit {
   this.route.queryParamMap.subscribe(params =>{
     this.ckid = params.get("ckid");
   });
-
+  this.vano.vstatssection.subscribe(aux => this.vstatssection = aux );
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=' + this.ckid ).subscribe(data => {
 	this.testme = data["data"];
 	this.order = data["orderby"];
@@ -82,7 +83,8 @@ export class StatsDivComponent implements OnInit {
     this.vano.changeAuxColorF(this.colorf);
   }
   offMee(){
-    this.vano.changeDel(this.sdelete);
+    this.vstatssection = !this.vstatssection;
+    this.vano.changeStatsSection(this.vstatssection);
   }
 
 onSubmit(){
