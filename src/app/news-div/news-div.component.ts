@@ -32,7 +32,7 @@ export class NewsDivComponent implements OnInit {
 	colorbg:string;
 	colorf:string;
 	nfilter: string;
-	vnewssection: boolean;
+	vnewssection : boolean;
    
 	constructor(private http: HttpClient,private vano: SharableService) { }
 
@@ -40,9 +40,9 @@ export class NewsDivComponent implements OnInit {
 		this.active = false;
 		this.clist = ["All categories","Daily","Oil","Natural Gas","Power","Energy","Nuclear","Coal","Forex","Renewables","Carbon"];
 		this.filterMe();
-		this.vano.vnewssection.subscribe(aux => this.vnewssection = aux );
 		this.vano.active.subscribe(acolor => this.acolor = acolor);
 		// this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
+		this.vano.vnewssection.subscribe(aux => this.vnewssection = aux );
 		this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
 		this.vano.colorf.subscribe(fc => this.colorf = fc);
 		this.vano.co.subscribe(co => this.co = co);
@@ -130,11 +130,9 @@ export class NewsDivComponent implements OnInit {
     if (this.editn.name.length < 4) { this.editn.name = 'Market News' }
   	}
 
-	offMee(){
-		this.action = false;
-		this.vnewssection = !this.vnewssection;
-		this.vano.changeNewsSection(this.vnewssection);
-	}
+	// offMee(){
+	// 	this.action = false;
+	// }
 	
 	ShowMe(id: News): void{
 		this.stiri = {

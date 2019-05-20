@@ -5,11 +5,21 @@
 </div>
 <div class='col-sm-12'>
     <ul class="menu-ul">
-          <li class='menu-li' *ngIf="vnewssection" [ngClass]="{active:active=='newssection'}" (click)="active = 'newssection';jump()"><i class='fa fa-file-alt'></i><span>market news</span></li>
-          <li class='menu-li' *ngIf="vstatssection" [ngClass]="{active:active=='statssection'}" (click)="active = 'statssection';jump()"><i class='fa fa-chart-pie'></i><span>statistics</span></li>
-          <li class='menu-li' *ngIf="vmarketsection" [ngClass]="{active:active=='marketsection'}" (click)="active = 'marketsection';jump()"><i class='fa fa-bolt'></i><span>market prices & trends</span></li>
-          <li class='menu-li' *ngIf="vhedgesection" [ngClass]="{active:active=='hedgesection'}" (click)="active = 'hedgesection';jump()"><i class='fa fa-chart-bar'></i><span>hedge reporting</span></li>
-          <li class='menu-li' *ngIf="vscoresection" [ngClass]="{active:active=='scoresection'}" (click)="active = 'scoresection';jump()"><i class='fa fa-dot-circle'></i><span>precurement scoring</span></li>
-          <li class='menu-li' *ngIf="vlibsection" [ngClass]="{active:active=='libsection'}" (click)="active = 'libsection';jump()"><i class='fa fa-book'></i><span>library</span></li>
+          <li class='menu-li' *ngIf="name[0]" [ngClass]="{active:active=='newssection'}" (click)="active = 'newssection';jump()"><i class='fa fa-file-alt'></i><span>market news</span></li>
+          <li class='menu-li' *ngIf="name[1]" [ngClass]="{active:active=='statssection'}" (click)="active = 'statssection';jump()"><i class='fa fa-chart-pie'></i><span>statistics</span></li>
+          <li class='menu-li' *ngIf="name[2]" [ngClass]="{active:active=='marketsection'}" (click)="active = 'marketsection';jump()"><i class='fa fa-bolt'></i><span>market prices & trends</span></li>
+          <li class='menu-li' *ngIf="name[3]" [ngClass]="{active:active=='hedgesection'}" (click)="active = 'hedgesection';jump()"><i class='fa fa-chart-bar'></i><span>hedge reporting</span></li>
+          <li class='menu-li' *ngIf="name[4]" [ngClass]="{active:active=='scoresection'}" (click)="active = 'scoresection';jump()"><i class='fa fa-dot-circle'></i><span>precurement scoring</span></li>
+          <li class='menu-li' *ngIf="name[7]" [ngClass]="{active:active=='libsection'}" (click)="active = 'libsection';jump()"><i class='fa fa-book'></i><span>library</span></li>
+    </ul>
+</div>
+
+<div id="select-section" class="fixed-bg">
+    <i class="fas fa-chevron-right"></i>
+</div>
+
+<div class="small-menu-div">
+    <ul>
+        <li *ngFor='let item of name; let i = index;'><label>{{ name[i] }}<input type="checkbox" [ngModel]='checked[i]' (click)='change(i+1)'></label></li>
     </ul>
 </div>

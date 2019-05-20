@@ -1,7 +1,3 @@
-<div style="height: 40px;">
-    <button (click)='offMee();' style="float:right;" class="button button-blue">{{ vweeklysection ? 'Hide Weekly section' : 'Show Weekly section' }}</button>
-</div>
-
 <div *ngIf="vweeklysection" class='col-sm-12 cp-news-div'  id="hedgesection" [ngStyle]="{ 'backgroundColor' : colors[0] }">
   <div class="row">
       <div class="col-sm-12">
@@ -18,7 +14,7 @@
       </div>
   </div>
   <div class="row">
-      <div class="col-sm-6 col-md-4" *ngFor="let item of results; let i = index;" style="margin-top: 40px">
+      <div class="col-sm-6 col-md-4" *ngFor="let item of results; let i = index;" style="margin-top: 20px">
        <div class="weekly-body">
          <div class="weekly-first-div">
 
@@ -43,6 +39,11 @@
          </div>
        </div>
      </div>
+</div>
+<div class="row">
+  <div class="col-sm-12" style="margin-top: 40px; text-align:center">
+    <a class="btn bluebtn" target="_blank" href="https://www.energymarketprice.com/weekly/client/">VIEW REPORT&nbsp;<i class="fa fa-angle-right"></i></a>
+  </div>
 </div>
 </div>
 

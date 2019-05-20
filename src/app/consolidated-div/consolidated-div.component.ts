@@ -156,9 +156,5 @@ export class ConsolidatedDivComponent implements OnInit {
     this.vano.changeAuxColorBg(this.colorbg);
     this.vano.changeAuxColorF(this.colorf);
   }
-  offMee(){
-    this.vconssection = !this.vconssection;
-    this.vano.changeConsSection(this.vconssection);
-  }
 
 }

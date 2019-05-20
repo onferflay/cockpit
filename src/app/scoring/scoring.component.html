@@ -1,6 +1,3 @@
-<div style="height: 40px;">
-        <button (click)='offMee();' style="float:right;" class="button button-blue">{{ vscoresection ? 'Hide scoring section' : 'Show scoring section' }}</button>
-</div>
 <div *ngIf="empty && vscoresection" id="scoresection" class='col-sm-12 cp-news-div' [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">

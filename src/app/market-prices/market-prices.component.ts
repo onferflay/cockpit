@@ -44,7 +44,6 @@ export class MarketPricesComponent implements OnInit {
     achart : boolean;
     vmarketsection : boolean;
 
-
     constructor(private http: HttpClient, private vano: SharableService,private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -53,12 +52,12 @@ export class MarketPricesComponent implements OnInit {
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=dataforchart&cid=' + this.ckid).subscribe(data => {
 	this.charts = data[0];
   this.objKeys = Object.keys(this.charts);
-  this.vano.vmarketsection.subscribe(aux => this.vmarketsection = aux);
   this.co =2;
 
   this.vano.active.subscribe(acolor => this.acolor = acolor);
   this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
   this.vano.achart.subscribe(achart => this.achart = achart );
+  this.vano.vmarketsection.subscribe(aux => this.vmarketsection = aux );
 
   this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
   this.vano.colorf.subscribe(fc => this.colorf = fc);
@@ -103,10 +102,6 @@ export class MarketPricesComponent implements OnInit {
     this.colorf = this.colors[1];
     this.vano.changeAuxColorBg(this.colorbg);
     this.vano.changeAuxColorF(this.colorf);
-  }
-  offMee(){
-    this.vmarketsection = !this.vmarketsection;
-    this.vano.changeMarketSection(this.vmarketsection);
   }
 
 }

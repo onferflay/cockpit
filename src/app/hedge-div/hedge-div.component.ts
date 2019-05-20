@@ -50,7 +50,7 @@ export class HedgeDivComponent implements OnInit {
     
             this.vano.active.subscribe(acolor => this.acolor = acolor);
             this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
-            this.vano.vhedgesection.subscribe(aux => this.vhedgesection = aux);
+            this.vano.vhedgesection.subscribe(aux => this.vhedgesection = aux );
             
             this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
             this.vano.colorf.subscribe(fc => this.colorf = fc);
@@ -162,11 +162,4 @@ export class HedgeDivComponent implements OnInit {
     this.vano.changeAuxColorBg(this.colorbg);
     this.vano.changeAuxColorF(this.colorf);
   }
-  offMee(){
-    this.vhedgesection = !this.vhedgesection;
-    this.vano.changeHedgeSection(this.vhedgesection);
-  }
-
-
-
 }

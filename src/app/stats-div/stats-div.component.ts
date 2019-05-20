@@ -43,7 +43,6 @@ export class StatsDivComponent implements OnInit {
   this.route.queryParamMap.subscribe(params =>{
     this.ckid = params.get("ckid");
   });
-  this.vano.vstatssection.subscribe(aux => this.vstatssection = aux );
 	this.http.get('http://www.marketpricesolutions.com/apitest.asp?act=datafortable&cid=' + this.ckid ).subscribe(data => {
 	this.testme = data["data"];
 	this.order = data["orderby"];
@@ -62,6 +61,7 @@ export class StatsDivComponent implements OnInit {
   this.active = false;
   this.vano.active.subscribe(acolor => this.acolor = acolor);
   this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
+  this.vano.vstatssection.subscribe(aux => this.vstatssection = aux );
   this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
   this.vano.colorf.subscribe(fc => this.colorf = fc);
   }
@@ -82,11 +82,7 @@ export class StatsDivComponent implements OnInit {
     this.vano.changeAuxColorBg(this.colorbg);
     this.vano.changeAuxColorF(this.colorf);
   }
-  offMee(){
-    this.vstatssection = !this.vstatssection;
-    this.vano.changeStatsSection(this.vstatssection);
-  }
-
+  
 onSubmit(){
   this.active = false;
   this.vano.changeActive(false);

@@ -45,8 +45,8 @@ export class ScoringComponent implements OnInit {
 
         this.vano.active.subscribe(acolor => this.acolor = acolor);
         this.vano.adel.subscribe(sdelete => this.sdelete = sdelete);
-        this.vano.vscoresection.subscribe(aux => this.vscoresection = aux);
-        
+        this.vano.vscoresection.subscribe(aux => this.vscoresection = aux );
+
         this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
         this.vano.colorf.subscribe(fc => this.colorf = fc);
 	 });
@@ -73,9 +73,5 @@ onSubmit(){
     this.colorf = this.colors[1];
     this.vano.changeAuxColorBg(this.colorbg);
     this.vano.changeAuxColorF(this.colorf);
-  }
-  offMee(){
-    this.vscoresection = !this.vscoresection;
-    this.vano.changeScoreSection(this.vscoresection);
   }
 }

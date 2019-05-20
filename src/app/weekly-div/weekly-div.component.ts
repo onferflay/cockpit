@@ -18,7 +18,6 @@ export class WeeklyDivComponent implements OnInit {
 
   constructor(private http:HttpClient, private vano:SharableService,private route:ActivatedRoute) { }
 
-  vweeklysection: boolean;
   active: any;
   ckid: string;
   results : any;
@@ -26,10 +25,10 @@ export class WeeklyDivComponent implements OnInit {
   colorbg: string = '#ffffff';
   colorf: string = '#37475a';
   acolor: any;
+  vweeklysection : boolean;
 
   ngOnInit() {
     this.active = false;
-    this.vano.vweeklysection.subscribe(aux => this.vweeklysection = aux);
     this.route.queryParamMap.subscribe(params =>{
       this.ckid = params.get("ckid");
     });
@@ -41,7 +40,7 @@ export class WeeklyDivComponent implements OnInit {
 
       this.co = 7;
       this.vano.active.subscribe(acolor => this.acolor = acolor);
-      this.vano.vweeklysection.subscribe(aux => this.vweeklysection = aux);
+      this.vano.vweeklysection.subscribe(aux => this.vweeklysection = aux );
       this.vano.colorbg.subscribe(bgc => this.colorbg = bgc);
       this.vano.colorf.subscribe(fc => this.colorf = fc);
     });
@@ -69,11 +68,6 @@ export class WeeklyDivComponent implements OnInit {
     this.colorf = this.colors[1];
     this.vano.changeAuxColorBg(this.colorbg);
     this.vano.changeAuxColorF(this.colorf);
-  }
-
-  offMee(){
-    this.vweeklysection = !this.vweeklysection;
-    this.vano.changeConsSection(this.vweeklysection);
   }
 
 }

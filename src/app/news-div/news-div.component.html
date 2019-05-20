@@ -1,6 +1,3 @@
-        <div style="height: 40px;">
-                <button (click)='offMee();' style="float:right;" class="button button-blue">{{ vnewssection ? 'Hide news section' : 'Show news section' }}</button>
-        </div>
         <div class='col-sm-12 cp-news-div example-list' id="newssection" *ngIf='vnewssection'   cdkDropList (cdkDropListDropped)="drop($event)" [ngStyle]="{ 'backgroundColor' : colors[0] }">
             <div class="row">
                 <div class="col-sm-12">

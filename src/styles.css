@@ -7,6 +7,10 @@ button,span,input,textarea,table{
 	font-family:  "open sans";
 }
 
+body {
+ line-height: 1.2;
+}
+
 .ng-valid[required], .ng-valid.required  {
   border-left: 5px solid #42A948; /* green */
 }
@@ -675,7 +679,7 @@ button,span,input,textarea,table{
     border: 1px solid #999; border-radius: 5px;
   }
   .weekly-first-div{
-     padding:30px 20px; text-align: center; height: 36rem; overflow: hidden;
+     padding:30px 20px; text-align: center; height: 23rem; overflow: hidden;
   }
   .w-img-div{
     text-align: center; margin-bottom: 10px;
@@ -684,22 +688,31 @@ button,span,input,textarea,table{
     text-align: center; margin-bottom: 10px;
   }
   .w-market-value{
-    font-size: 3rem;  color:#464646; font-weight: 800; margin-bottom: 3.5rem;
+    font-size: 2rem;  color:#464646; font-weight: 800; margin-bottom: 1.5rem;
+  }
+  .bluebtn{
+      background: #02b4cf;
+      color:white;
+      font-weight: 700;
+  }
+  .bluebtn:hover{
+      opacity: 0.8;
+      color:white;
   }
   .w-text{
-    color:#464646; font-size: 1.6rem; font-family: 'montserratlight';
+    color:#464646; font-size: 1.2rem; font-family: 'montserratlight';
   }
   .w-second-div{
     padding: 20px 0;text-align: center; border-top:1px solid #999;
   }
   .w-outlook{
-    line-height: 2rem; font-size: 2rem; color: #464646; font-weight: 650; margin: 0;
+    line-height: 1.3rem; font-size: 1.3rem; color: #464646; font-weight: 650; margin: 0;
   }
   .w-horizon{
-    font-size: 1.3rem; color: #92929f;margin: 0;
+    font-size: 1.0rem; color: #92929f;margin: 0;
   }
   .w-arrow{
-    width: 5rem; font-size: 5rem; margin:auto; height: 5rem; line-height: 4rem; color:#212529;
+    width: 5rem; font-size: 4rem; margin:auto; height: 3rem; line-height: 3rem; color:#212529;
   }
   .w-up{
      transform: rotate(-15deg);
@@ -709,3 +722,61 @@ button,span,input,textarea,table{
     transform: rotate(15deg);
     color: tomato !important;
   }
+  .fixed-bg{
+    position: fixed; 
+    height: 120vh;
+    background-color: #f1f1f1;
+    top:-10vh;
+    border-radius: 50%;
+    display: block;
+    width: 300px;
+    left: -225px;
+    z-index: 1;
+    cursor:pointer; 
+    background: linear-gradient(#9aa8af, #e0e0e0);
+ }
+ .fixed-bg i{
+     font-size: 66px;
+     top:53vh;
+     left:240px;
+     position: relative;
+     color:#4e4e4e;
+ }
+ .fixed-bg:hover i{
+     opacity:0.6;
+ }
+ .small-menu-div{
+     position: fixed;
+     top: 30vh;
+     left: -200px;
+     z-index: 2;
+ }
+ .small-menu-div ul{
+     width: 200px;
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     display: inline-block;
+     color: white;
+     background-color: #23282D;
+     font-size: 18px;
+     padding: 10px 0;
+     border-radius: 0 10px 10px 0;
+ }
+ .small-menu-div label{
+     padding: 10px;
+     display: block;
+     cursor: pointer;
+ }
+ .small-menu-div label input{
+     float: right;
+     position: relative;
+     top: 4px;
+ }
+ .small-menu-div label:hover{
+     background-color: #191E23;
+     color: #00b0f0;
+ }
+ .small-menu-div,#select-section,#select-section i{
+     transition: all 1s;
+ }
