@@ -561,6 +561,19 @@ body {
     height: auto;
     top: 18%;
 }
+li.cdk-drag-preview{
+    list-style: none;
+}
+li.cdk-drag-preview label{
+    padding: 10px;
+    display: block;
+}
+li.cdk-drag-preview label input{
+    float: right;
+    position: relative;
+    top: 4px;
+}
+
 .news_edit{
     top:5% !important;
 }

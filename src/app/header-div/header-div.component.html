@@ -19,7 +19,7 @@
 </div>
 
 <div class="small-menu-div">
-    <ul>
-        <li *ngFor='let item of name; let i = index;'><label>{{ name[i] }}<input type="checkbox" [ngModel]='checked[i]' (click)='change(i+1)'></label></li>
+    <ul (cdkDropListDropped)="drop($event)" cdkDropList>
+        <li *ngFor='let item of name; let i = index;' cdkDrag><div class="example-custom-placeholder" *cdkDragPlaceholder></div><label>{{ name[i] }}<input type="checkbox" [ngModel]='checked[order[i]]' (click)='change(order[i])'></label></li>
     </ul>
 </div>

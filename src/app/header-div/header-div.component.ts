@@ -9,14 +9,6 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
   styleUrls: ['./header-div.component.css']
 })
 
-// export class CdkDragDropCustomPlaceholderExample {
-//   movies = [];
-
-//   drop(event: CdkDragDrop<string[]>) {
-//     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
-//   }
-// }
-
 
 export class HeaderDivComponent implements OnInit {
   active:string;
@@ -24,8 +16,15 @@ export class HeaderDivComponent implements OnInit {
   
   name : string[]=["Market News","Statistics","Market Prices","Hedges","Consolidated","Top Consolidate","Scoring","Library","Weekly Report"];
   checked : boolean[]=[true,true,true,true,true,true,true,true,true];
+  order : number[]=[1,2,3,4,5,6,7,8,9];
 
   constructor( private cookieService: CookieService, private vano:SharableService ) { }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.name, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.checked, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.order, event.previousIndex, event.currentIndex);
+  }
 
   ngOnInit() {
 
@@ -33,9 +32,9 @@ export class HeaderDivComponent implements OnInit {
     this.vano.vstatssection.subscribe(aux => this.checked[1] = aux );
     this.vano.vmarketsection.subscribe(aux => this.checked[2] = aux );
     this.vano.vhedgesection.subscribe(aux => this.checked[3] = aux );
-    this.vano.vscoresection.subscribe(aux => this.checked[6] = aux );
     this.vano.vconssection.subscribe(aux => this.checked[4] = aux );
     this.vano.vtopconsection.subscribe(aux => this.checked[5] = aux );
+    this.vano.vscoresection.subscribe(aux => this.checked[6] = aux );
     this.vano.vlibsection.subscribe(aux => this.checked[7] = aux );
     this.vano.vweeklysection.subscribe(aux => this.checked[8] = aux );
 
@@ -80,9 +79,9 @@ export class HeaderDivComponent implements OnInit {
       case 2: this.checked[1] = !this.checked[1]; this.vano.changeStatsSection(this.checked[1]); break;
       case 3: this.checked[2] = !this.checked[2]; this.vano.changeMarketSection(this.checked[2]); break;
       case 4: this.checked[3] = !this.checked[3]; this.vano.changeHedgeSection(this.checked[3]); break;
-      case 5: this.checked[4] = !this.checked[4]; this.vano.changeScoreSection(this.checked[4]); break;
-      case 6: this.checked[5] = !this.checked[5]; this.vano.changeConsSection(this.checked[5]); break;
-      case 7: this.checked[6] = !this.checked[6]; this.vano.changeTopConsSection(this.checked[6]); break;
+      case 7: this.checked[6] = !this.checked[6]; this.vano.changeScoreSection(this.checked[6]); break;
+      case 5: this.checked[4] = !this.checked[4]; this.vano.changeConsSection(this.checked[4]); break;
+      case 6: this.checked[5] = !this.checked[5]; this.vano.changeTopConsSection(this.checked[5]); break;
       case 8: this.checked[7] = !this.checked[7]; this.vano.changeLibSection(this.checked[7]); break;
       case 9: this.checked[8] = !this.checked[8]; this.vano.changeWeeklySection(this.checked[8]); break;
     }
